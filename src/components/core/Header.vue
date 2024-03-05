@@ -11,6 +11,7 @@ import {ref} from "vue";
 
 const appStore = useAppStore()
 const {changeLocale} = appStore
+const {drawer} = storeToRefs(appStore)
 const localesModel = ref({
   value: 'ukr',
   image: ukr
@@ -26,7 +27,7 @@ function redirectTo(routeName){
   <q-header elevated class="bg-green-3">
     <q-toolbar>
 
-      <q-btn flat round dense icon="menu" class="q-mr-sm mobile-only" />
+      <q-btn @click="drawer = !drawer" flat round dense icon="menu" class="q-mr-sm mobile-only" />
       <q-avatar @click="redirectTo('home')">
         <img src="@assets/image/header/logo_image.svg" alt="logo_image">
       </q-avatar>
@@ -45,28 +46,33 @@ function redirectTo(routeName){
           @update:model-value="changeLocale(localesModel)"
       >
         <template v-slot:option="scope">
-          <q-item v-bind="scope.itemProps">
-            <q-item-section avatar>
-              <q-img :src="scope.opt.image"/>
-            </q-item-section>
+          <q-item v-bind="scope.itemProps" class="justify-center">
+            <div v-if="$q.platform.is.mobile" class="row items-center">
+              <q-item-section avatar>
+                <q-img :src="scope.opt.image"/>
+              </q-item-section>
+              <q-item-section >
+                <q-item-label>
+                  {{t(`app.locale.${scope.opt.value}`)}}
+                </q-item-label>
+              </q-item-section>
+            </div>
+              <q-img v-else :src="scope.opt.image"/>
           </q-item>
         </template>
         <template v-slot:selected>
-          <div>
-            <q-avatar>
+          <q-avatar>
               <q-img :src="localesModel.image"/>
-            </q-avatar>
-
-          </div>
+          </q-avatar>
         </template>
       </q-select>
 
     </q-toolbar>
-    <q-tabs class="desktop-only" inline-label>
-      <q-tab v-for="item in menu"
-              :icon="item.icon"
-              :label="t(`main_menu.${item.label}`)"
-              @click="redirectTo(item.route_name)"
+    <q-tabs v-if="$q.platform.is.desktop" inline-label>
+      <q-tab v-for="item in menu" class="text-black"
+             :icon="item.icon"
+             :label="t(`main_menu.${item.label}`)"
+             @click="redirectTo(item.route_name)"
       />
     </q-tabs>
   </q-header>

@@ -8,13 +8,11 @@ const baseRoutes = [
     }
 ];
 
-import page1 from "@/routes/pages/page1.js"
-import page2 from "@/routes/pages/page2.js"
+import MainMenu from "@/routes/main-menu.js"
 
 const routes = [
     ...baseRoutes,
-    ...page1,
-    ...page2,
+    ...MainMenu,
 ]
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
