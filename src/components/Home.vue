@@ -11,7 +11,6 @@ const count = ref(0)
 
 <template>
   <q-page class="q-pa-md bg-green-1">
-    <q-btn>{{t('app.test')}}</q-btn>
     <q-btn
         @click="$q.notify('My message')"
         color="primary"
@@ -19,7 +18,6 @@ const count = ref(0)
     />
     <q-icon name="done" />
     <q-btn
-        @click="showNotification"
         color="primary"
         label="Show another notification"
     />

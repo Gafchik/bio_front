@@ -9,7 +9,6 @@ const baseRoutes = [
 ];
 
 import MainMenu from "@/routes/main-menu.js"
-
 const routes = [
     ...baseRoutes,
     ...MainMenu,
