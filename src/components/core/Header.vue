@@ -13,7 +13,7 @@ const appStore = useAppStore()
 const {changeLocale} = appStore
 const {drawer} = storeToRefs(appStore)
 const localesModel = ref({
-  value: 'ukr',
+  value: 'uk',
   image: ukr
 })
 function redirectTo(routeName){

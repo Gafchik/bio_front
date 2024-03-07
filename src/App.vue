@@ -8,7 +8,7 @@ import Drawer from "@/components/core/Drawer.vue";
   <q-layout view="hHh lpR fFf">
     <AppHeader></AppHeader>
     <Drawer v-if="$q.platform.is.mobile"/>
-    <q-page-container>
+    <q-page-container >
       <router-view></router-view>
     </q-page-container>
     <AppFooter></AppFooter>
@@ -16,5 +16,4 @@ import Drawer from "@/components/core/Drawer.vue";
 </template>
 
 <style scoped>
-
 </style>

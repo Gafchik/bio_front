@@ -1,19 +1,19 @@
 import {createI18n} from "vue-i18n";
-import ukr from "@/locales/ukr/main_locail.js";
-import rus from "@/locales/rus/main_locail.js";
-import geo from "@/locales/geo/main_locail.js";
-import eng from "@/locales/eng/main_locail.js";
+import uk from "@/locales/uk/main_locail.js";
+import ru from "@/locales/ru/main_locail.js";
+import ge from "@/locales/ge/main_locail.js";
+import en from "@/locales/en/main_locail.js";
 const i18n = createI18n({
     legacy: false,
     globalInjection: true,
     allowComposition: true,
-    locale: 'ukr',
+    locale: 'uk',
     messages: {
-        ukr: ukr,
-        rus: rus,
-        geo: geo,
-        eng: eng,
+        uk: uk,
+        ru: ru,
+        ge: ge,
+        en: en,
     },
-    fallbackLocale: 'ukr'
+    fallbackLocale: 'uk'
 })
 export default i18n

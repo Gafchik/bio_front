@@ -4,19 +4,19 @@ import eng from "@assets/image/header/locales/eng.png"
 import geo from "@assets/image/header/locales/geo.png"
 export default [
     {
-        value: 'ukr',
+        value: 'uk',
         image: ukr
     },
     {
-        value: 'rus',
+        value: 'ru',
         image: rus
     },
     {
-        value: 'eng',
+        value: 'en',
         image: eng
     },
     {
-        value: 'geo',
+        value: 'ge',
         image: geo
     },
 ]

@@ -1,8 +1,8 @@
 export default {
     config: {
-        lang: 'ukr',
-        locale: 'ukr',
-        locales: ['eng', 'geo', 'rus', 'ukr']
+        lang: 'uk',
+        locale: 'uk',
+        locales: ['en', 'ge', 'ru', 'uk']
     },
     modules:{
       axios: {
