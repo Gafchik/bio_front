@@ -5,13 +5,15 @@ import { storeToRefs } from 'pinia'
 
 export const useFaqStore = defineStore('useFaqStore', () => {
     const appStore = useAppStore()
-    const {axios,currentLocale} = storeToRefs(appStore)
+    const {axios,currentLocale, cookies} = storeToRefs(appStore)
 
     const faq = ref([])
     const question = ref([])
     const category = computed(() => faq.value[currentLocale.value]?.category ?? [])
     const selectedCategoryId = ref(category.value?.[0]?.faq_category_id ?? null)
     async function getFaq(){
+        //TODO create cookies
+        console.log(cookies)
         axios.value.post('/api/faq')
             .then(response => {
                 faq.value = response.data.data;

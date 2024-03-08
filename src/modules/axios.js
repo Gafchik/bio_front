@@ -35,7 +35,7 @@ instance.interceptors.response.use(response => {
         // Обработка ошибок
         if (error.response) {
             // Ошибка с ответом от сервера
-            const errorMessage = error.response.data.message || 'Произошла ошибка';
+            const errorMessage = error.response.data.textError || 'Произошла ошибка';
             Notify.create({
                 color: 'negative',
                 message: errorMessage,
