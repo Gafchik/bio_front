@@ -12,8 +12,6 @@ export const useFaqStore = defineStore('useFaqStore', () => {
     const category = computed(() => faq.value[currentLocale.value]?.category ?? [])
     const selectedCategoryId = ref(category.value?.[0]?.faq_category_id ?? null)
     async function getFaq(){
-        //TODO create cookies
-        console.log(cookies)
         axios.value.post('/api/faq')
             .then(response => {
                 faq.value = response.data.data;

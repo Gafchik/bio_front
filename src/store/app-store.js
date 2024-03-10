@@ -17,9 +17,7 @@ export const useAppStore = defineStore('useAppStore', () => {
         })
         return axiosInstance
     });
-    axios.value.get('sanctum/csrf-cookie')
-        .then(response => {})
-        .catch(error => {});
+
     const drawer = ref(false)
     function changeLocale (newLocale) {
         locale.value = newLocale.value
