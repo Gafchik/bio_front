@@ -9,7 +9,10 @@ export const useFaqStore = defineStore('useFaqStore', () => {
 
     const faq = ref([])
     const question = ref([])
-    const category = computed(() => faq.value[currentLocale.value]?.category ?? [])
+    const category = computed(() => {
+        let res = (faq.value[currentLocale.value]?.category ?? [])
+        return res.sort((a,b) => a.position - b.position)
+    })
     const selectedCategoryId = ref(category.value?.[0]?.faq_category_id ?? null)
     async function getFaq(){
         axios.value.post('/api/faq')
@@ -21,6 +24,7 @@ export const useFaqStore = defineStore('useFaqStore', () => {
     function selectCategory(faq_category_id){
         selectedCategoryId.value = faq_category_id
         let allFaq = faq.value[currentLocale.value]?.faq ?? []
+        allFaq = allFaq.sort((a,b) => a.position - b.position)
         question.value = allFaq.filter(q => {
             if(q.faq_category_id === faq_category_id){
                 return q

@@ -40,6 +40,7 @@ function redirectTo(routeName){
           transition-show="flip-up"
           transition-hide="flip-down"
           standout
+          filled
           bottom-slots
           v-model="localesModel"
           :options="locales"
