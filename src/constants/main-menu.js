@@ -39,4 +39,9 @@ export default [
         route_name: 'store',
         icon: 'store'
     },
+    {
+        label: 'contacts',
+        route_name: 'contacts',
+        icon: 'import_contacts'
+    },
 ]

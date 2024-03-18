@@ -6,6 +6,7 @@ import AboutUs from '@/components/pages/main-menu/AboutUs/AboutUs.vue';
 import HowItWorks from '@/components/pages/main-menu/HowItWorks/HowItWorks.vue';
 import FAQ from '@/components/pages/main-menu/FAQ/FAQ.vue';
 import Store from '@/components/pages/main-menu/Store/Store.vue';
+import Contacts from '@/components/pages/main-menu/Contacts/Contacts.vue';
 export default [
     {
         path: '/gallery',
@@ -46,5 +47,10 @@ export default [
         path: '/store',
         component: Store,
         name: 'store',
+    },
+    {
+        path: '/contacts',
+        component: Contacts,
+        name: 'contacts',
     },
 ];
