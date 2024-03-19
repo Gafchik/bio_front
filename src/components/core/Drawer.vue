@@ -23,7 +23,7 @@ function redirectTo(routeName){
       :width="200"
       :breakpoint="500"
       bordered
-      class="bg-green-3"
+      style="background: #e3e1c9"
   >
     <q-scroll-area class="fit">
       <q-list>

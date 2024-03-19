@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-
+import commonGlobalComponents from "@/constants/common-global-components.js"
 import "../src/modules/quasar.js"
 import { Quasar, Notify, Dialog } from 'quasar'
 
@@ -12,6 +12,10 @@ import router from "@/routes/router.js"
 
 import App from './App.vue'
 const myApp = createApp(App)
+Object.keys(commonGlobalComponents).forEach(key => {
+    myApp.component(key, commonGlobalComponents[key]);
+});
+
 
 myApp.use(pinia)
     .use(i18n)
@@ -26,5 +30,4 @@ myApp.use(pinia)
     }
 })
 
-// Assumes you have a <div id="app"></div> in your index.html
 myApp.mount('#app')

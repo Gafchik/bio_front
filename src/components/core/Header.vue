@@ -24,10 +24,10 @@ function redirectTo(routeName){
 </script>
 
 <template>
-  <q-header elevated class="bg-green-3">
+  <q-header reveal elevated style="background-color: rgba(0, 0, 0, 0)">
     <q-toolbar>
 
-      <q-btn @click="drawer = !drawer" flat round dense icon="menu" class="q-mr-sm mobile-only" />
+      <q-btn @click="drawer = !drawer" flat round dense icon="menu" class="q-mr-sm mobile-only text-black" />
       <q-avatar @click="redirectTo('home')">
         <img src="@assets/image/header/logo_image.svg" alt="logo_image">
       </q-avatar>
