@@ -16,7 +16,13 @@ export const useContactsStore = defineStore('useContactsStore', () => {
                     }
                     typeArrays[obj.type].push(obj);
                 });
-               contacts.value = typeArrays;
+
+                // Сортировка контактов внутри каждого типа по позиции
+                for (let type in typeArrays) {
+                    typeArrays[type].sort((a, b) => a.position - b.position);
+                }
+
+                contacts.value = typeArrays;
             })
             .catch(error => {});
     }

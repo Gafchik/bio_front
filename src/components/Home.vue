@@ -10,7 +10,7 @@ const count = ref(0)
 </script>
 
 <template>
-  <q-page class="q-pa-md bg-green-1">
+  <q-page class="q-pa-md">
     <q-btn
         @click="$q.notify('My message')"
         color="primary"

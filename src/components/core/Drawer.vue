@@ -20,7 +20,7 @@ function redirectTo(routeName){
   <q-drawer
       v-model="drawer"
       show-if-above
-      :width="200"
+      :width="250"
       :breakpoint="500"
       bordered
       style="background: #e3e1c9"

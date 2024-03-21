@@ -30,22 +30,22 @@ getContactsAsync()
     </div>
     <div class="row">
       <div class="q-mr-lg"  v-for="contact in contacts['0']">
-        <span v-html="contact.locale[currentLocale].address"/>
+        <span v-html="contact.locale[currentLocale]?.address ?? ''"/>
       </div>
     </div>
 
     <div class="row q-my-md">
       <div class="q-mr-lg q-my-md" v-for="contact in contacts['1']">
         <div>
-          <span class="text-bold">{{contact.locale[currentLocale].title}}</span>
+          <span class="text-bold">{{contact.locale[currentLocale]?.title ?? ''}}</span>
         </div>
         <div class="q-my-sm">
           <q-icon name="call" class="q-mr-xs"/>
-          <a :href="'tel:'+contact.phone">{{contact.phone}}</a>
+          <a :href="'tel:'+contact?.phone ?? ''">{{contact?.phone ?? ''}}</a>
         </div>
         <div>
           <q-icon  name="mail" class="q-mr-xs"/>
-          <a :href="'mailto:'+contact.email">{{contact.email}}</a>
+          <a :href="'mailto:'+contact?.email ?? ''">{{contact?.email ?? ''}}</a>
         </div>
       </div>
     </div>
@@ -55,11 +55,11 @@ getContactsAsync()
     <div class="row q-my-md">
       <div class="q-mr-lg q-my-md" v-for="contact in contacts['2']">
         <div class="q-my-sm">
-          <span class="text-bold">{{contact.locale[currentLocale].title}}</span>
+          <span class="text-bold">{{contact.locale[currentLocale]?.title ?? ''}}</span>
         </div>
         <div class="q-my-sm">
           <q-icon  name="mail" class="q-mr-xs"/>
-          <a :href="'mailto:'+contact.email">{{contact.email}}</a>
+          <a :href="'mailto:'+contact?.email ?? ''">{{contact?.email ?? ''}}</a>
         </div>
       </div>
     </div>

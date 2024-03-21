@@ -24,7 +24,7 @@ function redirectTo(routeName){
 </script>
 
 <template>
-  <q-header reveal elevated style="background-color: rgba(0, 0, 0, 0)">
+  <q-header reveal elevated offset="[1,1]" style="background-color: rgba(0, 0, 0, 0)">
     <q-toolbar>
 
       <q-btn @click="drawer = !drawer" flat round dense icon="menu" class="q-mr-sm mobile-only text-black" />
