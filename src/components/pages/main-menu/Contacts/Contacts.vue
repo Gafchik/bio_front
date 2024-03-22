@@ -22,7 +22,7 @@ getContactsAsync()
 
 <template>
   <div class="q-ml-xl">
-    <div class="q-mb-xl text-bold text-h6 text-green-8">
+    <div class="q-mb-lg text-bold text-h6 text-green-8">
       {{t(`${TRANC_PREFIX}.contacts`)}}
     </div>
     <div class="q-mb-md text-bold text-green-8">
@@ -34,7 +34,7 @@ getContactsAsync()
       </div>
     </div>
 
-    <div class="row q-my-md">
+    <div class="row q-mb-md">
       <div class="q-mr-lg q-my-md" v-for="contact in contacts['1']">
         <div>
           <span class="text-bold">{{contact.locale[currentLocale]?.title ?? ''}}</span>
@@ -52,9 +52,9 @@ getContactsAsync()
     <div class="q-mb-md text-bold text-green-8">
       {{t(`${TRANC_PREFIX}.department_contacts`)}}
     </div>
-    <div class="row q-my-md">
+    <div class="row q-mb-md">
       <div class="q-mr-lg q-my-md" v-for="contact in contacts['2']">
-        <div class="q-my-sm">
+        <div class="q-mb-sm">
           <span class="text-bold">{{contact.locale[currentLocale]?.title ?? ''}}</span>
         </div>
         <div class="q-my-sm">

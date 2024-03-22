@@ -1,9 +1,10 @@
 <script setup>
-
+import BaseOnlyTextPages from "@/components/common/BaseOnlyTextPages.vue";
+const ID = 5
 </script>
 
 <template>
-  <div>PrivacyPolicy</div>
+  <BaseOnlyTextPages :id="ID"/>
 </template>
 
 <style scoped>
