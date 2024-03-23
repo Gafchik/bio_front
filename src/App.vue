@@ -27,3 +27,14 @@ import Drawer from "@/components/core/Drawer.vue";
 }
 
 </style>
+<style lang="scss">
+.ql-align-right {
+  text-align: right;
+}
+.ql-align-center {
+  text-align: center;
+}
+.ql-align-left {
+  text-align: left;
+}
+</style>

@@ -17,12 +17,18 @@ const props = defineProps({
     required: true,
   }
 })
+item.value = {
+  ru: '',
+  uk: '',
+  en: '',
+  ge: '',
+}
 getItemInfoAsync(props.id)
 const tab = ref(ARRAY_FULL_LOCALE[0].value)
 </script>
 
 <template>
-  <div v-html="item[currentLocale]" class="q-my-lg q-mx-lg"/>
+  <div v-html="item[currentLocale]"/>
 </template>
 
 <style scoped>
