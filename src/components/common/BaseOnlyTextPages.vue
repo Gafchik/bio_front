@@ -28,7 +28,7 @@ const tab = ref(ARRAY_FULL_LOCALE[0].value)
 </script>
 
 <template>
-  <div v-html="item[currentLocale]"/>
+  <div v-html="item[currentLocale]" class="q-my-lg q-mx-lg"/>
 </template>
 
 <style scoped>
