@@ -27,44 +27,7 @@ instance.interceptors.request.use(config => {
 
 
 // Перехватчик для обработки успешных ответов
-instance.interceptors.response.use(response => {
-        // Вернуть ответ, как есть
-        return response;
-    },
-    error => {
-        // Обработка ошибок
-        if (error.response) {
-            // Ошибка с ответом от сервера
-            const errorMessage = error.response.data.textError || 'Произошла ошибка';
-            Notify.create({
-                color: 'negative',
-                message: errorMessage,
-                progress: true,
-                position: 'top',
-                html: true,
-            });
-        } else if (error.request) {
-            // Запрос был сделан, но нет ответа
-            Notify.create({
-                color: 'negative',
-                message: 'Нет ответа от сервера',
-                progress: true,
-                position: 'top',
-                html: true,
-            });
-        } else {
-            // Произошла ошибка настройки запроса
-            Notify.create({
-                color: 'negative',
-                message: 'Ошибка настройки запроса',
-                progress: true,
-                position: 'top',
-                html: true,
-            });
-        }
-        return Promise.reject(error);
-    }
-);
+
 
 // Экспортируем созданный экземпляр Axios
 export default instance;

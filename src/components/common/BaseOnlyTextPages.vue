@@ -15,6 +15,11 @@ const props = defineProps({
   id: {
     type: Number,
     required: true,
+  },
+  title: {
+    type: String,
+    required: true,
+    default: ''
   }
 })
 item.value = {
@@ -28,9 +33,12 @@ const tab = ref(ARRAY_FULL_LOCALE[0].value)
 </script>
 
 <template>
-  <div v-html="item[currentLocale]" class="q-my-lg q-mx-lg"/>
+  <div class="q-my-lg q-mx-lg">
+    <div class="text-left text-bold text-h6 text-green-8 q-mt-lg">{{t(title)}}</div>
+    <span class="inner-image" v-html="item[currentLocale]"/>
+  </div>
 </template>
 
 <style scoped>
-
+@import "@sass/common-style.css";
 </style>

@@ -7,6 +7,7 @@ import HowItWorks from '@/components/pages/main-menu/HowItWorks/HowItWorks.vue';
 import FAQ from '@/components/pages/main-menu/FAQ/FAQ.vue';
 import Store from '@/components/pages/main-menu/Store/Store.vue';
 import Contacts from '@/components/pages/main-menu/Contacts/Contacts.vue';
+import NewsDetails from "@/components/pages/main-menu/News/NewsDetails.vue";
 export default [
     {
         path: '/gallery',
@@ -27,6 +28,11 @@ export default [
         path: '/news',
         component: News,
         name: 'news',
+    },
+    {
+        path: '/news-detail/:id',
+        component: NewsDetails,
+        name: 'news_detail',
     },
     {
         path: '/about-us',

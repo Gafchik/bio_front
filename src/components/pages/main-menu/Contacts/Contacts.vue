@@ -30,7 +30,7 @@ getContactsAsync()
     </div>
     <div class="row">
       <div class="q-mr-lg"  v-for="contact in contacts['0']">
-        <span v-html="contact.locale[currentLocale]?.address ?? ''"/>
+        <span class="inner-image" v-html="contact.locale[currentLocale]?.address ?? ''"/>
       </div>
     </div>
 
@@ -80,6 +80,7 @@ getContactsAsync()
 </template>
 
 <style scoped>
+@import "@sass/common-style.css";
 a{
   color: black;
   text-decoration: none;

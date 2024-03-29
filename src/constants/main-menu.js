@@ -5,6 +5,11 @@ export default [
         icon: 'photo_library'
     },
     {
+        label: 'store',
+        route_name: 'store',
+        icon: 'store'
+    },
+    {
         label: 'privacy_policy',
         route_name: 'privacy_policy',
         icon: 'policy'
@@ -33,11 +38,6 @@ export default [
         label: 'faq',
         route_name: 'faq',
         icon: 'question_mark'
-    },
-    {
-        label: 'store',
-        route_name: 'store',
-        icon: 'store'
     },
     {
         label: 'contacts',

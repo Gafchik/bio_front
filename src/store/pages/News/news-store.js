@@ -6,6 +6,7 @@ export const useNewsStore = defineStore('useNewsStore', () => {
     const appStore = useAppStore()
     const {axios,currentLocale} = storeToRefs(appStore)
     const newsCards = ref([])
+    const newsDetail = ref({})
     const cardPage = ref(1)
     const getCardRequest = ref(false)
 
@@ -15,19 +16,35 @@ export const useNewsStore = defineStore('useNewsStore', () => {
             axios.value.post('/api/news/get-cards',{page: cardPage.value})
                 .then(response => {
                     cardPage.value++
-                    let data = []
+
                     response.data.data.forEach(obj => {
-                        obj.image =  import.meta.env.VITE_BASE_FILE_URL+obj.image
+                        obj.image = import.meta.env.VITE_BASE_FILE_URL+obj.image
                     });
                     newsCards.value.push(...response.data.data)
                     getCardRequest.value = false
-                    console.log(newsCards.value.length)
                 })
                 .catch(error => {});
         }
     }
-
+    async function getNewsDetails(id){
+        if (!isNaN(id)) {
+            return axios.value.post('/api/news/get-cards-details',{id: id})
+                .then(response => {
+                    newsDetail.value = response.data.data
+                    newsDetail.value.image = import.meta.env.VITE_BASE_FILE_URL+newsDetail.value.image
+                    return true
+                })
+                .catch(error => {
+                    return false
+                });
+        }
+    }
+    async function addView(id){
+        axios.value.post('/api/news/add-view',{id: id})
+            .then(response => {})
+            .catch(error => {});
+    }
     return {
-        getNewsInfoAsync,newsCards,cardPage
+        getNewsInfoAsync,newsCards,cardPage,getNewsDetails,newsDetail,addView
     }
 })
