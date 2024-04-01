@@ -18,7 +18,12 @@ export const useNewsStore = defineStore('useNewsStore', () => {
                     cardPage.value++
 
                     response.data.data.forEach(obj => {
-                        obj.image = import.meta.env.VITE_BASE_FILE_URL+obj.image
+                        if(obj.image[0] === '/'){
+                            obj.image = import.meta.env.VITE_BASE_FILE_URL+obj.image
+                        }else{
+                            obj.image = import.meta.env.VITE_BASE_FILE_URL+'/'+obj.image
+                        }
+
                     });
                     newsCards.value.push(...response.data.data)
                     getCardRequest.value = false
@@ -31,7 +36,11 @@ export const useNewsStore = defineStore('useNewsStore', () => {
             return axios.value.post('/api/news/get-cards-details',{id: id})
                 .then(response => {
                     newsDetail.value = response.data.data
-                    newsDetail.value.image = import.meta.env.VITE_BASE_FILE_URL+newsDetail.value.image
+                    if(newsDetail.value.image[0] === '/'){
+                        newsDetail.value.image = import.meta.env.VITE_BASE_FILE_URL+newsDetail.value.image
+                    }else{
+                        newsDetail.value.image = import.meta.env.VITE_BASE_FILE_URL+'/'+newsDetail.value.image
+                    }
                     return true
                 })
                 .catch(error => {
