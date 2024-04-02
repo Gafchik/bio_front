@@ -7,7 +7,6 @@ import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import '@vueup/vue-quill/dist/vue-quill.bubble.css';
 import { createPinia } from 'pinia'
 const pinia = createPinia()
-
 import i18n from "../src/modules/i18n.js"
 
 import router from "@/routes/router.js"

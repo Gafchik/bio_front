@@ -1,12 +1,10 @@
 <script setup>
-import router from "@/routes/router.js"
 import {useNewsStore} from "@/store/pages/News/news-store.js";
 import {storeToRefs} from "pinia";
 import {onMounted, onUnmounted, ref} from "vue";
 import {onScrollToLastItem} from "@/event-listener/event-listener.js";
 import {useAppStore} from "@/store/app-store.js";
 const appStore = useAppStore()
-const {redirectTo} = appStore
 const {currentLocale} = storeToRefs(appStore)
 const newsStore = useNewsStore()
 const {getNewsInfoAsync} = newsStore
@@ -65,7 +63,4 @@ onUnmounted(() => {
 
 <style scoped>
 @import "@sass/common-style.css";
-.link-no-underline {
-  text-decoration: none;
-}
 </style>

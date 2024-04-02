@@ -8,11 +8,17 @@ import FAQ from '@/components/pages/main-menu/FAQ/FAQ.vue';
 import Store from '@/components/pages/main-menu/Store/Store.vue';
 import Contacts from '@/components/pages/main-menu/Contacts/Contacts.vue';
 import NewsDetails from "@/components/pages/main-menu/News/NewsDetails.vue";
+import GalleryAlbumDetails from "@/components/pages/main-menu/Gallery/GalleryAlbumDetails.vue";
 export default [
     {
         path: '/gallery',
         component: Gallery,
         name: 'gallery',
+    },
+    {
+        path: '/gallery-album-detail/:id',
+        component: GalleryAlbumDetails,
+        name: 'album_detail',
     },
     {
         path: '/privacy-policy',

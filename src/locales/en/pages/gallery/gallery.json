@@ -1,0 +1,10 @@
+{
+  "photo": {
+    "title": "Photos",
+    "count": "Number of photos: {count}"
+  },
+  "video": {
+    "title": "Video",
+    "count": "Number of videos: {count}"
+  }
+}

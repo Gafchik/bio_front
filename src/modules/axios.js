@@ -13,21 +13,9 @@ const instance = axios.create({
 instance.interceptors.request.use(config => {
     config.headers['Content-Type'] = 'application/json;charset=utf-8'
     config.headers['Access-Control-Allow-Origin'] = '*';
-    // Notify.create({
-    //     spinner: true,
-    //     color: 'positive',
-    //     position: 'center',
-    //     message: '',
-    //     timeout: 2000
-    // });
     return config;
 }, error => {
     return Promise.reject(error);
 });
 
-
-// Перехватчик для обработки успешных ответов
-
-
-// Экспортируем созданный экземпляр Axios
 export default instance;

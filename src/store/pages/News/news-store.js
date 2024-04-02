@@ -10,7 +10,7 @@ export const useNewsStore = defineStore('useNewsStore', () => {
     const cardPage = ref(1)
     const getCardRequest = ref(false)
 
-    async function getNewsInfoAsync(id){
+    async function getNewsInfoAsync(){
         if(!getCardRequest.value){
             getCardRequest.value = true
             axios.value.post('/api/news/get-cards',{page: cardPage.value})
