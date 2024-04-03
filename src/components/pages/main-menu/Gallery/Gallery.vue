@@ -44,7 +44,7 @@ const TRANC_PREFIX = 'pages.gallery'
         :to="{ name: 'album_detail', params: { id: videoAlbum.id }}"
         class="link-no-underline">
       <q-card  class="q-my-lg">
-        <q-img :src="videoAlbum.album_label" style="height: 303px">
+        <q-img :src="videoAlbum.album_label" style="height: 303px" loading="lazy">
           <div class="absolute-bottom">
             <div class="text-h6"> {{videoAlbum['name_'+currentLocale]}}</div>
             <div class="text-subtitle2">
