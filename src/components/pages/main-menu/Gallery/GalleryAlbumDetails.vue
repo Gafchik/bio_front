@@ -6,6 +6,10 @@ import {useGalleryStore} from "@/store/pages/Gallery/gallery-store.js";
 import {storeToRefs} from "pinia";
 import {computed, ref} from "vue";
 import {useAppStore} from "@/store/app-store.js";
+import ImageCarouselDialog from "@/components/common/ImageCarouselDialog.vue";
+import {useImageCarouselDialogStore} from "@/store/common/image-carousel-dialog.js";
+const imageCarouselDialogStore = useImageCarouselDialogStore()
+const {openImageCarouselDialog} = imageCarouselDialogStore
 const galleryStore = useGalleryStore()
 const {getAlbumDetails,getAlbumsAsync} = galleryStore
 const {selectedAlbumInfo,selectedAlbumItems} = storeToRefs(galleryStore)
@@ -52,8 +56,8 @@ const videos = computed(() => {
           {{t(`${TRANC_PREFIX}.photo.title`)}}
         </div>
         <div class="row wrap justify-center items-start content-start">
-          <div v-for="item in selectedAlbumItems"  class="q-mx-lg q-my-lg">
-            <q-img :src="item.link" fit="fill"
+          <div v-for="item in selectedAlbumItems"  class="q-mx-lg q-my-lg" @click="openImageCarouselDialog(selectedAlbumItems,item)">
+            <q-img :src="item.link" fit="fill" loading="lazy"
                    :class="$q.platform.is.desktop ? 'linc_desktop' : 'linc_mobile'"
             />
           </div>
@@ -69,12 +73,13 @@ const videos = computed(() => {
     <div class="row wrap justify-center items-start content-start">
       <div v-for="video in videos"  class="q-mx-lg q-my-lg">
         <q-video
+            loading="lazy"
             :src="video.link"
             :class="$q.platform.is.desktop ? 'linc_desktop' : 'linc_mobile' "
         />
       </div>
     </div>
-
+    <ImageCarouselDialog/>
   </div>
 </template>
 
