@@ -1,11 +1,43 @@
 <script setup>
+import {useContactsStore} from "@/store/pages/Contacts/contacts-store.js";
+import {storeToRefs} from "pinia";
 
+const contactsStore = useContactsStore()
+const {getContactsAsync} = contactsStore
+const {contacts} = storeToRefs(contactsStore)
+getContactsAsync()
 </script>
 
 <template>
-  <q-footer elevated style="background: #e3e1c9">
-    <q-toolbar>
-      <q-toolbar-title>Footer</q-toolbar-title>
+  <q-footer reveal elevated style="background: #e3e1c9">
+    <q-toolbar v-if="$q.platform.is.desktop" class="text-black row justify-between">
+      <div></div>
+      <div>
+        <span class="q-mt-lg text-bold" style="font-size: 10px;">
+          2018 Olive project. All rights reserved
+        </span>
+      </div>
+      <div>
+        <component class="q-mx-sm" v-for="contact in contacts['3']"
+                   v-bind:is="contact.social_type"
+                   :url="contact.url"
+                   width="2em"
+                   height="2em"/>
+      </div>
     </q-toolbar>
+    <div v-else class="text-black fit column items-center">
+      <div>
+        <component class="q-mx-sm" v-for="contact in contacts['3']"
+                   v-bind:is="contact.social_type"
+                   :url="contact.url"
+                   width="2em"
+                   height="2em"/>
+      </div>
+      <div>
+        <span class="q-mt-lg text-bold" style="font-size: 10px;">
+          2018 Olive project. All rights reserved
+        </span>
+      </div>
+    </div>
   </q-footer>
 </template>
