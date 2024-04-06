@@ -34,7 +34,9 @@ export const useGalleryStore = defineStore('useGalleryStore', () => {
         if (isNaN(id)) {
             return false
         }
-        selectedAlbumInfo.value = allAlbums.value.find((i) =>{return i.id === parseInt(id)})
+        selectedAlbumInfo.value = allAlbums.value.find((i) =>{
+            return i.id === parseInt(id)
+        })
         if(!selectedAlbumInfo.value){
             return false
         }

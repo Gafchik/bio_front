@@ -14,13 +14,15 @@ const galleryStore = useGalleryStore()
 const {getAlbumDetails,getAlbumsAsync} = galleryStore
 const {selectedAlbumInfo,selectedAlbumItems} = storeToRefs(galleryStore)
 const TRANC_PREFIX = 'pages.gallery'
-const router = useRoute();
+const route = useRoute();
+import router from "@/routes/router.js";
 const appStore = useAppStore()
 const {currentLocale} = storeToRefs(appStore)
 getAlbumsAsync().then(() => {
-  if(!!router.params.id){
-    getAlbumDetails(router.params.id).then((res) => {
+  if(!!route.params.id){
+    getAlbumDetails(route.params.id).then((res) => {
       if(!res){
+        console.log('!res')
         router.push({ name: 'not_found' });
       }
     })
@@ -86,5 +88,12 @@ const videos = computed(() => {
 </template>
 
 <style scoped>
-
+.linc_mobile {
+  width: 345px;
+  height: 275px;
+}
+.linc_desktop {
+  width: 470px;
+  height: 275px;
+}
 </style>

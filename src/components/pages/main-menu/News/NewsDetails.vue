@@ -1,7 +1,7 @@
 <script setup>
 import {useI18n} from "vue-i18n";
 const {t} = useI18n()
-import { useRoute } from 'vue-router';
+import {useRoute} from "vue-router";
 import {useNewsStore} from "@/store/pages/News/news-store.js";
 import {storeToRefs} from "pinia";
 import {useAppStore} from "@/store/app-store.js";
@@ -11,11 +11,13 @@ const newsStore = useNewsStore()
 const {getNewsDetails,addView} = newsStore
 const {newsDetail} = storeToRefs(newsStore)
 const TRANC_PREFIX = 'pages.news'
-const router = useRoute();
-if(!!router.params.id){
-  getNewsDetails(router.params.id).then((res) => {
+const route = useRoute();
+import router from "@/routes/router.js";
+
+if(!!route.params.id){
+  getNewsDetails(route.params.id).then((res) => {
     if(!!res){
-      addView(router.params.id)
+      addView(route.params.id)
     }
   })
 }else{
