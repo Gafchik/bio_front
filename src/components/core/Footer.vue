@@ -13,7 +13,7 @@ getContactsAsync()
     <q-toolbar v-if="$q.platform.is.desktop" class="text-black row justify-between">
       <div></div>
       <div>
-        <span class="q-mt-lg text-bold" style="font-size: 10px;">
+        <span id="rights-reserved" class="q-mt-lg text-bold" style="font-size: 12px;">
           2018 Olive project. All rights reserved
         </span>
       </div>
@@ -25,7 +25,7 @@ getContactsAsync()
                    height="2em"/>
       </div>
     </q-toolbar>
-    <div v-else class="text-black fit column items-center">
+    <div v-else class="text-black fit column items-center q-pt-sm">
       <div>
         <component class="q-mx-sm" v-for="contact in contacts['3']"
                    v-bind:is="contact.social_type"
@@ -33,11 +33,17 @@ getContactsAsync()
                    width="2em"
                    height="2em"/>
       </div>
-      <div>
-        <span class="q-mt-lg text-bold" style="font-size: 10px;">
+      <div class="q-pt-sm">
+        <span class="text-center text-bold" style="font-size: 12px;">
           2018 Olive project. All rights reserved
         </span>
       </div>
     </div>
   </q-footer>
 </template>
+<style>
+#rights-reserved {
+  position: absolute;
+  bottom: 0;
+}
+</style>
