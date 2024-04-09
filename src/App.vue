@@ -2,6 +2,8 @@
 import AppHeader from '@/components/core/Header.vue'
 import AppFooter from '@/components/core/Footer.vue'
 import Drawer from "@/components/core/Drawer.vue";
+import RegDialog from "@/components/core/Auth/Dialogs/RegDialog.vue";
+import LoginDialog from "@/components/core/Auth/Dialogs/LoginDialog.vue";
 </script>
 
 <template>
@@ -12,6 +14,8 @@ import Drawer from "@/components/core/Drawer.vue";
       <router-view></router-view>
     </q-page-container>
     <AppFooter></AppFooter>
+    <RegDialog/>
+    <LoginDialog/>
   </q-layout>
 </template>
 

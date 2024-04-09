@@ -1,3 +1,4 @@
+import auth from "@/locales/uk/common/auth/auth.json"
 export default {
-    //import common locale
+    auth: auth
 }

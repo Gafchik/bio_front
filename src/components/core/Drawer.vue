@@ -5,6 +5,7 @@ import router from "@/routes/router.js";
 const {t} = useI18n()
 import { useAppStore } from '@/store/app-store.js'
 import { storeToRefs } from 'pinia'
+import AuthView from "@/components/core/Auth/AuthView.vue";
 const appStore = useAppStore()
 const {} = appStore
 const {drawer} = storeToRefs(appStore)
@@ -26,6 +27,10 @@ function redirectTo(routeName){
       style="background: #e3e1c9"
   >
     <q-scroll-area class="fit">
+      <q-list>
+        <AuthView class="q-pa-xs"/>
+      </q-list>
+      <q-separator />
       <q-list>
         <template v-for="item in menu">
           <q-item clickable @click="redirectTo(item.route_name)" v-ripple>

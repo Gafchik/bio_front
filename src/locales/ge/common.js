@@ -1,3 +1,4 @@
+import auth from "@/locales/ge/common/auth/auth.json"
 export default {
-    //import common locale
+    auth: auth
 }

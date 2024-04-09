@@ -9,6 +9,9 @@ export const useAppStore = defineStore('useAppStore', () => {
     const cookies = computed(() => router.app.config.globalProperties)
     const { locale } = useI18n();
     const currentLocale = computed(() => locale.value);
+    const drawer = ref(false)
+    const regDialog = ref(false)
+    const loginDialog = ref(false)
     const axios = computed(() =>{
         axiosInstance.interceptors.request.use(config => {
             config.headers['X-Lang-Header'] = currentLocale.value
@@ -59,11 +62,17 @@ export const useAppStore = defineStore('useAppStore', () => {
         );
         return axiosInstance
     });
-
-    const drawer = ref(false)
     function changeLocale (newLocale) {
         locale.value = newLocale.value
     }
-
-    return { currentLocale,changeLocale,drawer,axios }
+    function openReginDialog(){
+        regDialog.value = true
+    }
+    function openLoginDialog(){
+        loginDialog.value = true
+    }
+    return {
+        currentLocale,changeLocale,drawer,axios,regDialog,loginDialog,openReginDialog,
+        openLoginDialog
+    }
 })

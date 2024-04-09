@@ -8,6 +8,7 @@ import { storeToRefs } from 'pinia'
 import locales from "@/constants/locales.js"
 import ukr from "@assets/image/header/locales/ukr.png"
 import {ref} from "vue";
+import AuthView from "@/components/core/Auth/AuthView.vue";
 
 const appStore = useAppStore()
 const {changeLocale} = appStore
@@ -26,7 +27,6 @@ function redirectTo(routeName){
 <template>
   <q-header reveal elevated offset="[1,1]" style="background: #e3e1c9">
     <q-toolbar>
-
       <q-btn @click="drawer = !drawer" flat round dense icon="menu" class="q-mr-sm mobile-only text-black" />
       <q-avatar @click="redirectTo('home')">
         <img src="@assets/image/header/logo_image.svg" alt="logo_image">
@@ -35,8 +35,9 @@ function redirectTo(routeName){
       <q-toolbar-title class="q-mt-sm" @click="redirectTo('home')">
         <img src="@assets/image/header/logo_text.svg" alt="logo_text">
       </q-toolbar-title>
-
+      <AuthView class="q-mr-xl q-pb-sm" v-if="$q.platform.is.desktop"/>
       <q-select
+          class="q-pt-sm"
           transition-show="flip-up"
           transition-hide="flip-down"
           standout
