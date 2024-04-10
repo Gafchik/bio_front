@@ -4,5 +4,23 @@
   "ru":"Русский",
   "en": "Английский",
   "ge":"Грузинский"
+ },
+ "rules": {
+  "email_exist": "Такой Email уже используется",
+  "email": "Введите Email, пример: example@example.com",
+  "confirm_field": "Должно соответствовать полю '{field_name}'",
+  "require": "Поле '{field_name}' обязательное для заполнения",
+  "ldap": {
+   "validate": "Поле ldap не корректно"
+  },
+  "length": {
+   "equal": "Должно равняться {len}",
+   "less": "Должно быть меньше {len}",
+   "lessOrEqual": "Должно быть меньше или равно {len}",
+   "more": "Должно быть больше {len}",
+   "moreOrEqual": "Должно быть больше или равно {len}"
+  },
+  "numeric_value": "Только число",
+  "coordinates_value": "Не верный формат координат (99.9999999)"
  }
 }

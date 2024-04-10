@@ -12,18 +12,21 @@ export const useAppStore = defineStore('useAppStore', () => {
     const drawer = ref(false)
     const regDialog = ref(false)
     const loginDialog = ref(false)
+    const isLoading = ref(false)
     const axios = computed(() =>{
         axiosInstance.interceptors.request.use(config => {
             config.headers['X-Lang-Header'] = currentLocale.value
+            isLoading.value = true;
             return config;
         }, error => {
             return Promise.reject(error);
         })
         axiosInstance.interceptors.response.use(response => {
-                // Вернуть ответ, как есть
+                isLoading.value = false;
                 return response;
             },
             error => {
+                isLoading.value = false;
                 if(error.response.status === 404){
                     router.push({ name: 'not_found'});
                 }
@@ -71,8 +74,17 @@ export const useAppStore = defineStore('useAppStore', () => {
     function openLoginDialog(){
         loginDialog.value = true
     }
+    function showInfoMassage(message){
+        Notify.create({
+            color: 'green',
+            message: message,
+            progress: true,
+            position: 'top',
+            html: true,
+        });
+    }
     return {
         currentLocale,changeLocale,drawer,axios,regDialog,loginDialog,openReginDialog,
-        openLoginDialog
+        openLoginDialog,isLoading,showInfoMassage
     }
 })

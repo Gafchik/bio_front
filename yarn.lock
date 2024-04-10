@@ -662,6 +662,11 @@ is-regex@^1.1.4:
     call-bind "^1.0.2"
     has-tostringtag "^1.0.0"
 
+libphonenumber-js@^1.10.20:
+  version "1.10.60"
+  resolved "https://registry.yarnpkg.com/libphonenumber-js/-/libphonenumber-js-1.10.60.tgz#1160ec5b390d46345032aa52be7ffa7a1950214b"
+  integrity sha512-Ctgq2lXUpEJo5j1762NOzl2xo7z7pqmVWYai0p07LvAkQ32tbPv3wb+tcUeHEiXhKU5buM4H9MXsXo6OlM6C2g==
+
 lodash-es@^4.17.21:
   version "4.17.21"
   resolved "https://registry.npmjs.org/lodash-es/-/lodash-es-4.17.21.tgz"
@@ -928,6 +933,13 @@ vue-router@^4.3.0:
   integrity sha512-dqUcs8tUeG+ssgWhcPbjHvazML16Oga5w34uCUmsk7i0BcnskoLGwjpa15fqMr2Fa5JgVBrdL2MEgqz6XZ/6IQ==
   dependencies:
     "@vue/devtools-api" "^6.5.1"
+
+vue3-q-tel-input@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.yarnpkg.com/vue3-q-tel-input/-/vue3-q-tel-input-1.1.7.tgz#f098b408c30a4ee73f8be6614fbfa512e4ab3666"
+  integrity sha512-gotNGCaXb8UYP9Vm4/wetlCcuBB1hhYRSulS1gUR90oZsEkplEDVoHlX7Mc7b7L0qHr+vdV35T7hb6MPw5HZAg==
+  dependencies:
+    libphonenumber-js "^1.10.20"
 
 vue@^3.4.19:
   version "3.4.21"
