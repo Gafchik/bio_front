@@ -20,13 +20,11 @@ const DEF_MODEL = {
   password_confirmation: '',
 }
 const model = ref({...DEF_MODEL})
-const errorEmailExist = ref({
-  error: false,
-  errorText: t('app.rules.email_exist')
-})
+const inputEmail = ref(null)
+const errorEmailExist = ref(true)
 function closeDialog(){
-  regDialog.value = false
-  errorEmailExist.value.error = false
+  regDialog.value = true
+  errorEmailExist.value = true
   model.value = {...DEF_MODEL}
 }
 const regDialogForm = ref(null)
@@ -44,19 +42,22 @@ function onSubmit() {
 
 function onReset() {
   model.value = {...DEF_MODEL}
-  errorEmailExist.value.error = false
+  errorEmailExist.value = true
   regDialogForm.value.resetValidation()
 }
-function onInputEmail(){typeof myVariable === 'boolean'
-  let validEmail = rules.email()(model.value.email)
-  if(typeof validEmail === 'boolean' && !!validEmail){
+function onInputEmail(){
+  errorEmailExist.value = true
+  let validRes = inputEmail.value.validate()
+  if(typeof validRes === 'boolean' && !!validRes){
     axios.value.post('/api/auth/check-email',{email: model.value.email})
         .then(response => {
-          errorEmailExist.value.error = !!response.data.data.email_use
+          errorEmailExist.value = !response.data.data.email_use
+          inputEmail.value.validate()
         })
         .catch(error => {});
   }
 }
+const emailExistRule = () => v => errorEmailExist.value || t('app.rules.email_exist')
 </script>
 
 <template>
@@ -115,11 +116,10 @@ function onInputEmail(){typeof myVariable === 'boolean'
               ]"
           />
           <q-input
+              ref="inputEmail"
               class="q-my-xs"
               color="light-green-8"
               name="email"
-              :error="errorEmailExist.error"
-              :error-message="errorEmailExist.errorText"
               @blur="onInputEmail"
               v-model="model.email"
               :label="t(`${TRANC_PREFIX}.email`)"
@@ -127,6 +127,7 @@ function onInputEmail(){typeof myVariable === 'boolean'
               :rules="[
                   rules.required(t(`${TRANC_PREFIX}.email`)),
                   rules.email(),
+                  emailExistRule(),
               ]"
           />
           <q-input
