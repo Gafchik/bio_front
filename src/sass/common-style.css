@@ -5,3 +5,7 @@
 .link-no-underline {
   text-decoration: none;
 }
+.input-field :deep(input){
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+}

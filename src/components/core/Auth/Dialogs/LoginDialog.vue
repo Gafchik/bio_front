@@ -57,7 +57,7 @@ function forgotPassword(){
       >
         <q-card-section :class="$q.platform.is.desktop ? 'q-px-xl': ''">
           <q-input
-              class="q-my-xs"
+              class="q-my-xs input-field"
               color="light-green-8"
               name="email"
               v-model="model.email"
@@ -69,7 +69,7 @@ function forgotPassword(){
               ]"
           />
           <q-input
-              class="q-my-xs"
+              class="q-my-xs input-field"
               color="light-green-8"
               type="password"
               name="password"
@@ -109,5 +109,5 @@ function forgotPassword(){
 </template>
 
 <style scoped>
-
+@import "@sass/common-style.css";
 </style>

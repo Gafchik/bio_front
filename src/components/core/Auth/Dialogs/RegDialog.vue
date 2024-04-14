@@ -81,7 +81,7 @@ const emailExistRule = () => v => errorEmailExist.value || t('app.rules.email_ex
       >
         <q-card-section :class="$q.platform.is.desktop ? 'q-px-xl': ''">
           <q-input
-              class="q-my-xs"
+              class="q-my-xs input-field"
               color="light-green-8"
               type="text"
               name="first_name"
@@ -92,7 +92,7 @@ const emailExistRule = () => v => errorEmailExist.value || t('app.rules.email_ex
               ]"
           />
           <q-input
-              class="q-my-xs"
+              class="q-my-xs input-field"
               color="light-green-8"
               type="text"
               name="last_name"
@@ -103,7 +103,7 @@ const emailExistRule = () => v => errorEmailExist.value || t('app.rules.email_ex
               ]"
           />
           <vue3-q-tel-input
-              class="q-my-xs"
+              class="q-my-xs input-field"
               color="light-green-8"
               name="phone"
               default-country="ua"
@@ -115,7 +115,7 @@ const emailExistRule = () => v => errorEmailExist.value || t('app.rules.email_ex
           />
           <q-input
               ref="inputEmail"
-              class="q-my-xs"
+              class="q-my-xs input-field"
               color="light-green-8"
               name="email"
               @blur="onInputEmail"
@@ -128,7 +128,7 @@ const emailExistRule = () => v => errorEmailExist.value || t('app.rules.email_ex
               ]"
           />
           <q-input
-              class="q-my-xs"
+              class="q-my-xs input-field"
               counter
               maxlength="8"
               color="light-green-8"
@@ -142,7 +142,7 @@ const emailExistRule = () => v => errorEmailExist.value || t('app.rules.email_ex
               ]"
           />
           <q-input
-              class="q-my-xs"
+              class="q-my-xs input-field"
               counter
               maxlength="8"
               color="light-green-8"
@@ -167,5 +167,5 @@ const emailExistRule = () => v => errorEmailExist.value || t('app.rules.email_ex
 </template>
 
 <style scoped>
-
+@import "@sass/common-style.css";
 </style>

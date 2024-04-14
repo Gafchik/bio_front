@@ -92,7 +92,7 @@ async function changePassword(){
               v-if="!isCorrectCode"
               ref="emailInput"
               class="q-my-xs"
-              color="light-green-8"
+              color="light-green-8 input-field"
               name="email"
               v-model="model.email"
               :label="t(`${TRANC_PREFIX}.email`)"
@@ -104,7 +104,7 @@ async function changePassword(){
           />
           <q-input
               v-if="!isCorrectCode"
-              class="q-my-xs input-number"
+              class="q-my-xs input-field"
               color="light-green-8"
               name="code"
               type="text"
@@ -119,7 +119,7 @@ async function changePassword(){
           />
           <q-input
               v-if="isCorrectCode"
-              class="q-my-xs"
+              class="q-my-xs input-field"
               counter
               maxlength="8"
               color="light-green-8"
@@ -134,7 +134,7 @@ async function changePassword(){
           />
           <q-input
               v-if="isCorrectCode"
-              class="q-my-xs"
+              class="q-my-xs input-field"
               counter
               maxlength="8"
               color="light-green-8"
@@ -168,5 +168,5 @@ async function changePassword(){
 </template>
 
 <style scoped>
-
+@import "@sass/common-style.css";
 </style>
