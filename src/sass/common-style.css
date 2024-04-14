@@ -2,9 +2,11 @@
   max-width: 100% !important;
   height: auto !important;
 }
+/*убирает подчеркиваение в ссылке*/
 .link-no-underline {
   text-decoration: none;
 }
+/*убирает при вставке браузером смену БГ*/
 .input-field :deep(input){
   background-clip: text !important;
   -webkit-background-clip: text !important;
