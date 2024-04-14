@@ -73,6 +73,8 @@ function forgotPassword(){
               color="light-green-8"
               type="password"
               name="password"
+              counter
+              maxlength="8"
               v-model="model.password"
               :label="t(`${TRANC_PREFIX}.password`)"
               lazy-rules
