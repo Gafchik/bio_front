@@ -9,23 +9,27 @@ export const useNewsStore = defineStore('useNewsStore', () => {
     const newsDetail = ref({})
     const cardPage = ref(1)
     const getCardRequest = ref(false)
+    const isAllNews = ref(false)
 
     async function getNewsInfoAsync(){
         if(!getCardRequest.value){
             getCardRequest.value = true
             axios.value.post('/api/news/get-cards',{page: cardPage.value})
                 .then(response => {
-                    cardPage.value++
+                    if(!!response.data.data.length){
+                        cardPage.value++
+                        response.data.data.forEach(obj => {
+                            if(obj.image[0] === '/'){
+                                obj.image = import.meta.env.VITE_BASE_FILE_URL+obj.image
+                            }else{
+                                obj.image = import.meta.env.VITE_BASE_FILE_URL+'/'+obj.image
+                            }
 
-                    response.data.data.forEach(obj => {
-                        if(obj.image[0] === '/'){
-                            obj.image = import.meta.env.VITE_BASE_FILE_URL+obj.image
-                        }else{
-                            obj.image = import.meta.env.VITE_BASE_FILE_URL+'/'+obj.image
-                        }
-
-                    });
-                    newsCards.value.push(...response.data.data)
+                        });
+                        newsCards.value.push(...response.data.data)
+                    }else{
+                        isAllNews.value = true
+                    }
                     getCardRequest.value = false
                 })
                 .catch(error => {});
@@ -54,6 +58,6 @@ export const useNewsStore = defineStore('useNewsStore', () => {
             .catch(error => {});
     }
     return {
-        getNewsInfoAsync,newsCards,cardPage,getNewsDetails,newsDetail,addView
+        getNewsInfoAsync,newsCards,cardPage,getNewsDetails,newsDetail,addView,isAllNews
     }
 })

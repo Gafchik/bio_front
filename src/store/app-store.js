@@ -12,6 +12,8 @@ export const useAppStore = defineStore('useAppStore', () => {
     const drawer = ref(false)
     const regDialog = ref(false)
     const loginDialog = ref(false)
+    const activationCodeDialog = ref(false)
+    const forgotPasswordDialog = ref(false)
     const isLoading = ref(false)
     const axios = computed(() =>{
         axiosInstance.interceptors.request.use(config => {
@@ -83,8 +85,15 @@ export const useAppStore = defineStore('useAppStore', () => {
             html: true,
         });
     }
+    function openActivationCodeDialog(){
+        activationCodeDialog.value = true
+    }
+    function openForgotPasswordDialog(){
+        forgotPasswordDialog.value = true
+    }
     return {
         currentLocale,changeLocale,drawer,axios,regDialog,loginDialog,openReginDialog,
-        openLoginDialog,isLoading,showInfoMassage
+        openLoginDialog,isLoading,showInfoMassage,activationCodeDialog,openActivationCodeDialog,
+        forgotPasswordDialog,openForgotPasswordDialog
     }
 })

@@ -4,7 +4,10 @@ import AppFooter from '@/components/core/Footer.vue'
 import Drawer from "@/components/core/Drawer.vue";
 import RegDialog from "@/components/core/Auth/Dialogs/RegDialog.vue";
 import LoginDialog from "@/components/core/Auth/Dialogs/LoginDialog.vue";
+import ActivationCodeDialog from "@/components/core/Auth/Dialogs/ActivationCodeDialog.vue";
 import LoadingDialog from "@/components/common/LoadingDialog.vue";
+import DialogConfirm from "@/components/common/DialogConfirm.vue";
+import ForgotPasswordDialog from "@/components/core/Auth/Dialogs/ForgotPasswordDialog.vue";
 </script>
 
 <template>
@@ -18,6 +21,9 @@ import LoadingDialog from "@/components/common/LoadingDialog.vue";
     <LoadingDialog/>
     <RegDialog/>
     <LoginDialog/>
+    <ActivationCodeDialog/>
+    <ForgotPasswordDialog/>
+    <DialogConfirm/>
   </q-layout>
 </template>
 

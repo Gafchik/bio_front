@@ -1,32 +1,33 @@
 <script setup>
 import {useNewsStore} from "@/store/pages/News/news-store.js";
 import {storeToRefs} from "pinia";
-import {onMounted, onUnmounted, ref} from "vue";
+import {onMounted, onUnmounted, ref, watch} from "vue";
 import {onScrollToLastItem} from "@/event-listener/event-listener.js";
 import {useAppStore} from "@/store/app-store.js";
 const appStore = useAppStore()
 const {currentLocale} = storeToRefs(appStore)
 const newsStore = useNewsStore()
 const {getNewsInfoAsync} = newsStore
-const {newsCards,cardPage} = storeToRefs(newsStore)
+const {newsCards,cardPage,isAllNews} = storeToRefs(newsStore)
 newsCards.value = []
 cardPage.value = 1
 getNewsInfoAsync()
-
+function handleScroll() {
+  onScrollToLastItem('#newsCards .link-no-underline:last-child', getNewsInfoAsync);
+}
 onMounted(() => {
-  window.addEventListener(
-      'scroll',
-      () => onScrollToLastItem('#newsCards .q-card:last-child',getNewsInfoAsync)
-  );
+  window.addEventListener('scroll',handleScroll);
 });
 
 onUnmounted(() => {
-  window.removeEventListener(
-      'scroll',
-      () => onScrollToLastItem('#newsCards .q-card:last-child',getNewsInfoAsync)
-  );
+  window.removeEventListener('scroll', handleScroll);
 });
 
+watch(isAllNews, async (newValue, oldValue) => {
+  if (newValue) {
+    window.removeEventListener('scroll', handleScroll);
+  }
+})
 </script>
 
 <template>
@@ -54,7 +55,7 @@ onUnmounted(() => {
           <q-icon size="xs" name="visibility" class="text-light-green-8"/>
           <span class="text-light-green-8 q-mx-lg">{{card.view_count}}</span>
           <q-space/>
-          <span class="text-light-green-8 q-mx-lg">{{card.date}}</span>
+          <span id="triggerEvent" class="text-light-green-8 q-mx-lg">{{card.date}}</span>
         </q-card-actions>
       </q-card>
     </router-link>

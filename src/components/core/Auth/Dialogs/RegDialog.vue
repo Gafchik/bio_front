@@ -8,7 +8,7 @@ import {useI18n} from "vue-i18n";
 import rules from "@/rules/rules.js";
 const {t} = useI18n()
 const appStore = useAppStore()
-const {showInfoMassage} = appStore
+const {showInfoMassage,openActivationCodeDialog} = appStore
 const {regDialog,axios} = storeToRefs(appStore)
 const TRANC_PREFIX = 'common.auth'
 const DEF_MODEL = {
@@ -23,7 +23,7 @@ const model = ref({...DEF_MODEL})
 const inputEmail = ref(null)
 const errorEmailExist = ref(true)
 function closeDialog(){
-  regDialog.value = true
+  regDialog.value = false
   errorEmailExist.value = true
   model.value = {...DEF_MODEL}
 }
@@ -35,6 +35,7 @@ function onSubmit() {
         .then(response => {
           showInfoMassage(t(`${TRANC_PREFIX}.reg_success`))
           closeDialog()
+          openActivationCodeDialog()
         })
         .catch(error => {});
   }
@@ -62,8 +63,8 @@ const emailExistRule = () => v => errorEmailExist.value || t('app.rules.email_ex
 
 <template>
   <q-dialog v-model="regDialog" persistent>
-    <q-card :style="$q.platform.is.desktop ? 'width: 30%;' : 'width: 80%;'">
-      <q-bar class="row items-center q-pb-none" style="background-color: #e3e1c9">
+    <q-card :style="$q.platform.is.desktop ? 'width: 30%;' : 'width: 90%;'">
+      <q-bar class="row items-center q-pb-none" style="background-color: #b8b398">
         <span class="text-h6 text-light-green-8">{{ t(`${TRANC_PREFIX}.reg`) }}</span>
         <q-space/>
         <q-btn
@@ -86,7 +87,6 @@ const emailExistRule = () => v => errorEmailExist.value || t('app.rules.email_ex
               name="first_name"
               v-model="model.first_name"
               :label="t(`${TRANC_PREFIX}.name`)"
-              lazy-rules
               :rules="[
                   rules.required(t(`${TRANC_PREFIX}.name`))
               ]"
@@ -98,7 +98,6 @@ const emailExistRule = () => v => errorEmailExist.value || t('app.rules.email_ex
               name="last_name"
               v-model="model.last_name"
               :label="t(`${TRANC_PREFIX}.surname`)"
-              lazy-rules
               :rules="[
                   rules.required(t(`${TRANC_PREFIX}.surname`))
               ]"
@@ -110,7 +109,6 @@ const emailExistRule = () => v => errorEmailExist.value || t('app.rules.email_ex
               default-country="ua"
               v-model:tel="model.phone"
               :label="t(`${TRANC_PREFIX}.phone`)"
-              lazy-rules
               :rules="[
                   rules.required(t(`${TRANC_PREFIX}.phone`))
               ]"
@@ -123,7 +121,6 @@ const emailExistRule = () => v => errorEmailExist.value || t('app.rules.email_ex
               @blur="onInputEmail"
               v-model="model.email"
               :label="t(`${TRANC_PREFIX}.email`)"
-              lazy-rules
               :rules="[
                   rules.required(t(`${TRANC_PREFIX}.email`)),
                   rules.email(),
@@ -132,12 +129,13 @@ const emailExistRule = () => v => errorEmailExist.value || t('app.rules.email_ex
           />
           <q-input
               class="q-my-xs"
+              counter
+              maxlength="8"
               color="light-green-8"
               type="password"
               name="password"
               v-model="model.password"
               :label="t(`${TRANC_PREFIX}.password`)"
-              lazy-rules
               :rules="[
                   rules.required(t(`${TRANC_PREFIX}.password`)),
                   rules.lengthMoreOrEqual(8),
@@ -145,12 +143,13 @@ const emailExistRule = () => v => errorEmailExist.value || t('app.rules.email_ex
           />
           <q-input
               class="q-my-xs"
+              counter
+              maxlength="8"
               color="light-green-8"
               type="password"
               name="password_confirmation"
               v-model="model.password_confirmation"
               :label="t(`${TRANC_PREFIX}.repeat_password`)"
-              lazy-rules
               :rules="[
                   rules.required(t(`${TRANC_PREFIX}.repeat_password`)),
                   rules.lengthMoreOrEqual(8),
