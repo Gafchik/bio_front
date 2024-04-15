@@ -11,7 +11,8 @@ import ForgotPasswordDialog from "@/components/core/Auth/Dialogs/ForgotPasswordD
 </script>
 
 <template>
-  <q-layout view="hHh lpR fFf" class="bg">
+<!--  <q-layout view="hHh lpR fFf" class="bg">-->
+  <q-layout view="hHh lpR fFf" style="background-color: #f0edce">
     <AppHeader></AppHeader>
     <Drawer v-if="$q.platform.is.mobile"/>
     <q-page-container >

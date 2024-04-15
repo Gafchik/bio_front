@@ -11,3 +11,7 @@
   background-clip: text !important;
   -webkit-background-clip: text !important;
 }
+.no-border-no-shadow {
+  border: none; /* Убираем границу */
+  box-shadow: none; /* Убираем тень */
+}
