@@ -8,6 +8,8 @@ const appStore = useAppStore()
 const {currentLocale} = storeToRefs(appStore)
 const newsStore = useNewsStore()
 const {getNewsInfoAsync} = newsStore
+import {useI18n} from "vue-i18n";
+const {t} = useI18n()
 const {newsCards,cardPage,isAllNews} = storeToRefs(newsStore)
 newsCards.value = []
 cardPage.value = 1
@@ -31,14 +33,16 @@ watch(isAllNews, async (newValue, oldValue) => {
 </script>
 
 <template>
+
   <div :style="$q.platform.is.desktop ? 'margin-inline: 20%' : 'margin-inline: 5%'"
        class="items-center"
        id="newsCards">
+    <div class="text-left text-bold text-h6 text-green-8 q-mt-lg">{{t(`main_menu.news`)}}</div>
     <router-link
         v-for="card in newsCards"
         :to="{ name: 'news_detail', params: { id: card.id_card }}"
         class="link-no-underline">
-      <q-card class="q-my-lg">
+      <q-card class="q-my-lg border-shadow">
         <q-img
             fit="fill"
             :style="$q.platform.is.desktop ? 'height: 320px' : 'height: 200px'"

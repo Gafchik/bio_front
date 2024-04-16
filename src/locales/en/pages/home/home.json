@@ -5,5 +5,8 @@
   "count_transactions": "Number of transactions on the platform: ",
   "count_yong_trees": "Remaining young trees:",
   "count_users": "Platform users: ",
-  "last_news": "Latest news"
+  "last_news": "Latest news",
+  "buy_tree_btn": "Buy a young tree",
+  "gift_tree_btn": "Give a tree",
+  "help_btn": "HELP"
 }

@@ -59,7 +59,7 @@ const videos = computed(() => {
         </div>
         <div class="row wrap justify-center items-start content-start">
           <div v-for="item in selectedAlbumItems"
-               class="q-mx-lg q-my-lg"
+               class="q-mx-lg q-my-lg border-shadow"
                @click="openImageCarouselDialog(selectedAlbumItems,item)">
             <q-img :src="item.link" fit="fill" loading="lazy"
                    :class="$q.platform.is.desktop ? 'linc_desktop' : 'linc_mobile'"
@@ -75,7 +75,7 @@ const videos = computed(() => {
       </div>
     </div>
     <div class="row wrap justify-center items-start content-start">
-      <div v-for="video in videos"  class="q-mx-lg q-my-lg">
+      <div v-for="video in videos"  class="q-mx-lg q-my-lg border-shadow">
         <q-video
             loading="lazy"
             :src="video.link"
@@ -88,6 +88,7 @@ const videos = computed(() => {
 </template>
 
 <style scoped>
+@import "@sass/common-style.css";
 .linc_mobile {
   width: 345px;
   height: 275px;
@@ -96,4 +97,5 @@ const videos = computed(() => {
   width: 470px;
   height: 275px;
 }
+
 </style>

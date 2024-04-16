@@ -28,7 +28,7 @@ defineComponent({
 </script>
 <template>
   <a :href="url">
-    <q-btn flat rounded size="lg">
+    <q-btn flat rounded >
       <svg :width="width" :height="height" viewBox="0 0 24 24">
         <path :fill="hash" d="M11.999 7.377a4.623 4.623 0 1 0 0 9.248a4.623 4.623 0 0 0 0-9.248m0 7.627a3.004 3.004 0 1 1 0-6.008a3.004 3.004 0 0 1 0 6.008" />
         <circle cx="16.806" cy="7.207" r="1.078" :fill="hash" />

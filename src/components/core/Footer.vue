@@ -18,7 +18,7 @@ getContactsAsync()
         </span>
       </div>
       <div>
-        <component class="q-mx-sm" v-for="contact in contacts['3']"
+        <component class="q-mx-none" v-for="contact in contacts['3']"
                    v-bind:is="contact.social_type"
                    :url="contact.url"
                    width="2em"

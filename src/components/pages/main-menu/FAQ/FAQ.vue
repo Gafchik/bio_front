@@ -32,13 +32,14 @@ getFaq();
       <div class="col-8 q-px-lg">
         <q-expansion-item v-for="value in question"
                           expand-separator
-                          class="q-mb-lg bg-grey-2"
+                          class="q-mb-lg border-shadow"
                           icon="question_mark"
                           :label="value.question"
                           header-class="text-light-green-8 text-start text-bold"
+                          style="background-color: #dbd8b2"
         >
           <q-card>
-            <q-card-section style="background: #f5f5f5">
+            <q-card-section style="background: #f0edce">
               <span class="inner-image" v-html="value.answer"/>
             </q-card-section>
           </q-card>

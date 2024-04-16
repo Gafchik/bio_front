@@ -15,3 +15,9 @@
   border: none; /* Убираем границу */
   box-shadow: none; /* Убираем тень */
 }
+
+.border-shadow{
+  border-radius: 10px;
+  border: 1px; /* Убираем границу */
+  box-shadow: 2px 2px 20px #181f04;
+}

@@ -69,7 +69,7 @@ getContactsAsync()
     </div>
     <div class="row q-my-md">
         <div  v-for="contact in contacts['3']">
-          <component class="q-mx-sm"
+          <component class="q-mx-none"
               v-bind:is="contact.social_type"
               :url="contact.url"
               width="2em"

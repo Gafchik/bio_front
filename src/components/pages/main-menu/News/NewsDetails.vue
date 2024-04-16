@@ -31,23 +31,25 @@ if(!!route.params.id){
     {{t(`${TRANC_PREFIX}.details.title`)}}
   </div>
   <div class="q-mb-lg" style="font-size: 9pt">{{newsDetail.date}}</div>
-  <q-card class="my-card" style="background-color: rgba(255, 255, 255, 0.5); ">
-    <div class="text-center">
-      <q-img
-          class="q-px-lg"
-          fit="fill"
-          :style="$q.platform.is.desktop ? 'height: 400px; width: 80%;' : 'height: 200px;'"
-          :src="newsDetail.image"/>
-    </div>
+  <div class="border-shadow">
+    <q-card class="my-card" style="background-color: rgba(255, 255, 255, 0.5); ">
+      <div class="text-center">
+        <q-img
+            class="q-px-lg"
+            fit="fill"
+            :style="$q.platform.is.desktop ? 'height: 400px; width: 80%;' : 'height: 200px;'"
+            :src="newsDetail.image"/>
+      </div>
 
-    <q-card-section>
-      <div class="text-h6">{{newsDetail['name_'+currentLocale]}}</div>
-    </q-card-section>
+      <q-card-section>
+        <div class="text-h6">{{newsDetail['name_'+currentLocale]}}</div>
+      </q-card-section>
 
-    <q-card-section class="q-pt-none">
-      <div class="inner-image" v-html="newsDetail['content_'+currentLocale]"/>
-    </q-card-section>
-  </q-card>
+      <q-card-section class="q-pt-none">
+        <div class="inner-image" v-html="newsDetail['content_'+currentLocale]"/>
+      </q-card-section>
+    </q-card>
+  </div>
 </div>
 </template>
 

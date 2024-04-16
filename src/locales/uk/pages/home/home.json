@@ -5,5 +5,8 @@
   "count_transactions": "Кількість угод на платформі: ",
   "count_yong_trees": "Залишок молодих дерев:",
   "count_users": "Користувачів платформи: ",
-  "last_news": "Свіжі новини"
+  "last_news": "Останні новини",
+  "buy_tree_btn": "Купити молоде дерево",
+  "gift_tree_btn": "Подарувати дерево",
+  "help_btn": "HELP"
 }

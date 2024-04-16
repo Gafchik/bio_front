@@ -15,6 +15,7 @@ export const useHomeStore = defineStore('useHomeStore', () => {
         count_users: 0,
         videos: [],
         first_news: {
+            id_card: 0,
         },
     })
 

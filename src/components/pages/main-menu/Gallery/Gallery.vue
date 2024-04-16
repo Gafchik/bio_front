@@ -24,7 +24,7 @@ const TRANC_PREFIX = 'pages.gallery'
         v-for="imageAlbum in albumsImages"
         :to="{ name: 'album_detail', params: { id: imageAlbum.id }}"
         class="link-no-underline">
-      <q-card class="q-my-lg">
+      <q-card class="q-my-lg border-shadow">
         <q-img :src="imageAlbum.album_label" style="height: 300px">
           <div class="absolute-bottom">
             <div class="text-h6"> {{imageAlbum['name_'+currentLocale]}}</div>
@@ -43,7 +43,7 @@ const TRANC_PREFIX = 'pages.gallery'
         v-for="videoAlbum in albumsVideo"
         :to="{ name: 'album_detail', params: { id: videoAlbum.id }}"
         class="link-no-underline">
-      <q-card  class="q-my-lg">
+      <q-card  class="q-my-lg border-shadow">
         <q-img :src="videoAlbum.album_label" style="height: 303px" loading="lazy">
           <div class="absolute-bottom">
             <div class="text-h6"> {{videoAlbum['name_'+currentLocale]}}</div>
