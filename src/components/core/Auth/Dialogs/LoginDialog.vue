@@ -11,17 +11,23 @@ const appStore = useAppStore()
 const {openActivationCodeDialog,showInfoMassage,openForgotPasswordDialog} = appStore
 const {loginDialog,axios} = storeToRefs(appStore)
 const TRANC_PREFIX = 'common.auth'
-const DEF_MODEL = {
+
+const model = ref({
   email: '',
   password: '',
-}
-const model = ref({...DEF_MODEL})
+})
 function closeDialog(){
   loginDialog.value = false
-  model.value = {...DEF_MODEL}
+  model.value = {
+    email: '',
+    password: '',
+  }
 }
 function onReset() {
-  model.value = {...DEF_MODEL}
+  model.value = {
+    email: '',
+    password: '',
+  }
 }
 function emailActivation(){
   closeDialog()
@@ -53,7 +59,7 @@ function forgotPassword(){
               id="login-form"
               @reset="onReset"
               class="q-gutter-md"
-              ref="regDialogForm"
+              ref="loginDialogForm"
       >
         <q-card-section :class="$q.platform.is.desktop ? 'q-px-xl': ''">
           <q-input

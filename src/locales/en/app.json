@@ -7,7 +7,7 @@
  },
  "rules": {
   "email_exist": "This Email is already in use",
-  "email": "Enter Email, example: example@example.com",
+  "email_exemple": "Enter Email, example: example{dog}example.com",
   "confirm_field": "Must match field '{field_name}'",
   "require": "Field '{field_name}' is required",
   "ldap": {

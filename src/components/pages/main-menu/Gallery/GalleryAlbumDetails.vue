@@ -22,7 +22,6 @@ getAlbumsAsync().then(() => {
   if(!!route.params.id){
     getAlbumDetails(route.params.id).then((res) => {
       if(!res){
-        console.log('!res')
         router.push({ name: 'not_found' });
       }
     })

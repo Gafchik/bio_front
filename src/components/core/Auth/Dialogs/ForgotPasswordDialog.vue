@@ -11,24 +11,34 @@ const appStore = useAppStore()
 const {showInfoMassage,openForgotPasswordDialog} = appStore
 const {forgotPasswordDialog,axios} = storeToRefs(appStore)
 const TRANC_PREFIX = 'common.auth'
-const DEF_MODEL = {
+
+const model = ref({
   email: '',
   code: '',
   password: '',
   password_confirmation: '',
-}
-const model = ref({...DEF_MODEL})
-const emailInput = ref(null)
+})
+const emailInputPass = ref(null)
 const isCorrectCode = ref(false)
 function closeDialog(){
   forgotPasswordDialog.value = false
-  model.value = {...DEF_MODEL}
+  model.value = {
+    email: '',
+    code: '',
+    password: '',
+    password_confirmation: '',
+  }
 }
 function onReset() {
-  model.value = {...DEF_MODEL}
+  model.value = {
+    email: '',
+    code: '',
+    password: '',
+    password_confirmation: '',
+  }
 }
 function sendMail(){
-  if(emailInput.value.validate()){
+  if(emailInputPass.value.validate()){
     openDialogConfirm({
       title: t(`${TRANC_PREFIX}.forgot_password_confirm.title`),
       text: t(`${TRANC_PREFIX}.forgot_password_confirm.text`),
@@ -85,12 +95,12 @@ async function changePassword(){
               @submit="onSubmit"
               id="login-form"
               class="q-gutter-md"
-              ref="regDialogForm"
+              ref="forgotPasswordDialogForm"
       >
         <q-card-section :class="$q.platform.is.desktop ? 'q-px-xl': ''">
           <q-input
               v-if="!isCorrectCode"
-              ref="emailInput"
+              ref="emailInputPass"
               class="q-my-xs"
               color="light-green-8 input-field"
               name="email"

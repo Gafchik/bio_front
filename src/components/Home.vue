@@ -17,8 +17,7 @@ getHomePageInfo().then(() => {
 })
 const display = ref(null)
 const displayHeight = computed(() => {
-  console.log(display.value.offsetHeight)
-  return display.value.offsetHeight
+  return display.value ? display.value.offsetHeight : 0;
 })
 </script>
 

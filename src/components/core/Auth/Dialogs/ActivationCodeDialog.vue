@@ -9,15 +9,18 @@ const appStore = useAppStore()
 const {showInfoMassage,openLoginDialog} = appStore
 const {activationCodeDialog,axios} = storeToRefs(appStore)
 const TRANC_PREFIX = 'common.auth'
-const DEF_MODEL = {
+
+const activationCodeDialogForm = ref(null)
+const model = ref({
   email: '',
   code: '',
-}
-const activationCodeDialogForm = ref(null)
-const model = ref({...DEF_MODEL})
+})
 function closeDialog(){
   activationCodeDialog.value = false
-  model.value = {...DEF_MODEL}
+  model.value = {
+    email: '',
+    code: '',
+  }
 }
 function onSubmit() {
   axios.value.post('/api/auth/email-activate',model.value)
@@ -29,7 +32,10 @@ function onSubmit() {
       .catch(error => {});
 }
 function onReset() {
-  model.value = {...DEF_MODEL}
+  model.value = {
+    email: '',
+    code: '',
+  }
 }
 </script>
 
@@ -54,7 +60,6 @@ function onReset() {
       >
         <q-card-section :class="$q.platform.is.desktop ? 'q-px-xl': ''">
           <q-input
-              ref="inputEmail"
               class="q-my-xs"
               color="light-green-8"
               name="email"

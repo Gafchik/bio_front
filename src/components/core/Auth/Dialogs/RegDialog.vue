@@ -11,21 +11,28 @@ const appStore = useAppStore()
 const {showInfoMassage,openActivationCodeDialog} = appStore
 const {regDialog,axios} = storeToRefs(appStore)
 const TRANC_PREFIX = 'common.auth'
-const DEF_MODEL = {
+
+const model = ref({
   first_name: '',
   last_name: '',
   phone: '',
   email: '',
   password: '',
   password_confirmation: '',
-}
-const model = ref({...DEF_MODEL})
-const inputEmail = ref(null)
+})
+const inputEmailReg = ref(null)
 const errorEmailExist = ref(true)
 function closeDialog(){
   regDialog.value = false
   errorEmailExist.value = true
-  model.value = {...DEF_MODEL}
+  model.value = {
+    first_name: '',
+    last_name: '',
+    phone: '',
+    email: '',
+    password: '',
+    password_confirmation: '',
+  }
 }
 const regDialogForm = ref(null)
 
@@ -42,18 +49,25 @@ function onSubmit() {
 }
 
 function onReset() {
-  model.value = {...DEF_MODEL}
+  model.value = {
+    first_name: '',
+    last_name: '',
+    phone: '',
+    email: '',
+    password: '',
+    password_confirmation: '',
+  }
   errorEmailExist.value = true
   regDialogForm.value.resetValidation()
 }
 function onInputEmail(){
   errorEmailExist.value = true
-  let validRes = inputEmail.value.validate()
-  if(typeof validRes === 'boolean' && !!validRes){
+  let validRes = inputEmailReg.value.validate()
+  if(!!validRes){
     axios.value.post('/api/auth/check-email',{email: model.value.email})
         .then(response => {
           errorEmailExist.value = !response.data.data.email_use
-          inputEmail.value.validate()
+          inputEmailReg.value.validate()
         })
         .catch(error => {});
   }
@@ -114,7 +128,7 @@ const emailExistRule = () => v => errorEmailExist.value || t('app.rules.email_ex
               ]"
           />
           <q-input
-              ref="inputEmail"
+              ref="inputEmailReg"
               class="q-my-xs input-field"
               color="light-green-8"
               name="email"

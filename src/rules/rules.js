@@ -12,6 +12,6 @@ const rules = {
     coordinatesValue: () => v => /^(-?\d{1,3}(\,|\.)\d{7})$/.test(v) || i18n.global.t(`${trans_prefix}.coordinates_value`),
 
     confirmField: (confirm, field_name) => v => v === confirm || i18n.global.t(`${trans_prefix}.confirm_field`, {field_name: field_name}),
-    email: () => v => /.+@.+\..+/.test(v) || i18n.global.t(`${trans_prefix}.email`),
+    email: () => v => /.+@.+\..+/.test(v) || i18n.global.t(`${trans_prefix}.email_exemple`,{dog: '@'}),
 }
 export default rules

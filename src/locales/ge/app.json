@@ -7,7 +7,7 @@
   },
   "rules": {
     "email_exist": "ეს ელფოსტა უკვე გამოიყენება",
-   "email": "შეიყვანეთ ელფოსტა, მაგალითად: example@example.com",
+   "email_exemple": "შეიყვანეთ ელფოსტა, მაგალითად: example{dog}example.com",
    "confirm_field": "უნდა ემთხვეოდეს ველს '{field_name}'",
     "require": "ველი '{field_name}' საჭიროა",
     "ldap": {

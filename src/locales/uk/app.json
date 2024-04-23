@@ -7,7 +7,7 @@
  },
  "rules": {
   "email_exist": "Такий Email вже використовується",
-  "email": "Введіть Email, приклад: example@example.com",
+  "email_exemple": "Введіть Email, приклад: example{dog}example.com",
   "confirm_field": "Має відповідати полю '{field_name}'",
   "require": "Поле '{field_name}' є обов'язковим для заповнення",
   "ldap": {
