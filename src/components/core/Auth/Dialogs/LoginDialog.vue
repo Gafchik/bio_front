@@ -8,7 +8,7 @@ const {t} = useI18n()
 import {useDialogConfirmStore} from "@/store/common/dialog-confirm.js";
 const {openDialogConfirm} = useDialogConfirmStore()
 const appStore = useAppStore()
-const {openActivationCodeDialog,showInfoMassage,openForgotPasswordDialog} = appStore
+const {openActivationCodeDialog,showInfoMassage,openForgotPasswordDialog,login} = appStore
 const {loginDialog,axios} = storeToRefs(appStore)
 const TRANC_PREFIX = 'common.auth'
 
@@ -34,7 +34,11 @@ function emailActivation(){
   openActivationCodeDialog()
 }
 function onSubmit() {
-
+  login(model.value).then(res => {
+    if(res){
+      closeDialog()
+    }
+  })
 }
 function forgotPassword(){
   closeDialog()
