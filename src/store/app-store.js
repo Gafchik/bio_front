@@ -1,11 +1,12 @@
 import { defineStore } from 'pinia'
-import {ref,computed} from "vue";
+import {ref, computed, watch} from "vue";
 import { useI18n } from 'vue-i18n';
 import axiosInstance from "@/modules/axios.js";
 import router from "@/routes/router.js"
 import {Notify} from "quasar";
 import { useCookies } from "vue3-cookies";
-
+import ukr from "@assets/image/header/locales/ukr.png";
+import locales from "@/constants/locales.js"
 export const useAppStore = defineStore('useAppStore', () => {
     const { cookies } = useCookies();
     const { locale } = useI18n();
@@ -16,8 +17,15 @@ export const useAppStore = defineStore('useAppStore', () => {
     const activationCodeDialog = ref(false)
     const forgotPasswordDialog = ref(false)
     const isLoading = ref(false)
-    const isLogin = computed(() => !!cookies.get('jwt'))
+    // const isLogin = computed(() => !!cookies.isKey('jwt'))
+    const isLogin = computed(() => document.cookie.includes('jwt'))
     const userInfo = ref({})
+    let cookiesLang =  cookies.get('lang')
+    let startLang = !!cookiesLang
+        ? locales.find((i) => i.value === cookiesLang)
+        : {value: 'uk', image: ukr}
+    const localesModel = ref(startLang)
+    locale.value = startLang.value
     const jwt = ref('')
     const jwtType = ref('')
     const axios = computed(() =>{
@@ -84,12 +92,24 @@ export const useAppStore = defineStore('useAppStore', () => {
     });
     function changeLocale (newLocale) {
         locale.value = newLocale.value
+        let t = new Date();
+        t.setSeconds(t.getSeconds() + 10800);
+        cookies.set('lang',newLocale.value,t)
+        if(isLogin.value){
+            axios.value.post('/api/user/change-locale',{lang: newLocale.value})
+                .then(response => {})
+                .catch(error => {});
+        }
     }
     function openReginDialog(){
-        regDialog.value = true
+        if(!isLogin.value){
+            regDialog.value = true
+        }
     }
     function openLoginDialog(){
-        loginDialog.value = true
+        if(!isLogin.value){
+            loginDialog.value = true
+        }
     }
     function showInfoMassage(message){
         Notify.create({
@@ -101,25 +121,27 @@ export const useAppStore = defineStore('useAppStore', () => {
         });
     }
     function openActivationCodeDialog(){
-        activationCodeDialog.value = true
+        if(!isLogin.value){
+            activationCodeDialog.value = true
+        }
     }
     function openForgotPasswordDialog(){
-        forgotPasswordDialog.value = true
+        if(!isLogin.value){
+            forgotPasswordDialog.value = true
+        }
     }
     async function getUserInfo(){
         axios.value.post('/api/auth/get-user-info')
             .then(response => {
                 userInfo.value = response.data.data
                 if(!!userInfo.value.locale){
-
-                    // localesModel.value = locales
-                    //     .find((i) => i.value === user.value.locale)
-
+                    localesModel.value = locales
+                        .find((i) => i.value === userInfo.value.locale)
+                    let t = new Date();
+                    t.setSeconds(t.getSeconds() + 10800);
+                    cookies.set('lang',userInfo.value.locale,t)
                 }else{
-                    // localesModel.value = {
-                    //     value: 'ru',
-                    //     image: ru
-                    // }
+                    cookies.remove('jwt')
                 }
             })
             .catch(error => {});
@@ -134,15 +156,37 @@ export const useAppStore = defineStore('useAppStore', () => {
                 let t = new Date();
                 t.setSeconds(t.getSeconds() + 10800);
                 cookies.set('jwt',jwt.value,t)
-                console.log(userInfo.value)
                 cookies.set('lang',userInfo.value.locale,t)
+                console.log(isLogin.value)
+                localesModel.value = locales
+                    .find((i) => i.value === userInfo.value.locale)
                 return true
             })
             .catch(error => {});
     }
+    async function logout(){
+        return await axios.value.post('/api/auth/logout')
+            .then(response => {
+                cookies.remove('jwt')
+                userInfo.value = {}
+                console.log(isLogin.value)
+            })
+            .catch(error => {
+                cookies.remove('jwt')
+                userInfo.value = {}
+                console.log()
+            });
+    }
+    watch(localesModel, () => {
+        locale.value = localesModel.value.value
+    })
+    watch(cookieDom,() => {
+        console.log('+')
+    })
     return {
         currentLocale,changeLocale,drawer,axios,regDialog,loginDialog,openReginDialog,
         openLoginDialog,isLoading,showInfoMassage,activationCodeDialog,openActivationCodeDialog,
-        forgotPasswordDialog,openForgotPasswordDialog,login,isLogin,userInfo
+        forgotPasswordDialog,openForgotPasswordDialog,login,isLogin,userInfo,localesModel,
+        logout
     }
 })

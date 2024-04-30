@@ -12,11 +12,8 @@ import AuthView from "@/components/core/Auth/AuthView.vue";
 
 const appStore = useAppStore()
 const {changeLocale} = appStore
-const {drawer} = storeToRefs(appStore)
-const localesModel = ref({
-  value: 'uk',
-  image: ukr
-})
+const {drawer,localesModel} = storeToRefs(appStore)
+
 function redirectTo(routeName){
   router.push({
     name: routeName,
