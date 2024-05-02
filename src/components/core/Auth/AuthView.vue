@@ -2,11 +2,19 @@
 import {useI18n} from "vue-i18n";
 import {useAppStore} from "@/store/app-store.js";
 import {storeToRefs} from "pinia";
+import {computed} from "vue";
 const {t} = useI18n()
 const TRANC_PREFIX = 'common.auth'
 const appStore = useAppStore()
 const {openReginDialog,openLoginDialog,logout} = appStore
 const {isLogin, userInfo} = storeToRefs(appStore)
+const dropdownLabel = computed(() => {
+  if(isLogin.value){
+    return userInfo.value.last_name + ' ' + userInfo.value.first_name
+  }else{
+    return t(`${TRANC_PREFIX}.login`)+'/'+t(`${TRANC_PREFIX}.reg`)
+  }
+})
 </script>
 
 <template>
@@ -16,7 +24,7 @@ const {isLogin, userInfo} = storeToRefs(appStore)
         icon="account_circle"
         color="black"
         content-style="background-color: #e3e1c9"
-        :label="t(`${TRANC_PREFIX}.login`)+'/'+t(`${TRANC_PREFIX}.reg`)"
+        :label="dropdownLabel"
     >
       <q-list v-if="!isLogin">
         <q-item clickable v-close-popup @click="openReginDialog">

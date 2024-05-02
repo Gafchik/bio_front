@@ -17,8 +17,8 @@ export const useAppStore = defineStore('useAppStore', () => {
     const activationCodeDialog = ref(false)
     const forgotPasswordDialog = ref(false)
     const isLoading = ref(false)
-    // const isLogin = computed(() => !!cookies.isKey('jwt'))
-    const isLogin = computed(() => document.cookie.includes('jwt'))
+    let jwtCookies = cookies.get('jwt')
+    const isLogin = ref(!!jwtCookies)
     const userInfo = ref({})
     let cookiesLang =  cookies.get('lang')
     let startLang = !!cookiesLang
@@ -49,6 +49,7 @@ export const useAppStore = defineStore('useAppStore', () => {
                 isLoading.value = false;
                 if(error.response.status === 401){
                     cookies.remove('jwt')
+                    isLogin.value = false
                     Notify.create({
                         color: 'negative',
                         message: t('app.session_daed'),
@@ -142,6 +143,7 @@ export const useAppStore = defineStore('useAppStore', () => {
                     cookies.set('lang',userInfo.value.locale,t)
                 }else{
                     cookies.remove('jwt')
+                    isLogin.value = false
                 }
             })
             .catch(error => {});
@@ -157,9 +159,9 @@ export const useAppStore = defineStore('useAppStore', () => {
                 t.setSeconds(t.getSeconds() + 10800);
                 cookies.set('jwt',jwt.value,t)
                 cookies.set('lang',userInfo.value.locale,t)
-                console.log(isLogin.value)
                 localesModel.value = locales
                     .find((i) => i.value === userInfo.value.locale)
+                isLogin.value = true
                 return true
             })
             .catch(error => {});
@@ -169,19 +171,16 @@ export const useAppStore = defineStore('useAppStore', () => {
             .then(response => {
                 cookies.remove('jwt')
                 userInfo.value = {}
-                console.log(isLogin.value)
+                isLogin.value = false
             })
             .catch(error => {
                 cookies.remove('jwt')
                 userInfo.value = {}
-                console.log()
+                isLogin.value = false
             });
     }
     watch(localesModel, () => {
         locale.value = localesModel.value.value
-    })
-    watch(cookieDom,() => {
-        console.log('+')
     })
     return {
         currentLocale,changeLocale,drawer,axios,regDialog,loginDialog,openReginDialog,
