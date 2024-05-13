@@ -1,0 +1,20 @@
+{
+  "name": "Ім'я",
+  "surname": "Прізвище",
+  "email": "Пошта",
+  "phone": "Телефон",
+  "about_my": "Про мене",
+  "change user_info confirm": {
+    "title": "Зміна інформації",
+    "text": "Змінити інформацію про себе?"
+  },
+  "change_password": "Зміна пароля",
+  "old_password": "Поточний пароль",
+  "new_password": "Новий пароль",
+  "confirm_new_password": "Підтвердження пароля",
+  "change_password_confirm": {
+    "title": "Зміна пароля",
+    "text": "Змінити пароль?",
+    "success": "Пароль успішно змінено!"
+  }
+}

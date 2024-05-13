@@ -1,0 +1,20 @@
+{
+  "name": "Name",
+  "surname": "Last name",
+  "email": "Email",
+  "phone": "Phone",
+  "about_my": "About me",
+  "change user_info confirm": {
+    "title": "Change information",
+    "text": "Change information about yourself?"
+  },
+  "change_password": "Change password",
+  "old_password": "Current password",
+  "new_password": "New password",
+  "confirm_new_password": "Password Confirmation",
+  "change_password_confirm": {
+    "title": "Change password",
+    "text": "Change password?",
+    "success": "Password changed successfully!"
+  }
+}

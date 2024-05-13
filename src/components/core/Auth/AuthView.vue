@@ -6,7 +6,7 @@ import {computed} from "vue";
 const {t} = useI18n()
 const TRANC_PREFIX = 'common.auth'
 const appStore = useAppStore()
-const {openReginDialog,openLoginDialog,logout} = appStore
+const {openReginDialog,openLoginDialog,logout, redirectByName} = appStore
 const {isLogin, userInfo} = storeToRefs(appStore)
 const dropdownLabel = computed(() => {
   if(isLogin.value){
@@ -44,16 +44,28 @@ const dropdownLabel = computed(() => {
           </q-item-section>
         </q-item>
       </q-list>
-      <q-list v-if="isLogin">
-        <q-item clickable v-close-popup @click="logout">
-          <q-item-section avatar>
-            <q-icon name="logout" />
-          </q-item-section>
-          <q-item-section>
-            {{ t(`${TRANC_PREFIX}.logout`) }}
-          </q-item-section>
-        </q-item>
-      </q-list>
+      <template  v-if="isLogin">
+        <q-list>
+          <q-item clickable v-close-popup @click="redirectByName('personal')">
+            <q-item-section avatar>
+              <q-icon name="person" />
+            </q-item-section>
+            <q-item-section>
+              {{ t(`${TRANC_PREFIX}.personal`) }}
+            </q-item-section>
+          </q-item>
+        </q-list>
+        <q-list>
+          <q-item clickable v-close-popup @click="logout">
+            <q-item-section avatar>
+              <q-icon name="logout" />
+            </q-item-section>
+            <q-item-section>
+              {{ t(`${TRANC_PREFIX}.logout`) }}
+            </q-item-section>
+          </q-item>
+        </q-list>
+      </template>
     </q-btn-dropdown>
 </div>
 </template>

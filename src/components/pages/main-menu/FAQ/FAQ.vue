@@ -2,13 +2,32 @@
 import { useFaqStore } from '@/store/pages/FAQ/faq-store.js'
 import { storeToRefs } from 'pinia'
 import {useI18n} from "vue-i18n";
+import {sleep} from "@/helpers/comon-helpers.js"
 const {t} = useI18n()
+import router from "@/routes/router.js"
+import {onMounted,nextTick } from "vue";
 const faqStore = useFaqStore()
 const {getFaq,selectCategory} = faqStore
 const {category,question,selectedCategoryId} = storeToRefs(faqStore)
 const TRANC_PREFIX = 'pages.faq'
-getFaq();
-
+getFaq().then((res) => {
+  if(res){
+    nextTick();
+    let query = router.currentRoute.value.query
+    if(!!query.category && !!query.item) {
+      let category = parseInt(query.category)
+      let question = parseInt(query.item)
+      selectCategory(category)
+      sleep('500',() => {
+        const element = document.querySelector(`[data-id="${query.category+'_'+query.item}"]`);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          element.querySelector('.q-expansion-item__content').style = {}
+        }
+      })
+    }
+  }
+})
 </script>
 
 <template>
@@ -31,6 +50,7 @@ getFaq();
       </div>
       <div class="col-8 q-px-lg">
         <q-expansion-item v-for="value in question"
+                          :data-id="value.faq_category_id + '_' + value.faq_id"
                           expand-separator
                           class="q-mb-lg border-shadow"
                           icon="question_mark"

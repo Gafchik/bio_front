@@ -37,7 +37,7 @@ export const useNewsStore = defineStore('useNewsStore', () => {
     }
     async function getNewsDetails(id){
         if (!isNaN(id)) {
-            return axios.value.post('/api/news/get-cards-details',{id: id})
+            return await axios.value.post('/api/news/get-cards-details',{id: id})
                 .then(response => {
                     newsDetail.value = response.data.data
                     if(newsDetail.value.image[0] === '/'){

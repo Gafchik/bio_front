@@ -15,11 +15,12 @@ export const useFaqStore = defineStore('useFaqStore', () => {
     })
     const selectedCategoryId = ref(category.value?.[0]?.faq_category_id ?? null)
     async function getFaq(){
-        axios.value.post('/api/faq')
+        return await axios.value.post('/api/faq')
             .then(response => {
                 faq.value = response.data.data;
+                return true
             })
-            .catch(error => {});
+            .catch(error => {return false});
     }
     function selectCategory(faq_category_id){
         selectedCategoryId.value = faq_category_id

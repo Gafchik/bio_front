@@ -1,0 +1,20 @@
+{
+  "name": "სახელი",
+  "surname": "გვარი",
+  "email": "ფოსტა",
+  "phone": "ტელეფონი",
+  "about_my": "ჩემს შესახებ",
+  "change user_info confirm": {
+    "title": "ინფორმაციის შეცვლა",
+    "text": "შეცვალო ინფორმაცია შენს შესახებ?"
+  },
+  "change_password": "პაროლის შეცვლა",
+  "old_password": "მიმდინარე პაროლი",
+  "new_password": "ახალი პაროლი",
+  "confirm_new_password": "პაროლის დადასტურება",
+  "change_password_confirm": {
+    "title": "პაროლის შეცვლა",
+    "text": "პაროლის შეცვლა?"
+  },
+  "success": "პაროლი წარმატებით შეიცვალა!"
+}

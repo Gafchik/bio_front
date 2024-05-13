@@ -21,3 +21,7 @@
   border: 1px; /* Убираем границу */
   box-shadow: 2px 2px 20px #181f04;
 }
+
+.my-bg-color {
+  background-color: #f0edce
+}

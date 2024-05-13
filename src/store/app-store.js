@@ -7,6 +7,7 @@ import {Notify} from "quasar";
 import { useCookies } from "vue3-cookies";
 import ukr from "@assets/image/header/locales/ukr.png";
 import locales from "@/constants/locales.js"
+import AUTH_ROUTES from "@/routes/auth_routes.js"
 export const useAppStore = defineStore('useAppStore', () => {
     const { cookies } = useCookies();
     const { locale } = useI18n();
@@ -50,9 +51,11 @@ export const useAppStore = defineStore('useAppStore', () => {
                 if(error.response.status === 401){
                     cookies.remove('jwt')
                     isLogin.value = false
+                    router.push({ name: 'home' })
+                    openLoginDialog()
                     Notify.create({
                         color: 'negative',
-                        message: t('app.session_daed'),
+                        message: error.response.data.textError,
                         progress: true,
                         position: 'top',
                         html: true,
@@ -91,6 +94,22 @@ export const useAppStore = defineStore('useAppStore', () => {
         );
         return axiosInstance
     });
+    router.beforeEach((to, from, next) => {
+        let isAuthRoute = AUTH_ROUTES.some(item => item.name === to.name)
+        if(!isAuthRoute){
+            next();
+        }else{
+            if(isLogin.value){
+                next();
+            }else{
+                next({ name: 'home' });
+                openLoginDialog()
+            }
+        }
+    });
+    function redirectByName(name){
+        router.push({name: name})
+    }
     function changeLocale (newLocale) {
         locale.value = newLocale.value
         let t = new Date();
@@ -132,7 +151,7 @@ export const useAppStore = defineStore('useAppStore', () => {
         }
     }
     async function getUserInfo(){
-        axios.value.post('/api/auth/get-user-info')
+        return await axios.value.post('/api/auth/get-user-info')
             .then(response => {
                 userInfo.value = response.data.data
                 if(!!userInfo.value.locale){
@@ -172,6 +191,7 @@ export const useAppStore = defineStore('useAppStore', () => {
                 cookies.remove('jwt')
                 userInfo.value = {}
                 isLogin.value = false
+                redirectByName('home')
             })
             .catch(error => {
                 cookies.remove('jwt')
@@ -186,6 +206,6 @@ export const useAppStore = defineStore('useAppStore', () => {
         currentLocale,changeLocale,drawer,axios,regDialog,loginDialog,openReginDialog,
         openLoginDialog,isLoading,showInfoMassage,activationCodeDialog,openActivationCodeDialog,
         forgotPasswordDialog,openForgotPasswordDialog,login,isLogin,userInfo,localesModel,
-        logout
+        logout,redirectByName,getUserInfo
     }
 })
