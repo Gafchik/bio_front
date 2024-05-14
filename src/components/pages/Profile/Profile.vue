@@ -86,7 +86,7 @@ function changePasswordCallback(result){
 </script>
 
 <template>
-  <personal-template>
+  <personal-template :is-empty="false">
     <template v-slot:personal-content>
       <div class="row justify-around items-start">
         <q-card :style="$q.platform.is.desktop ? 'min-width: 30%;': 'min-width: 80%;'"

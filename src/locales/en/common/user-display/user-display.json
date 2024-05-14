@@ -4,5 +4,8 @@
   "balance_bonus": "Bonus account",
   "balance_reserve": "Reserve account",
   "count_trees": "Your trees",
-  "profile": "Profile"
+  "profile": "Profile",
+  "empty_card": {
+    "title": "Dear {name}, we are glad to welcome you to your personal account!"
+  }
 }

@@ -1,6 +1,18 @@
 <script setup>
-
 import UserDisplay from "@/components/common/UserDisplay.vue";
+import EmptyPersonalPage from "@/components/core/EmptyPersonalPage.vue";
+
+const props = defineProps({
+  isEmpty: {
+    type: Boolean,
+    default: true,
+    required: true
+  },
+  emptyText: {
+    type: String,
+    default: '',
+  }
+})
 </script>
 
 <template>
@@ -9,7 +21,8 @@ import UserDisplay from "@/components/common/UserDisplay.vue";
       <user-display/>
     </div>
     <div :class="$q.platform.is.desktop ? 'col-9 q-pa-lg' : 'q-pa-lg'">
-      <slot name="personal-content" class=""></slot>
+      <empty-personal-page v-if="props.isEmpty" :emptyText="props.emptyText"/>
+      <slot v-else name="personal-content" class=""></slot>
     </div>
   </div>
 </template>

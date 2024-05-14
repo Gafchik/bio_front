@@ -6,8 +6,9 @@ import { copyToClipboard } from 'quasar'
 import {useI18n} from "vue-i18n";
 import {useAppStore} from "@/store/app-store.js";
 import {storeToRefs} from "pinia";
+import router from "@/routes/router.js"
 
-
+const currentRouteName = router.currentRoute.value.name
 const {t} = useI18n()
 const appStore = useAppStore()
 const {userInfo} = storeToRefs(appStore)
@@ -24,11 +25,11 @@ setInterval(() => {
 const timeZone = momentTz.tz.guess();
 
 function getBalance(type){
-  let balance = userInfo.value.wallets.find(w => w.type === type).balance
+  let balance = userInfo.value.wallets.find(w => w.type === type)?.balance
   if(!!balance){
-    balance = balance/100
+    return balance/100
   }
-  return balance
+  return 0
 }
 const balance = ref(0)
 const balance_bonus = ref(0)
@@ -105,7 +106,6 @@ watch(userInfo,async (newValue, oldValue) => {
           </template>
         </q-input>
       </div>
-      <div class="separator"></div>
     </div>
     <div class="row user-display-row">
       <div class="col">
@@ -141,22 +141,30 @@ watch(userInfo,async (newValue, oldValue) => {
         </q-input>
       </div>
     </div>
-    <q-list>
-      <q-item clickable v-close-popup @click="redirectByName('profile')" style="background-color: #a89c4c">
-        <q-item-section avatar>
-          <q-icon name="account_circle" color="white"/>
-        </q-item-section>
-        <q-item-section class="text-white">
-          {{ t(`${TRANC_PREFIX}.profile`) }}
-        </q-item-section>
-      </q-item>
-    </q-list>
+    <q-tabs vertical inline-label>
+      <q-tab  :class="currentRouteName === 'profile' ? 'text-white' : ''"
+              :style="currentRouteName === 'profile' ? 'background-color: #a89c4c' : ''"
+             icon="account_circle"
+             :label="t(`${TRANC_PREFIX}.profile`)"
+             @click="redirectByName('profile')"
+      />
+<!--      <q-list>-->
+<!--        <q-item clickable v-close-popup @click="redirectByName('profile')" style="background-color: #a89c4c">-->
+<!--          <q-item-section avatar>-->
+<!--            <q-icon name="account_circle" color="white"/>-->
+<!--          </q-item-section>-->
+<!--          <q-item-section class="text-white">-->
+<!--            {{ t(`${TRANC_PREFIX}.profile`) }}-->
+<!--          </q-item-section>-->
+<!--        </q-item>-->
+<!--      </q-list>-->
+    </q-tabs>
   </div>
 </template>
 
 <style scoped>
 @import "@sass/common-style.css";
 .user-display-row {
-  border-bottom: 1px solid #a89c4c; /* Цвет и стиль линии */
+  border-bottom: 1px solid #7ba438; /* Цвет и стиль линии */
 }
 </style>
