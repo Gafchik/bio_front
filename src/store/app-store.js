@@ -3,14 +3,14 @@ import {ref, computed, watch} from "vue";
 import { useI18n } from 'vue-i18n';
 import axiosInstance from "@/modules/axios.js";
 import router from "@/routes/router.js"
-import {Notify} from "quasar";
+import {copyToClipboard, Notify} from "quasar";
 import { useCookies } from "vue3-cookies";
 import ukr from "@assets/image/header/locales/ukr.png";
 import locales from "@/constants/locales.js"
 import AUTH_ROUTES from "@/routes/auth_routes.js"
 export const useAppStore = defineStore('useAppStore', () => {
     const { cookies } = useCookies();
-    const { locale } = useI18n();
+    const { locale,t } = useI18n();
     const currentLocale = computed(() => locale.value);
     const drawer = ref(false)
     const regDialog = ref(false)
@@ -185,6 +185,11 @@ export const useAppStore = defineStore('useAppStore', () => {
             })
             .catch(error => {});
     }
+    function copyToClipboardNotify(value){
+        copyToClipboard(value).then(() => {
+            showInfoMassage(t('app.copySuccess'))
+        })
+    }
     async function logout(){
         return await axios.value.post('/api/auth/logout')
             .then(response => {
@@ -206,6 +211,6 @@ export const useAppStore = defineStore('useAppStore', () => {
         currentLocale,changeLocale,drawer,axios,regDialog,loginDialog,openReginDialog,
         openLoginDialog,isLoading,showInfoMassage,activationCodeDialog,openActivationCodeDialog,
         forgotPasswordDialog,openForgotPasswordDialog,login,isLogin,userInfo,localesModel,
-        logout,redirectByName,getUserInfo
+        logout,redirectByName,getUserInfo,copyToClipboardNotify
     }
 })

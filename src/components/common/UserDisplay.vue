@@ -2,7 +2,6 @@
 import moment from "moment";
 import momentTz from "moment-timezone";
 import {computed, ref, watch} from "vue";
-import { copyToClipboard } from 'quasar'
 import {useI18n} from "vue-i18n";
 import {useAppStore} from "@/store/app-store.js";
 import {storeToRefs} from "pinia";
@@ -12,22 +11,24 @@ const currentRouteName = router.currentRoute.value.name
 const {t} = useI18n()
 const appStore = useAppStore()
 const {userInfo} = storeToRefs(appStore)
-const {redirectByName, getUserInfo} = appStore
+const {redirectByName, getUserInfo,copyToClipboardNotify} = appStore
 getUserInfo()
-const currentDate = ref(moment().format("YYYY-MM-DD"));
+const currentDate = ref(moment().format("DD.MM.YYYY"));
 const currentTime = ref(moment().format("HH:mm:ss"));
 const TRANC_PREFIX = 'common.userDisplay'
 setInterval(() => {
-  currentDate.value = moment().format("YYYY-MM-DD");
+  currentDate.value = moment().format("DD.MM.YYYY");
   currentTime.value = moment().format("HH:mm:ss");
 }, 1000);
 
 const timeZone = momentTz.tz.guess();
 
 function getBalance(type){
-  let balance = userInfo.value.wallets.find(w => w.type === type)?.balance
-  if(!!balance){
-    return balance/100
+  if(!!userInfo.value){
+    let balance = userInfo.value.wallets.find(w => w.type === type)?.balance
+    if(!!balance){
+      return balance/100
+    }
   }
   return 0
 }
@@ -67,7 +68,7 @@ watch(userInfo,async (newValue, oldValue) => {
           dense>
         <template v-slot:after>
           <q-btn
-              @click="copyToClipboard(userInfo.promocode)"
+              @click="copyToClipboardNotify(userInfo.promocode)"
               round
               color="light-green-8"
               dense
@@ -141,23 +142,19 @@ watch(userInfo,async (newValue, oldValue) => {
         </q-input>
       </div>
     </div>
-    <q-tabs vertical inline-label>
+    <q-tabs :vertical="$q.platform.is.desktop" inline-label class="q-mt-sm">
+      <q-tab  :class="currentRouteName === 'personal' ? 'text-white' : ''"
+              :style="currentRouteName === 'personal' ? 'background-color: #a89c4c' : ''"
+              icon="forest"
+              :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.personal`) : ''"
+              @click="redirectByName('personal')"
+      />
       <q-tab  :class="currentRouteName === 'profile' ? 'text-white' : ''"
               :style="currentRouteName === 'profile' ? 'background-color: #a89c4c' : ''"
              icon="account_circle"
-             :label="t(`${TRANC_PREFIX}.profile`)"
+             :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.profile`) : ''"
              @click="redirectByName('profile')"
       />
-<!--      <q-list>-->
-<!--        <q-item clickable v-close-popup @click="redirectByName('profile')" style="background-color: #a89c4c">-->
-<!--          <q-item-section avatar>-->
-<!--            <q-icon name="account_circle" color="white"/>-->
-<!--          </q-item-section>-->
-<!--          <q-item-section class="text-white">-->
-<!--            {{ t(`${TRANC_PREFIX}.profile`) }}-->
-<!--          </q-item-section>-->
-<!--        </q-item>-->
-<!--      </q-list>-->
     </q-tabs>
   </div>
 </template>

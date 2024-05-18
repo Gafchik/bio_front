@@ -8,7 +8,7 @@ import '@vueup/vue-quill/dist/vue-quill.bubble.css';
 import { createPinia } from 'pinia'
 const pinia = createPinia()
 import i18n from "../src/modules/i18n.js"
-
+import filters from "@/fillters/comon-fillters.js"
 import router from "@/routes/router.js"
 
 import App from './App.vue'
@@ -34,5 +34,5 @@ myApp.use(pinia)
       },
     }
 })
-
+myApp.config.globalProperties.$filters = filters
 myApp.mount('#app')

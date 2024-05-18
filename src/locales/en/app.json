@@ -25,5 +25,29 @@
   },
   "numeric_value": "Number only",
   "coordinates_value": "Invalid coordinate format (99.9999999)"
+ },
+ "season": {
+  "1": "Winter",
+  "2": "Spring",
+  "3": "Summer",
+  "4": "Autumn"
+ },
+ "tree_sale_status": {
+  "1": "On balance",
+  "2": "On sale",
+  "3": "In reserve"
+ },
+ "copySuccess": "Text copied to clipboard",
+ "search": "Search",
+ "tree_info": {
+  "georgia_place": "Georgia",
+  "location": "Location",
+  "coords": "Coordinates",
+  "planting_date": "Planting date",
+  "season": "Dropping season",
+  "purchase_date": "Purchase date",
+  "tree_sale_status_id": "Item status",
+  "purchase_price": "Purchase price",
+  "current_price": "Current price"
  }
 }

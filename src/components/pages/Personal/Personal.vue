@@ -1,10 +1,14 @@
 <script setup>
 import PersonalTemplate from "@/components/core/PersonalTemplate.vue";
+import TreeItem from "@/components/common/TreeItem.vue";
 import {usePersonalStore} from "@/store/pages/Personal/personal-store.js";
 import {storeToRefs} from "pinia";
 import {useI18n} from "vue-i18n";
-import {computed} from "vue";
+import {computed, ref} from "vue";
+import {useAppStore} from "@/store/app-store.js";
 
+const appStore = useAppStore()
+const {copyToClipboardNotify} = appStore
 const TRANC_PREFIX = 'pages.personal'
 const {t} = useI18n()
 const personalStore = usePersonalStore()
@@ -12,59 +16,133 @@ const {getTreesAsync} = personalStore
 const {trees} = storeToRefs(personalStore)
 getTreesAsync()
 const isEmptyPage = computed(() => !trees.value.length)
-function getCoordString(coord,isLat = true){
-  let coordObj = JSON.parse(coord)
-  return isLat ? coordObj.lat : coordObj.lng
-}
+
+const search = ref('')
+const columns = computed(() => {
+  return [
+    {
+      name: 'uuid',
+      required: true,
+      align: 'center',
+      field: row => row.uuid,
+      format: val => `${val}`,
+      sortable: true
+    },
+    {
+      name: 'georgia_place',
+      required: true,
+      align: 'center',
+      field: row => t(`${TRANC_PREFIX}.tree_info.georgia_place`),
+      format: val => `${val}`,
+      sortable: true
+    },
+    {
+      name: 'coordinates',
+      required: true,
+      align: 'center',
+      field: row => row.coordinates,
+      format: val => `${val}`,
+      sortable: true
+    },
+    {
+      name: 'planting_date',
+      required: true,
+      align: 'center',
+      field: row => row.planting_date,
+      format: val => `${val}`,
+      sortable: true
+    },
+    {
+      name: 'season',
+      required: true,
+      align: 'center',
+      field: row => t(`app.season.${row.season}`),
+      format: val => `${val}`,
+      sortable: true
+    },
+    {
+      name: 'purchase_date',
+      required: true,
+      align: 'center',
+      field: row => row.purchase_date,
+      format: val => `${val}`,
+      sortable: true
+    },
+    {
+      name: 'tree_sale_status_id',
+      required: true,
+      align: 'center',
+      field: row => t(`app.tree_sale_status.${row.tree_sale_status_id}`),
+      format: val => `${val}`,
+      sortable: true
+    },
+    {
+      name: 'purchase_price',
+      required: true,
+      align: 'center',
+      field: row => row.purchase_price,
+      format: val => `${val}`,
+      sortable: true
+    },
+    {
+      name: 'current_price',
+      required: true,
+      align: 'center',
+      field: row => row.current_price,
+      format: val => `${val}`,
+      sortable: true
+    },
+  ]
+})
 </script>
 
 <template>
   <PersonalTemplate :is-empty="isEmptyPage" :emptyText="t(`${TRANC_PREFIX}.empty_page`)">
     <template v-slot:personal-content>
-      <div v-for="tree in trees"
-          :class="$q.platform.is.desktop ? 'row justify-center items-center content-center q-ma-md' : 'justify-center items-center content-center q-ma-md'">
-        <div class="tree-circle col-4">
-          <div class="glossy bg-light-green-8 text-white text-center text-bold"
-               style="width: 150px; position: absolute; border-radius: 25px;">
-            {{tree.uuid}}
-          </div>
-          <img src="@assets/image/tree/personal_welcome_tree.png" alt="logo_image">
-        </div>
-        <div class="col-8 q-pa-md">
-          <div :class="$q.platform.is.desktop ? 'row justify-around items-center content-center' : ''">
-            <div>
-              <div class="text-h6 text-light-green-9 text-bold">{{t(`${TRANC_PREFIX}.tree_info.georgia_place`)}}</div>
-              <div class="text-subtitle2 text-bold">{{t(`${TRANC_PREFIX}.tree_info.location`)}}</div>
-            </div>
-            <div>
-              <div class="text-subtitle2 text-light-green-9 text-bold">
-                {{getCoordString(tree.coordinates)}}
-                <br>
-                {{getCoordString(tree.coordinates,false)}}
-              </div>
-              <div class="text-subtitle2 text-bold">{{t(`${TRANC_PREFIX}.tree_info.coords`)}}</div>
-            </div>
-          </div>
-          <div class="separator"></div>
-        </div>
+      <div class="q-mb-lg text-bold text-h6 text-green-8">
+        {{t(`${TRANC_PREFIX}.title`)}}
       </div>
+      <q-table
+          style="background-color: #f5f3e4;"
+          class="q-my-lg border-shadow"
+          :rows="trees"
+          :columns="columns"
+          row-key="id"
+          :filter="search"
+          dense
+          :grid="$q.platform.is.mobile"
+          :rows-per-page-options="[0]"
+      >
+        <template v-slot:header></template>
+        <template v-slot:bottom></template>
+        <template v-slot:top>
+          <div style="width: 100%" class="q-mt-sm">
+            <q-input
+                borderless
+                outlined
+                clearable
+                label-color="light-green-9"
+                color="light-green-9"
+                dense
+                v-model="search"
+                :placeholder="t(`app.search`)">
+              <template v-slot:prepend>
+                <q-icon name="search" />
+              </template>
+            </q-input>
+          </div>
+        </template>
+        <template v-slot:body="props">
+          <TreeItem :tree="props.row"/>
+        </template>
+        <template  v-slot:item="props">
+          <TreeItem :tree="props.row"/>
+        </template>
+      </q-table>
     </template>
   </PersonalTemplate>
 </template>
 
 <style scoped>
 @import "@sass/common-style.css";
-.tree-circle {
-  display: inline-block; /* Чтобы контейнер подстраивался по размеру изображения */
-  overflow: hidden; /* Обрезание изображения, чтобы оно не выходило за пределы рамки */
-  border-radius: 50%; /* Создание круглой формы */
-  border: 1px solid #7ba438; /* Зеленая круглая рамка */
-  width: 150px; /* Ширина круга */
-  height: auto; /* Высота круга */
-}
-
-.tree-circle img {
-  width: 150px; /* Ширина изображения */
-  height: auto; /* Автоматическая высота, чтобы сохранить пропорции */
-}
 </style>
