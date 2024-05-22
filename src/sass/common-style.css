@@ -30,3 +30,21 @@
   border-bottom: 2px solid #7ba438; /* Цвет и стиль линии */
   height: 1px;
 }
+.pulse-animation {
+  border-radius: 10px;
+  /* Устанавливаем начальный стиль для бордера и тени */
+  box-shadow: 0 0 10px rgb(88,156,84,1);
+  /* Настраиваем параметры анимации */
+  animation: pulse 1.5s infinite alternate;
+}
+
+@keyframes pulse {
+  /* Определяем анимацию пульсации бордера и тени */
+  from {
+    box-shadow: 0 0 10px rgb(0,0,0,1);
+  }
+  to {
+    /*box-shadow: 1px 1px 30px #b5e617; /* Конечная тень */
+    box-shadow: 0 0 40px rgb(88,156,84,1);
+  }
+}

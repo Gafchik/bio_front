@@ -4,11 +4,17 @@ import TreeItem from "@/components/common/TreeItem.vue";
 import {usePersonalStore} from "@/store/pages/Personal/personal-store.js";
 import {storeToRefs} from "pinia";
 import {useI18n} from "vue-i18n";
-import {computed, ref} from "vue";
+import {computed, onMounted, ref} from "vue";
 import {useAppStore} from "@/store/app-store.js";
+import {useDialogConfirmStore} from "@/store/common/dialog-confirm.js";
+const {openDialogConfirm} = useDialogConfirmStore()
+import SignedDocumentsDialog from "@/components/common/SignedDocumentsDialog.vue";
+
 
 const appStore = useAppStore()
-const {copyToClipboardNotify} = appStore
+const {currentLocale} = storeToRefs(appStore)
+
+
 const TRANC_PREFIX = 'pages.personal'
 const {t} = useI18n()
 const personalStore = usePersonalStore()
@@ -18,6 +24,7 @@ getTreesAsync()
 const isEmptyPage = computed(() => !trees.value.length)
 
 const search = ref('')
+const SignedDocumentsDialogRef = ref(null)
 const columns = computed(() => {
   return [
     {
@@ -94,6 +101,9 @@ const columns = computed(() => {
     },
   ]
 })
+function clickSignedDocuments(tree){
+  SignedDocumentsDialogRef.value.openDialog(tree.uuid)
+}
 </script>
 
 <template>
@@ -133,12 +143,21 @@ const columns = computed(() => {
           </div>
         </template>
         <template v-slot:body="props">
-          <TreeItem :tree="props.row"/>
+          <TreeItem
+              :tree="props.row"
+              :click-signed-documents="clickSignedDocuments"
+              :click-signed-documents-params="props.row"
+          />
         </template>
         <template  v-slot:item="props">
-          <TreeItem :tree="props.row"/>
+          <TreeItem
+              :tree="props.row"
+              :click-signed-documents="clickSignedDocuments"
+              :click-signed-documents-params="props.row"
+          />
         </template>
       </q-table>
+      <SignedDocumentsDialog ref="SignedDocumentsDialogRef" :callback-action="getTreesAsync"/>
     </template>
   </PersonalTemplate>
 </template>

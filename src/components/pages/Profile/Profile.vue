@@ -13,7 +13,7 @@ const {t} = useI18n()
 const TRANC_PREFIX = 'pages.profile'
 const appStore = useAppStore()
 const {getUserInfo,showInfoMassage} = appStore
-const {userInfo,axios} = storeToRefs(appStore)
+const {userInfo,axios,} = storeToRefs(appStore)
 const profileStore = useProfileStore()
 const {changeUserInfoAsync,changePasswordAsync} = profileStore
 

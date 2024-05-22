@@ -48,6 +48,8 @@
   "purchase_date": "Purchase date",
   "tree_sale_status_id": "Item status",
   "purchase_price": "Purchase price",
-  "current_price": "Current price"
+  "current_price": "Current price",
+  "singleDocument": "Finish design!",
+  "certificate": "Certificate"
  }
 }

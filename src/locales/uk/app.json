@@ -48,6 +48,8 @@
   "purchase_date": "Дата покупки",
   "tree_sale_status_id": "Статус товару",
   "purchase_price": "Ціна покупки",
-  "current_price": "Поточна ціна"
+  "current_price": "Поточна ціна",
+  "singleDocument": "Завершити оформлення!",
+  "certificate": "Сертифікат"
  }
 }

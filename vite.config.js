@@ -24,5 +24,5 @@ export default defineConfig({
       "@sass": path.join(__dirname, '/src/sass'),
       "@": path.join(__dirname, '/src'),
     }
-  }
+  },
 })

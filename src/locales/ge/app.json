@@ -48,6 +48,8 @@
     "purchase_date": "შეძენის თარიღი",
     "tree_sale_status_id": "პუნქტის სტატუსი",
     "purchase_price": "შესყიდვის ფასი",
-    "current_price": "მიმდინარე ფასი"
+    "current_price": "მიმდინარე ფასი",
+    "singleDocument": "დაასრულეთ დიზაინი!",
+    "certificate": "სერთიფიკატი"
   }
 }
