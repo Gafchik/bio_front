@@ -6,6 +6,7 @@ import {useI18n} from "vue-i18n";
 import {useAppStore} from "@/store/app-store.js";
 import {storeToRefs} from "pinia";
 import router from "@/routes/router.js"
+import {useStatusStore} from "@/store/pages/Status/status.js";
 
 const currentRouteName = router.currentRoute.value.name
 const {t} = useI18n()
@@ -22,7 +23,8 @@ setInterval(() => {
 }, 1000);
 
 const timeZone = momentTz.tz.guess();
-
+const statusStore = useStatusStore()
+const {currentStatus} = storeToRefs(statusStore)
 function getBalance(type){
   if(!!userInfo.value){
     let balance = userInfo.value.wallets.find(w => w.type === type)?.balance
@@ -143,6 +145,12 @@ watch(userInfo,async (newValue, oldValue) => {
       </div>
     </div>
     <q-tabs :vertical="$q.platform.is.desktop" inline-label class="q-mt-sm">
+      <q-tab  :class="currentRouteName === 'status' ? 'text-white' : ''"
+              :style="currentRouteName === 'status' ? 'background-color: #a89c4c' : ''"
+              icon="workspace_premium"
+              :label="$q.platform.is.desktop ? currentStatus.name : ''"
+              @click="redirectByName('status')"
+      />
       <q-tab  :class="currentRouteName === 'personal' ? 'text-white' : ''"
               :style="currentRouteName === 'personal' ? 'background-color: #a89c4c' : ''"
               icon="forest"

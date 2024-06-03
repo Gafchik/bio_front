@@ -1,5 +1,6 @@
 import Personal from "@/components/pages/Personal/Personal.vue";
 import Profile from "@/components/pages/Profile/Profile.vue";
+import Status from "@/components/pages/Status/Status.vue";
 
 export default [
     {
@@ -11,5 +12,10 @@ export default [
         path: '/personal',
         component: Personal,
         name: 'personal',
+    },
+    {
+        path: '/status',
+        component: Status,
+        name: 'status',
     },
 ]

@@ -1,0 +1,13 @@
+{
+  "title": "Project participant status",
+  "current_status": "Your current status",
+  "next_status": "Trees to next status",
+  "dialogue": {
+    "btn": "Status Benefits",
+    "title": "Status Benefits",
+    "text_1": "Just registered on the platform and did not have time to purchase the olive trees of the project?",
+    "text_2": "Let's fix this!",
+    "linc_buy": "Buy a tree.",
+    "linc_faq": "Benefits of all statuses"
+  }
+}
