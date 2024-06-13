@@ -6,6 +6,7 @@ import home from "@/locales/ge/pages/home/home.json"
 import profile from "@/locales/ge/pages/profile/profile.json"
 import personal from "@/locales/ge/pages/personal/personal.json"
 import status from "@/locales/ge/pages/status/status.json"
+import purchases from "@/locales/ge/pages/purchases/purchases.json"
 export default {
     faq: faq,
     contacts: contacts,
@@ -15,4 +16,5 @@ export default {
     profile: profile,
     personal: personal,
     status: status,
+    purchases: purchases,
 }

@@ -51,5 +51,13 @@
   "current_price": "Current price",
   "singleDocument": "Finish design!",
   "certificate": "Certificate"
+ },
+ "order_status": {
+  "0":"In progress",
+  "1":"Successful",
+  "2":"Rejected",
+  "3":"Revoked",
+  "4":"Exposed",
+  "5":"Completed"
  }
 }

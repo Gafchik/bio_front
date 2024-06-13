@@ -157,6 +157,12 @@ watch(userInfo,async (newValue, oldValue) => {
               :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.personal`) : ''"
               @click="redirectByName('personal')"
       />
+      <q-tab  :class="currentRouteName === 'purchases' ? 'text-white' : ''"
+              :style="currentRouteName === 'purchases' ? 'background-color: #a89c4c' : ''"
+              icon="shopping_basket"
+              :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.purchases`) : ''"
+              @click="redirectByName('purchases')"
+      />
       <q-tab  :class="currentRouteName === 'profile' ? 'text-white' : ''"
               :style="currentRouteName === 'profile' ? 'background-color: #a89c4c' : ''"
              icon="account_circle"
