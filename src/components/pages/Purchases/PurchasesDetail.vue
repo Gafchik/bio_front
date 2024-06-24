@@ -11,7 +11,7 @@ const TRANC_PREFIX = 'pages.purchases'
 const {t} = useI18n()
 const purchasesStore = usePurchasesStore()
 const {selectedOrder,orderTrees} = storeToRefs(purchasesStore)
-const {getOrderAsync,getPurchases} = purchasesStore
+const {getOrderAsync,getPurchases, downloadDocAsync} = purchasesStore
 const route = useRoute();
 import router from "@/routes/router.js";
 const SignedDocumentsDialogRef = ref(null)
@@ -145,7 +145,7 @@ function clickSignedDocuments(tree){
         </template>
         <template v-slot:body-cell-download="props">
           <q-td class="text-center">
-            <q-btn color="light-green-8" flat icon="download"/>
+            <q-btn color="light-green-8" flat icon="download" @click="downloadDocAsync(props.row)"/>
           </q-td>
         </template>
         <template v-slot:body-cell-status="props">
@@ -213,18 +213,13 @@ function clickSignedDocuments(tree){
                     <q-item-label caption class="text-black">{{$filters.centToDollar(col.value)}}</q-item-label>
                   </q-item-section>
                 </template>
-                <template v-if="col.name === 'detail'">
+                <template v-if="col.name === 'download'">
                   <q-item-section>
                     <q-item-label class="text-bold">{{ col.label }}</q-item-label>
                   </q-item-section>
                   <q-item-section side>
                     <q-item-label caption class="text-black">
-                      <router-link
-                          target= '_blank'
-                          :to="{ name: 'purchases_detail', params: { id: props.row.id }}"
-                          class="text-light-green-8">
-                        {{t(`${TRANC_PREFIX}.detail`)}}
-                      </router-link>
+                      <q-btn color="light-green-8" flat icon="download" @click="downloadDocAsync(props.row)"/>
                     </q-item-label>
                   </q-item-section>
                 </template>

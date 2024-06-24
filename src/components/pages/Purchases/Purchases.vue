@@ -123,7 +123,7 @@ const search = ref('')
         <template v-slot:body-cell-detail="props">
           <q-td class="text-center">
             <router-link
-                target= '_blank'
+                :target="$q.platform.is.ios ? '' : '_blank'"
                 :to="{ name: 'purchases_detail', params: { id: props.row.id }}"
                 class="text-light-green-8">
               {{t(`${TRANC_PREFIX}.detail`)}}
@@ -202,7 +202,7 @@ const search = ref('')
                     <q-item-section side>
                       <q-item-label caption class="text-black">
                         <router-link
-                            target= '_blank'
+                            :target="$q.platform.is.ios ? '' : '_blank'"
                             :to="{ name: 'purchases_detail', params: { id: props.row.id }}"
                             class="text-light-green-8">
                           {{t(`${TRANC_PREFIX}.detail`)}}

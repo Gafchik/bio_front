@@ -1,6 +1,7 @@
 import {defineStore, storeToRefs} from "pinia";
 import {useAppStore} from "@/store/app-store.js";
 import {ref} from "vue";
+import {download} from "@/helpers/download-helper.js";
 
 export const usePurchasesStore = defineStore('usePurchasesStore', () => {
     const appStore = useAppStore()
@@ -34,8 +35,19 @@ export const usePurchasesStore = defineStore('usePurchasesStore', () => {
                 return false
             });
     }
+    async function downloadDocAsync(item) {
+        return await axios.value.get('/api/purchases/download/'+item.id,{
+            responseType: 'blob'
+        })
+            .then(response => {
+                download(response.data,'doc_archive_'+item.id+'.zip')
+            })
+            .catch(error => {
+                return false
+            });
+    }
     getPurchases();
     return {
-        getPurchases,orders,getOrderAsync,selectedOrder,orderTrees
+        getPurchases,orders,getOrderAsync,selectedOrder,orderTrees,downloadDocAsync
     }
 })

@@ -29,7 +29,7 @@ const {t} = useI18n()
           <div>{{t(`${TRANC_PREFIX}.dialog.text_2`)}}</div>
           <div>
             <router-link
-                target= '_blank'
+                :target="$q.platform.is.ios ? '' : '_blank'"
                 :to="{ name: 'faq', query: { category:12,item:66 }}"
                 class="text-light-green-8">
                 {{t(`${TRANC_PREFIX}.dialog.linc_buy`)}}
@@ -38,7 +38,7 @@ const {t} = useI18n()
           </div>
           <div>
             <router-link
-                target= '_blank'
+                :target="$q.platform.is.ios ? '' : '_blank'"
                 :to="{ name: 'faq', query: { category:12,item:66 }}"
                 class="text-light-green-8">
                   {{t(`${TRANC_PREFIX}.dialog.linc_faq`)}}
