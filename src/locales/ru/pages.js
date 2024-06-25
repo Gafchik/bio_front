@@ -7,6 +7,7 @@ import profile from "@/locales/ru/pages/profile/profile.json"
 import personal from "@/locales/ru/pages/personal/personal.json"
 import status from "@/locales/ru/pages/status/status.json"
 import purchases from "@/locales/ru/pages/purchases/purchases.json"
+import user_map from "@/locales/ru/pages/user-map/user_map.json"
 export default {
     faq: faq,
     contacts: contacts,
@@ -17,4 +18,5 @@ export default {
     personal: personal,
     status: status,
     purchases: purchases,
+    user_map: user_map,
 }

@@ -169,6 +169,12 @@ watch(userInfo,async (newValue, oldValue) => {
              :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.profile`) : ''"
              @click="redirectByName('profile')"
       />
+      <q-tab  :class="currentRouteName === 'user_map' ? 'text-white' : ''"
+              :style="currentRouteName === 'user_map' ? 'background-color: #a89c4c' : ''"
+             icon="map"
+             :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.map`) : ''"
+             @click="redirectByName('user_map')"
+      />
     </q-tabs>
   </div>
 </template>

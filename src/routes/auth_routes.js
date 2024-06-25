@@ -3,6 +3,7 @@ import Profile from "@/components/pages/Profile/Profile.vue";
 import Status from "@/components/pages/Status/Status.vue";
 import Purchases from "@/components/pages/Purchases/Purchases.vue";
 import PurchasesDetail from "@/components/pages/Purchases/PurchasesDetail.vue";
+import UserMap from "@/components/pages/UserMap/UserMap.vue";
 
 export default [
     {
@@ -29,5 +30,10 @@ export default [
         path: '/purchases/:id',
         component: PurchasesDetail,
         name: 'purchases_detail',
+    },
+    {
+        path: '/user-map',
+        component: UserMap,
+        name: 'user_map',
     },
 ]
