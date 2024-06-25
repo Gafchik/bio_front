@@ -1,5 +1,8 @@
 import { createApp } from 'vue'
 import commonGlobalComponents from "@/constants/common-global-components.js"
+import "vue3-openlayers/styles.css";
+import OpenLayersMap from "vue3-openlayers";
+import { Map, Layers, Sources } from "vue3-openlayers";
 import "../src/modules/quasar.js"
 import { Quasar, Notify, Dialog } from 'quasar'
 import { Quill, QuillEditor } from '@vueup/vue-quill'
@@ -23,6 +26,10 @@ Quill.register(Block, true);
 
 myApp.use(pinia)
     .use(i18n)
+    .use(OpenLayersMap)
+    .use(Map)
+    .use(Layers)
+    .use(Sources)
     .component('QuillEditor', QuillEditor)
     .use(router)
     .use(Quasar, {

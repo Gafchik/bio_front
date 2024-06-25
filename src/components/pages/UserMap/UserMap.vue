@@ -1,4 +1,6 @@
 <script setup>
+import marker_tree from "@assets/image/tree/marker-tree.svg";
+// import marker_tree from "@assets/image/tree/tree-2.png";
 import PersonalTemplate from "@/components/core/PersonalTemplate.vue";
 import {useI18n} from "vue-i18n";
 import {useUserMapStore} from "@/store/pages/UserMap/user-map-store.js";
@@ -7,7 +9,6 @@ import {computed} from "vue";
 import moment from "moment";
 const TRANC_PREFIX = 'pages.user_map'
 const {t} = useI18n()
-
 const userMapStore = useUserMapStore()
 const {trees,fields} = storeToRefs(userMapStore)
 const isEmpty = computed(() => {
@@ -69,6 +70,127 @@ function getCoordString(coord,isLat = true){
 function getYear(date){
   return moment(date).format('YYYY');
 }
+
+import { ref, onMounted, onUnmounted, watch } from 'vue';
+const map = ref(null);
+const polygon = computed(() => {
+  let temp = JSON.parse(fields.value[0].area)
+  return  temp.map(i => {
+    return new Microsoft.Maps.Location(i.lat, i.lng)
+  })
+})
+const markers = computed(() => {
+  let temp = trees.value.map(obj => JSON.parse(obj.coordinates))
+  return temp.map(i => {
+    return new Microsoft.Maps.Location(i.lat, i.lng)
+  });
+})
+const polygons = computed(() => {
+  return  fields.value.map(i => {
+    let tempArea = JSON.parse(i.area)
+    let area = tempArea.map(o => {
+      return new Microsoft.Maps.Location(o.lat, o.lng)
+    })
+    return {area:area}
+  })
+})
+function initMap() {
+  const mapElement = map.value;
+  const zoom = 16
+  map.value = new Microsoft.Maps.Map(mapElement, {
+    mapTypeId: Microsoft.Maps.MapTypeId.aerial,
+    zoom: zoom ? parseInt(zoom) : 15,
+    center: markers.value && markers.value.length
+        ? markers.value[0]
+        : polygons.value && polygons.value.length
+            ? polygons.value[0].area : null,
+    credentials: `AnnWKZqULr2VDmhnIXslI0dTcYq_0sG3RK5yxZMIMVPIRwRmwvta5LPd8ztqDsAd`,
+    maxZoom: 50,
+    showLocateMeButton: false,
+    showMapTypeSelector: false,
+    maxNetworkLinkDepth: 3
+  });
+
+  if (polygon.value) {
+    getPolygon(polygon.value);
+  }
+  if (markers.value) {
+    getMarkers(markers.value);
+  }
+  if (polygons.value) {
+    getPolygons(polygons.value);
+  }
+}
+
+function getPolygon(polygon) {
+  const polygonShape = new Microsoft.Maps.Polygon(polygon, {
+    fillColor: 'rgba(110,160,40,0.8)',
+    strokeColor: 'rgba(235, 87, 87,1)',
+    strokeThickness: 2
+  });
+  map.value.entities.push(polygonShape);
+}
+
+function getPolygons(polygons) {
+  polygons.forEach(t => {
+    const polygon = new Microsoft.Maps.Polygon(t.area, {
+      fillColor: 'rgba(110,160,40,0.8)',
+      strokeColor: 'rgba(235, 87, 87,1)',
+      strokeThickness: 2
+    });
+    map.value.entities.push(polygon);
+
+    // const infobox = new Microsoft.Maps.Infobox(map.value.getCenter(), { visible: false });
+    // infobox.setMap(map.value);
+
+    // Microsoft.Maps.Events.addHandler(polygon, 'click', e => {
+    //   const loc = e.location;
+    //   const desc = `
+    //     ${t.name ? t.name + '<br>' : ''}
+    //     ${t.location ? t.location + '.' : ''}
+    //     ${t.province ? t.province + '.' : ''}<br>
+    //     Cadastral Number — ${t.cadastral_number} <br>
+    //     ${t.planting_year ? `Year of Planting — ` + t.planting_year + '<br>' : ''}
+    //     Count of Trees — ${t.trees_count}<br>
+    //     ${t.description ? t.description : ''}`;
+    //   infobox.setOptions({
+    //     location: loc,
+    //     description: desc,
+    //     visible: true
+    //   });
+    // });
+  });
+}
+
+function getMarkers(markers) {
+  const pins = markers.map(e => new Microsoft.Maps.Pushpin(e, {
+    icon: marker_tree,
+  }));
+  pins.forEach(pin => {
+    map.value.entities.push(pin);
+  })
+}
+
+
+watch([
+  () => [...trees.value],
+  () => [...fields.value],
+],
+    () => {
+      if (document.getElementById("scriptBingMaps")) {
+        window.OnLoadBingMapsApi = () => initMap();
+      } else {
+        window.OnLoadBingMapsApi = () => initMap();
+        const scriptTag = document.createElement("script");
+        scriptTag.src = "https://www.bing.com/api/maps/mapcontrol?callback=OnLoadBingMapsApi";
+        scriptTag.id = "scriptBingMaps";
+        document.head.appendChild(scriptTag);
+      }
+})
+
+onUnmounted(() => {
+  document.getElementById('scriptBingMaps')?.remove();
+});
 </script>
 
 <template>
@@ -174,6 +296,9 @@ function getYear(date){
             </div>
           </template>
         </q-table>
+        <div class="q-my-lg border-shadow map"
+             :style="$q.platform.is.mobile ? 'width: 100%;height: 60vh;' : 'width: 45%;height: 60vh;'"
+             ref="map"/>
       </div>
     </template>
   </PersonalTemplate>
