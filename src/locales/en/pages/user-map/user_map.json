@@ -1,3 +1,11 @@
 {
-  "title": ""
+  "title": "Map",
+  "empty_page": "This section will display the location of the trees you purchased.",
+  "table_headers": {
+    "uuid": "Tree ID",
+    "coordinates":"Coordinates",
+    "year": "Year",
+    "season": "Season",
+    "purchase_price": "Price $"
+  }
 }

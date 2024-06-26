@@ -9,6 +9,8 @@
   "ge":"Грузинська"
  },
  "rules": {
+  "numericMore" : "{field_name} має бути більше {more}",
+  "numericLess" : "{field_name} має бути менше {less}",
   "email_exist": "Такий Email вже використовується",
   "email_exemple": "Введіть Email, приклад: example{dog}example.com",
   "confirm_field": "Має відповідати полю '{field_name}'",
@@ -59,5 +61,16 @@
   "3": "Відкликано",
   "4": "Виставлено",
   "5":"Завершено"
+ },
+ "withdrawal": {
+  "type": {
+   "1": "Карта",
+   "2": "Swift"
+  },
+  "status": {
+   "-1": "Скасовано",
+   "0": "Нова",
+   "1": "Підтверджено"
+  }
  }
 }

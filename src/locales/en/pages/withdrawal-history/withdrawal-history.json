@@ -1,0 +1,11 @@
+{
+  "title": "History of withdrawals",
+  "empty_page": "This section will display the history of your withdrawal requests",
+  "table_headers": {
+    "date": "Date",
+    "time": "Time",
+    "amount": "Amount $",
+    "type": "Type",
+    "status": "Status"
+  }
+}

@@ -1,7 +1,6 @@
 import {defineStore, storeToRefs} from "pinia";
 import {useAppStore} from "@/store/app-store.js";
 import {ref} from "vue";
-import {download} from "@/helpers/download-helper.js";
 
 export const useUserMapStore = defineStore('useUserMapStore', () => {
     const appStore = useAppStore()
@@ -18,8 +17,7 @@ export const useUserMapStore = defineStore('useUserMapStore', () => {
             .catch(error => {});
     }
 
-    getTrees()
     return {
-        trees, fields,
+        trees, fields,getTrees
     }
 })

@@ -20,7 +20,7 @@ const props = defineProps({
           class="border-shadow q-mx-lg bg-card q-py-xl">
     <q-card-section>
       <div :class="$q.platform.is.desktop ? 'row justify-center items-center content-center' : 'justify-center items-center content-center'">
-        <div class="tree-circle col-3">
+        <div :class="$q.platform.is.mobile ? 'tree-circle col-3' : 'col-3'">
           <img src="@assets/image/tree/personal_welcome_tree.png" alt="logo_image">
         </div>
         <div class="col-9 q-pa-md">
@@ -33,7 +33,6 @@ const props = defineProps({
         </div>
       </div>
     </q-card-section>
-
   </q-card>
 </template>
 

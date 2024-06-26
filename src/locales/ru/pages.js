@@ -8,6 +8,8 @@ import personal from "@/locales/ru/pages/personal/personal.json"
 import status from "@/locales/ru/pages/status/status.json"
 import purchases from "@/locales/ru/pages/purchases/purchases.json"
 import user_map from "@/locales/ru/pages/user-map/user_map.json"
+import withdrawal_history from "@/locales/ru/pages/withdrawal-history/withdrawal-history.json"
+import withdrawal from "@/locales/ru/pages/withdrawal/withdrawal.json"
 export default {
     faq: faq,
     contacts: contacts,
@@ -19,4 +21,6 @@ export default {
     status: status,
     purchases: purchases,
     user_map: user_map,
+    withdrawal_history: withdrawal_history,
+    withdrawal: withdrawal,
 }

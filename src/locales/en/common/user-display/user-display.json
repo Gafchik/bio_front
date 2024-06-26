@@ -10,5 +10,10 @@
   "empty_card": {
     "title": "Dear {name}, we are glad to welcome you to your personal account!"
   },
-  "personal": "My trees"
+  "personal": "My trees",
+  "wallet": {
+    "title": "Wallet",
+    "withdrawal_history": "Withdrawal History",
+    "withdrawal": "Withdrawal"
+  }
 }

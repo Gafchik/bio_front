@@ -1,6 +1,5 @@
 <script setup>
 import marker_tree from "@assets/image/tree/marker-tree.svg";
-// import marker_tree from "@assets/image/tree/tree-2.png";
 import PersonalTemplate from "@/components/core/PersonalTemplate.vue";
 import {useI18n} from "vue-i18n";
 import {useUserMapStore} from "@/store/pages/UserMap/user-map-store.js";
@@ -10,6 +9,8 @@ import moment from "moment";
 const TRANC_PREFIX = 'pages.user_map'
 const {t} = useI18n()
 const userMapStore = useUserMapStore()
+const {getTrees} = userMapStore
+getTrees()
 const {trees,fields} = storeToRefs(userMapStore)
 const isEmpty = computed(() => {
   return !trees.value.length

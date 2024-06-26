@@ -4,6 +4,8 @@ import Status from "@/components/pages/Status/Status.vue";
 import Purchases from "@/components/pages/Purchases/Purchases.vue";
 import PurchasesDetail from "@/components/pages/Purchases/PurchasesDetail.vue";
 import UserMap from "@/components/pages/UserMap/UserMap.vue";
+import WithdrawalHistory from "@/components/pages/WithdrawalHistory/WithdrawalHistory.vue";
+import Withdrawal from "@/components/pages/Withdrawal/Withdrawal.vue";
 
 export default [
     {
@@ -35,5 +37,15 @@ export default [
         path: '/user-map',
         component: UserMap,
         name: 'user_map',
+    },
+    {
+        path: '/withdrawal-history',
+        component: WithdrawalHistory,
+        name: 'withdrawal_history',
+    },
+    {
+        path: '/withdrawal',
+        component: Withdrawal,
+        name: 'withdrawal',
     },
 ]

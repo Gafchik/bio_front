@@ -44,6 +44,11 @@ watch(userInfo,async (newValue, oldValue) => {
   balance_reserve.value = getBalance('futures')
   count_trees.value = newValue.count_trees
 })
+const walletToggle = ref(false)
+const walletRoutes = [
+    'withdrawal_history',
+    'withdrawal',
+]
 </script>
 
 <template>
@@ -144,36 +149,90 @@ watch(userInfo,async (newValue, oldValue) => {
         </q-input>
       </div>
     </div>
-    <q-tabs :vertical="$q.platform.is.desktop" inline-label class="q-mt-sm">
+    <q-tabs
+        :vertical="$q.platform.is.desktop"
+        inline-label class="q-mt-sm"
+        outside-arrows
+        mobile-arrows
+    >
       <q-tab  :class="currentRouteName === 'status' ? 'text-white' : ''"
               :style="currentRouteName === 'status' ? 'background-color: #a89c4c' : ''"
               icon="workspace_premium"
+              :dense="$q.platform.is.mobile"
               :label="$q.platform.is.desktop ? currentStatus.name : ''"
               @click="redirectByName('status')"
       />
       <q-tab  :class="currentRouteName === 'personal' ? 'text-white' : ''"
               :style="currentRouteName === 'personal' ? 'background-color: #a89c4c' : ''"
               icon="forest"
+              :dense="$q.platform.is.mobile"
               :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.personal`) : ''"
               @click="redirectByName('personal')"
       />
       <q-tab  :class="currentRouteName === 'purchases' ? 'text-white' : ''"
               :style="currentRouteName === 'purchases' ? 'background-color: #a89c4c' : ''"
               icon="shopping_basket"
+              :dense="$q.platform.is.mobile"
               :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.purchases`) : ''"
               @click="redirectByName('purchases')"
       />
       <q-tab  :class="currentRouteName === 'profile' ? 'text-white' : ''"
               :style="currentRouteName === 'profile' ? 'background-color: #a89c4c' : ''"
-             icon="account_circle"
-             :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.profile`) : ''"
-             @click="redirectByName('profile')"
+              icon="account_circle"
+              :dense="$q.platform.is.mobile"
+              :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.profile`) : ''"
+              @click="redirectByName('profile')"
+      />
+      <q-expansion-item
+          v-if="$q.platform.is.desktop"
+          :header-inset-level="1"
+          expand-separator
+          default-opened
+          icon="wallet"
+          :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.wallet.title`) : ''"
+      >
+        <q-tab  :class="currentRouteName === 'withdrawal_history' ? 'text-white' : ''"
+                :style="currentRouteName === 'withdrawal_history' ? 'background-color: #a89c4c' : ''"
+                icon="shopping_cart_checkout"
+                :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.wallet.withdrawal_history`) : ''"
+                @click="redirectByName('withdrawal_history')"
+        />
+        <q-tab  :class="currentRouteName === 'withdrawal' ? 'text-white' : ''"
+                :style="currentRouteName === 'withdrawal' ? 'background-color: #a89c4c' : ''"
+                icon="add_card"
+                :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.wallet.withdrawal`) : ''"
+                @click="redirectByName('withdrawal')"
+        />
+      </q-expansion-item>
+      <q-tab
+              :class="walletRoutes.includes(currentRouteName) ? 'text-white' : ''"
+              :style="walletRoutes.includes(currentRouteName) ? 'background-color: #a89c4c' : ''"
+              icon="wallet"
+              :dense="$q.platform.is.mobile"
+              :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.wallet.withdrawal_history`) : ''"
+              @click="walletToggle = !walletToggle"
+              v-if="$q.platform.is.mobile"
       />
       <q-tab  :class="currentRouteName === 'user_map' ? 'text-white' : ''"
               :style="currentRouteName === 'user_map' ? 'background-color: #a89c4c' : ''"
-             icon="map"
-             :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.map`) : ''"
-             @click="redirectByName('user_map')"
+              icon="map"
+              :dense="$q.platform.is.mobile"
+              :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.map`) : ''"
+              @click="redirectByName('user_map')"
+      />
+    </q-tabs>
+    <q-tabs :vertical="true" inline-label class="q-mt-sm"  v-if="$q.platform.is.mobile && !!walletToggle">
+      <q-tab  :class="currentRouteName === 'withdrawal_history' ? 'text-white' : ''"
+              :style="currentRouteName === 'withdrawal_history' ? 'background-color: #a89c4c' : ''"
+              icon="shopping_cart_checkout"
+              :label="t(`${TRANC_PREFIX}.wallet.withdrawal_history`)"
+              @click="redirectByName('withdrawal_history')"
+      />
+      <q-tab  :class="currentRouteName === 'withdrawal' ? 'text-white' : ''"
+              :style="currentRouteName === 'withdrawal' ? 'background-color: #a89c4c' : ''"
+              icon="add_card"
+              :label="t(`${TRANC_PREFIX}.wallet.withdrawal`)"
+              @click="redirectByName('withdrawal')"
       />
     </q-tabs>
   </div>
