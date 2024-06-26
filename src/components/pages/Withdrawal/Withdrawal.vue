@@ -125,7 +125,7 @@ function onReset(){
                 class="glossy"
                 unelevated
                 rounded
-                size="xl"
+                :size="$q.platform.is.desktop ? 'xl' : 'lg'"
                 type="submit"
                 color="light-green-8"
                 :label="t(`${TRANC_PREFIX}.submit`)"/>
