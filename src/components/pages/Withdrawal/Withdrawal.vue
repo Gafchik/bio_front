@@ -7,6 +7,7 @@ const {t} = useI18n()
 import {CARD,SWIFT} from "@/constants/withdrawal-type.js"
 import rules from "@/rules/rules.js";
 import Vue3QTelInput from "vue3-q-tel-input";
+import {useWithdrawalStore} from "@/store/pages/Withdrawal/withdrawal-store.js";
 const payload = ref({
   type: CARD,
   amount: 0,
@@ -15,12 +16,39 @@ const payload = ref({
   phone: '',
   bank: '',
 })
+const appStore = useAppStore()
+const {showInfoMassage} = appStore
+const withdrawalStore = useWithdrawalStore()
+const {fillRequestWithdrawal} = withdrawalStore
 const withdrawalForm = ref(null)
+import {useDialogConfirmStore} from "@/store/common/dialog-confirm.js";
+import {useAppStore} from "@/store/app-store.js";
+const {openDialogConfirm} = useDialogConfirmStore()
 function onSubmit(){
-  console.log(payload.value)
+  withdrawalForm.value.validate().then(res => {
+    if(!!res){
+      openDialogConfirm({
+        title: t(`${TRANC_PREFIX}.confirm.title`),
+        text: t(`${TRANC_PREFIX}.confirm.text`),
+        func: fillRequestWithdrawal,
+        funcParams: payload,
+        callbackFunc: () => {
+          onReset()
+          showInfoMassage(t(`${TRANC_PREFIX}.confirm.success`))
+        }
+      })
+    }
+  })
 }
 function onReset(){
-
+  payload.value = {
+    type: CARD,
+    amount: 0,
+    account_number: null,
+    full_name: '',
+    phone: '',
+    bank: '',
+  }
 }
 </script>
 
@@ -30,10 +58,7 @@ function onReset(){
       <div class="q-mb-lg text-bold text-h6 text-green-8">
         {{t(`${TRANC_PREFIX}.title`)}}
       </div>
-      <q-form @submit="onSubmit"
-              @reset="onReset"
-              ref="withdrawalForm"
-      >
+      <q-form ref="withdrawalForm">
         <q-card :style="$q.platform.is.desktop ? 'min-width: 30%;': 'min-width: 80%;'"
                 class="border-shadow q-mx-lg bg-card q-py-xl">
           <q-card-section>
@@ -61,10 +86,11 @@ function onReset(){
                     filled
                     outlined
                     :label="t(`${TRANC_PREFIX}.amount`)"
+                    lazy-rules
                     :rules="[
                     rules.requiredWith0(t(`${TRANC_PREFIX}.amount`)),
                     rules.numericValue(),
-                    rules.numericMore(t(`${TRANC_PREFIX}.amount`),50)
+                    rules.numericMoreOrEqual(t(`${TRANC_PREFIX}.amount`),50)
                   ]"
                 >
                   <template v-slot:append>
@@ -81,6 +107,7 @@ function onReset(){
                     class="input-field input-number-arrow"
                     type="number"
                     :label="payload.type === CARD ? t(`${TRANC_PREFIX}.card_number`) : t(`${TRANC_PREFIX}.account_number`)"
+                    lazy-rules
                     :rules="[
                       rules.requiredWith0(payload.type === CARD ? t(`${TRANC_PREFIX}.card_number`) : t(`${TRANC_PREFIX}.account_number`)),
                       rules.numericValue(),
@@ -92,6 +119,7 @@ function onReset(){
                     v-model.number="payload.bank"
                     color="light-green-8"
                     :label="t(`${TRANC_PREFIX}.bank`)"
+                    lazy-rules
                     :rules="[
                       rules.required(t(`${TRANC_PREFIX}.bank`)),
                     ]"
@@ -105,6 +133,7 @@ function onReset(){
                     default-country="ua"
                     v-model:tel="payload.phone"
                     :label="t(`${TRANC_PREFIX}.phone`)"
+                    lazy-rules
                     :rules="[
                       rules.required(t(`${TRANC_PREFIX}.phone`))
                     ]"
@@ -113,6 +142,7 @@ function onReset(){
                     v-model.number="payload.full_name"
                     color="light-green-8"
                     :label="t(`${TRANC_PREFIX}.full_name`)"
+                    lazy-rules
                     :rules="[
                       rules.required(t(`${TRANC_PREFIX}.full_name`)),
                     ]"
@@ -126,7 +156,8 @@ function onReset(){
                 unelevated
                 rounded
                 :size="$q.platform.is.desktop ? 'xl' : 'lg'"
-                type="submit"
+
+                @click="onSubmit"
                 color="light-green-8"
                 :label="t(`${TRANC_PREFIX}.submit`)"/>
           </q-card-actions>

@@ -12,6 +12,7 @@ const rules = {
     coordinatesValue: () => v => /^(-?\d{1,3}(\,|\.)\d{7})$/.test(v) || i18n.global.t(`${trans_prefix}.coordinates_value`),
     numericMore: (field_name,more) => v => v > more || i18n.global.t(`${trans_prefix}.numericMore`,{more:more,field_name:field_name}),
     numericLess: (field_name,less) => v => v < less || i18n.global.t(`${trans_prefix}.numericLess`,{less:less,field_name:field_name}),
+    numericMoreOrEqual: (field_name,more) => v => v >= more || i18n.global.t(`${trans_prefix}.numericMoreOrEqual`,{more:more,field_name:field_name}),
     confirmField: (confirm, field_name) => v => v === confirm || i18n.global.t(`${trans_prefix}.confirm_field`, {field_name: field_name}),
     email: () => v => /.+@.+\..+/.test(v) || i18n.global.t(`${trans_prefix}.email_exemple`,{dog: '@'}),
 }
