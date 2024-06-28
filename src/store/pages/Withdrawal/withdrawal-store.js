@@ -7,8 +7,12 @@ export const useWithdrawalStore = defineStore('useWithdrawalStore', () => {
 
     async function fillRequestWithdrawal(payload){
         return await axios.value.post('/api/withdrawals/fill-request',payload)
-            .then(response => {})
-            .catch(error => {});
+            .then(response => {
+                return true
+            })
+            .catch(error => {
+                return false
+            });
     }
 
     return {

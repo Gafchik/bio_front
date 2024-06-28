@@ -73,5 +73,29 @@
    "0": "New",
    "1": "Confirmed"
   }
+ },
+ "transaction_status": {
+  "0": "In progress",
+  "1": "Successful",
+  "2": "Rejected",
+  "3": "Revoked",
+  "4": "Exposed",
+  "5": "Completed"
+ },
+ "transaction_type": {
+  "0": "Purchase",
+  "1": "Sale",
+  "2": "Donation",
+  "3": "Charity",
+  "4": "Replenishment",
+  "5": "Withdrawal from sale",
+  "6": "Exchange",
+  "7": "Wallet replenishment",
+  "8": "Profit from harvest",
+  "9": "Quick donation",
+  "10": "Promotional code",
+  "11": "Withdrawal of money",
+  "12": "Replenishment of reserve account",
+  "13": "Insurance"
  }
 }

@@ -203,6 +203,12 @@ const walletRoutes = [
                 :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.wallet.withdrawal`) : ''"
                 @click="redirectByName('withdrawal')"
         />
+        <q-tab  :class="currentRouteName === 'transactions_history' ? 'text-white' : ''"
+                :style="currentRouteName === 'transactions_history' ? 'background-color: #a89c4c' : ''"
+                icon="currency_exchange"
+                :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.wallet.transactions_history`) : ''"
+                @click="redirectByName('transactions_history')"
+        />
       </q-expansion-item>
       <q-tab
               :class="walletRoutes.includes(currentRouteName) ? 'text-white' : ''"
@@ -233,6 +239,12 @@ const walletRoutes = [
               icon="add_card"
               :label="t(`${TRANC_PREFIX}.wallet.withdrawal`)"
               @click="redirectByName('withdrawal')"
+      />
+      <q-tab  :class="currentRouteName === 'transactions_history' ? 'text-white' : ''"
+              :style="currentRouteName === 'transactions_history' ? 'background-color: #a89c4c' : ''"
+              icon="currency_exchange"
+              :label="t(`${TRANC_PREFIX}.wallet.transactions_history`)"
+              @click="redirectByName('transactions_history')"
       />
     </q-tabs>
   </div>

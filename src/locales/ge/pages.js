@@ -10,6 +10,7 @@ import purchases from "@/locales/ge/pages/purchases/purchases.json"
 import user_map from "@/locales/ge/pages/user-map/user_map.json"
 import withdrawal_history from "@/locales/ge/pages/withdrawal-history/withdrawal-history.json"
 import withdrawal from "@/locales/ge/pages/withdrawal/withdrawal.json"
+import transactions_history from "@/locales/ge/pages/transactions-history/transactions-history.json"
 export default {
     faq: faq,
     contacts: contacts,
@@ -23,4 +24,5 @@ export default {
     user_map: user_map,
     withdrawal_history: withdrawal_history,
     withdrawal: withdrawal,
+    transactions_history: transactions_history,
 }

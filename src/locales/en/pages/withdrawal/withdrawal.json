@@ -1,3 +1,15 @@
 {
-  "title": ""
+  "title": "Withdrawal",
+  "amount": "Amount",
+  "card_number": "Card number",
+  "account_number": "Account number",
+  "bank": "Card issuer country",
+  "phone": "Phone number",
+  "full_name": "First and last name in Latin",
+  "submit": "LEAVE A REQUEST",
+  "confirm": {
+    "title": "Withdrawal",
+    "text": "Are you sure you want to apply for a withdrawal?",
+    "success": "Request successfully submitted"
+  }
 }

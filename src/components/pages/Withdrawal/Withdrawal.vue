@@ -32,9 +32,11 @@ function onSubmit(){
         text: t(`${TRANC_PREFIX}.confirm.text`),
         func: fillRequestWithdrawal,
         funcParams: payload,
-        callbackFunc: () => {
+        callbackFunc: (res) => {
+          if(res){
+            showInfoMassage(t(`${TRANC_PREFIX}.confirm.success`))
+          }
           onReset()
-          showInfoMassage(t(`${TRANC_PREFIX}.confirm.success`))
         }
       })
     }

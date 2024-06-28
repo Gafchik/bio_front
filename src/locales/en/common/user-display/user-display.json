@@ -14,6 +14,7 @@
   "wallet": {
     "title": "Wallet",
     "withdrawal_history": "Withdrawal History",
-    "withdrawal": "Withdrawal"
+    "withdrawal": "Withdrawal",
+    "transactions_history": "Transaction history"
   }
 }

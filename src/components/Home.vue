@@ -148,17 +148,10 @@ const displayHeight = computed(() => {
           :to="{ name: 'news_detail', params: { id: homeInfo.first_news.id_card }}"
           class="link-no-underline">
         <q-card class="border-shadow">
-<!--          TODO убрал картинку вроде так красивее-->
-<!--          <q-img-->
-<!--              fit="fill"-->
-<!--              :style="$q.platform.is.desktop ? 'height: 500px' : 'height: 200px'"-->
-<!--              :src="homeInfo.first_news.image"/>-->
-
           <q-card-section style="background-color: #f0edce">
             <div class="text-h6 text-light-green-8 inner-image" v-html="homeInfo.first_news['name_'+currentLocale]"/>
             <div class="text-subtitle2 text-grey-10 inner-image" v-html="homeInfo.first_news['short_content_'+currentLocale]"/>
           </q-card-section>
-
           <q-separator />
 
           <q-card-actions align="center" style="background-color: #f0edce">

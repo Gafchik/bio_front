@@ -63,7 +63,6 @@ const columns = computed(() => {
     },
   ]
 })
-const search = ref('')
 
 function getTime(date){
   return moment(date).format('hh:mm:ss');
@@ -88,24 +87,6 @@ function getTime(date){
             :rows-per-page-options="[0]"
         >
           <template v-slot:bottom></template>
-          <template v-slot:top>
-            <div style="width: 100%" class="q-mt-sm">
-              <q-input
-                  borderless
-                  outlined
-                  clearable
-                  label-color="light-green-9"
-                  color="light-green-9"
-                  dense
-                  v-model="search"
-                  :placeholder="t(`app.search`)">
-                <template v-slot:prepend>
-                  <q-icon name="search" />
-                </template>
-              </q-input>
-            </div>
-          </template>
-
           <template v-slot:body-cell-type="props">
             <q-td class="text-center">
               {{t(`app.withdrawal.type.${props.row.type}`)}}

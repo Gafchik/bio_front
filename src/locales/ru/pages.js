@@ -10,6 +10,7 @@ import purchases from "@/locales/ru/pages/purchases/purchases.json"
 import user_map from "@/locales/ru/pages/user-map/user_map.json"
 import withdrawal_history from "@/locales/ru/pages/withdrawal-history/withdrawal-history.json"
 import withdrawal from "@/locales/ru/pages/withdrawal/withdrawal.json"
+import transactions_history from "@/locales/ru/pages/transactions-history/transactions-history.json"
 export default {
     faq: faq,
     contacts: contacts,
@@ -23,4 +24,5 @@ export default {
     user_map: user_map,
     withdrawal_history: withdrawal_history,
     withdrawal: withdrawal,
+    transactions_history: transactions_history,
 }
