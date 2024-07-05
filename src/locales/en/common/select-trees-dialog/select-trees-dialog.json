@@ -1,0 +1,12 @@
+{
+  "title": "Select the required tree group",
+  "title2": "Select the required tree group",
+  "count": "Count: {count}",
+  "treeNotFound": "No Trees to select",
+  "table_headers": {
+    "uuid": "Tree ID",
+    "year": "Year",
+    "season": "Season",
+    "amount": "Price $"
+  }
+}

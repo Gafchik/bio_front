@@ -15,6 +15,7 @@
     "title": "Wallet",
     "withdrawal_history": "Withdrawal History",
     "withdrawal": "Withdrawal",
-    "transactions_history": "Transaction history"
+    "transactions_history": "Transaction history",
+    "tree_store_sell": "Sell a tree in the TreeStore"
   }
 }

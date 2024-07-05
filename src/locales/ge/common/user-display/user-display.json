@@ -15,6 +15,7 @@
     "title": "საფულე",
     "withdrawal_history": "გაყვანის ისტორია",
     "withdrawal": "გაყვანა",
-    "transactions_history": "ტრანზაქციის ისტორია"
+    "transactions_history": "ტრანზაქციის ისტორია",
+    "tree_store_sell": "ხის გაყიდვა TreeStore-ში"
   }
 }

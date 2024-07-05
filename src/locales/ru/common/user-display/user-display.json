@@ -15,6 +15,7 @@
     "title": "Кошелёк",
     "withdrawal_history": "История выводов",
     "withdrawal": "Вывод денег",
-    "transactions_history": "История транзакций"
+    "transactions_history": "История транзакций",
+    "tree_store_sell": "Продать дерево в TreeStore"
   }
 }

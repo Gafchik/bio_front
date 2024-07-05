@@ -15,6 +15,7 @@
     "title": "Гаманець",
     "withdrawal_history": "Історія виведеннь",
     "withdrawal": "Виведення грошей",
-    "transactions_history": "Історія транзакцій"
+    "transactions_history": "Історія транзакцій",
+    "tree_store_sell": "Продати дерево в TreeStore"
   }
 }

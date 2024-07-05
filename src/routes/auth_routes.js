@@ -7,6 +7,7 @@ import UserMap from "@/components/pages/UserMap/UserMap.vue";
 import WithdrawalHistory from "@/components/pages/WithdrawalHistory/WithdrawalHistory.vue";
 import Withdrawal from "@/components/pages/Withdrawal/Withdrawal.vue";
 import TransactionsHistory from "@/components/pages/TransactionsHistory/TransactionsHistory.vue";
+import TreeStoreSell from "@/components/pages/TreeStoreSell/TreeStoreSell.vue";
 
 export default [
     {
@@ -53,5 +54,10 @@ export default [
         path: '/transactions-history',
         component: TransactionsHistory,
         name: 'transactions_history',
+    },
+    {
+        path: '/tree-store-sell',
+        component: TreeStoreSell,
+        name: 'tree_store_sell',
     },
 ]
