@@ -28,6 +28,7 @@ export const useAppStore = defineStore('useAppStore', () => {
     const localesModel = ref(startLang)
     locale.value = startLang.value
     const jwt = ref('')
+    const google2fa = ref({})
     const jwtType = ref('')
     const axios = computed(() =>{
         axiosInstance.interceptors.request.use(config => {
@@ -140,6 +141,15 @@ export const useAppStore = defineStore('useAppStore', () => {
             html: true,
         });
     }
+    function showErrorMassage(message){
+        Notify.create({
+            color: 'negative',
+            message: message,
+            progress: true,
+            position: 'top',
+            html: true,
+        });
+    }
     function openActivationCodeDialog(){
         if(!isLogin.value){
             activationCodeDialog.value = true
@@ -190,6 +200,15 @@ export const useAppStore = defineStore('useAppStore', () => {
             showInfoMassage(t('app.copySuccess'))
         })
     }
+    async function checkHas2Fa(){
+        return await axios.value.post('/api/auth/check-has-2-fa')
+            .then(response => {
+                google2fa.value = response.data.data
+            })
+            .catch(error => {
+
+            });
+    }
     async function logout(){
         return await axios.value.post('/api/auth/logout')
             .then(response => {
@@ -207,10 +226,29 @@ export const useAppStore = defineStore('useAppStore', () => {
     watch(localesModel, () => {
         locale.value = localesModel.value.value
     })
+    async function enable2Fa(payload){
+        return await axios.value.post('/api/auth/enable-has-2-fa',payload)
+            .then(response => {
+                checkHas2Fa()
+            })
+            .catch(error => {
+
+            });
+    }
+    async function disable2Fa(payload){
+        return await axios.value.post('/api/auth/disable-has-2-fa',payload)
+            .then(response => {
+                checkHas2Fa()
+            })
+            .catch(error => {
+
+            });
+    }
     return {
         currentLocale,changeLocale,drawer,axios,regDialog,loginDialog,openReginDialog,
         openLoginDialog,isLoading,showInfoMassage,activationCodeDialog,openActivationCodeDialog,
         forgotPasswordDialog,openForgotPasswordDialog,login,isLogin,userInfo,localesModel,
-        logout,redirectByName,getUserInfo,copyToClipboardNotify
+        logout,redirectByName,getUserInfo,copyToClipboardNotify,google2fa,checkHas2Fa,enable2Fa,
+        disable2Fa,showErrorMassage
     }
 })

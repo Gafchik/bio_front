@@ -1,3 +1,24 @@
 {
-  "title": ""
+  "title": "Sell a tree in the TreeStore",
+  "empty_page": "You don't have trees to sell yet. To do this, please make a purchase.",
+  "addTree": "Select tree",
+  "table_headers": {
+    "year": "Year",
+    "season": "Season",
+    "amount": "Minimum price $",
+    "sell_amount": "Sell price $",
+    "commission": "Commission %",
+    "commission_amount": "Commission amount $",
+    "position": "Position",
+    "profit_with_commission": "Profit with commission $"
+  },
+  "all_profit_with_commission": "Total profit, with site commission",
+  "desc_1": "When selling a tree, a commission is deducted from each transaction. The size of the commission can vary: the owner adjusts it himself when listing his trees for sale in the TreeStore. The minimum commission is 3% of the cost of the tree, but by increasing this number, you can raise the position of the tree in the sales queue.",
+  "desc_2": "See FAQ for ADDITION.",
+  "submit": "Sell trees",
+  "confirm": {
+    "title": "Sell trees",
+    "text":"Are you sure you want to sell trees?",
+    "success": "Trees successfully put up for sale!"
+  }
 }

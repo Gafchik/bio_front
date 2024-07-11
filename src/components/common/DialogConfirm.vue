@@ -10,8 +10,8 @@ const {isShowDialog,title,text} = storeToRefs(dialogConfirmStore)
 <div>
   <q-dialog v-model="isShowDialog" persistent>
     <q-card style="background-color: #e3e1c9">
-      <q-bar class="text-black row items-center justify-center text-center content-center`">
-        <div class="text-h6 ">
+      <q-bar class="text-black row items-center justify-center text-center content-center`" style="height: auto">
+        <div class="text-h5 ">
           {{ title }}
         </div>
       </q-bar>

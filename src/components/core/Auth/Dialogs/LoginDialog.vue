@@ -49,8 +49,8 @@ function forgotPassword(){
 <template>
   <q-dialog v-model="loginDialog" persistent>
     <q-card :style="$q.platform.is.desktop ? 'width: 30%;' : 'width: 90%;'">
-      <q-bar class="row items-center q-pb-none" style="background-color: #b8b398">
-        <span class="text-h6 text-light-green-8">{{ t(`${TRANC_PREFIX}.login`) }}</span>
+      <q-bar class="row items-center q-pb-none" style="background-color: #b8b398; height: auto">
+        <span class="text-h5 text-light-green-8">{{ t(`${TRANC_PREFIX}.login`) }}</span>
         <q-space/>
         <q-btn
             @click="closeDialog"

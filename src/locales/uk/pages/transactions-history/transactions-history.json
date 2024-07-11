@@ -1,4 +1,13 @@
 {
- "title": "",
-  "empty_page": ""
+ "title": "Transaction History",
+ "empty_page": "This section will display your transaction history",
+ "table_headers": {
+  "date": "Date",
+  "time": "Time",
+  "type": "Transaction type",
+  "count_trees": "Count of trees",
+  "amount": "Amount $",
+  "status": "Status",
+  "comment": "Comment"
+ }
 }

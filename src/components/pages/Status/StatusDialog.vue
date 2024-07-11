@@ -14,8 +14,8 @@ const {t} = useI18n()
     <q-card :style="$q.platform.is.desktop
       ? 'width: 30%; background-color: #e3e1c9 !important'
       : 'width: 90%; background-color: #e3e1c9 !important'">
-      <q-bar class="row items-center q-pb-none" style="background-color: #b8b398">
-        <span class="text-h6 text-light-green-8">{{ t(`${TRANC_PREFIX}.dialog.title`) }}</span>
+      <q-bar class="row items-center q-pb-none" style="background-color: #b8b398; height: auto">
+        <span class="text-h5 text-light-green-8">{{ t(`${TRANC_PREFIX}.dialog.title`) }}</span>
         <q-space/>
         <q-btn
             @click="closeDialog"

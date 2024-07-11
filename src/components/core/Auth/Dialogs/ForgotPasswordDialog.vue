@@ -82,8 +82,8 @@ async function changePassword(){
 <template>
   <q-dialog v-model="forgotPasswordDialog" persistent>
     <q-card :style="$q.platform.is.desktop ? 'width: 30%;' : 'width: 90%;'">
-      <q-bar class="row items-center q-pb-none" style="background-color: #b8b398">
-        <span class="text-h6 text-light-green-8">{{ t(`${TRANC_PREFIX}.forgot_password`) }}</span>
+      <q-bar class="row items-center q-pb-none" style="background-color: #b8b398; height: auto">
+        <span class="text-h5 text-light-green-8">{{ t(`${TRANC_PREFIX}.forgot_password`) }}</span>
         <q-space/>
         <q-btn
             @click="closeDialog"

@@ -109,8 +109,8 @@ function selectTreesClick() {
 <template>
   <q-dialog v-model="dialog" persistent >
     <q-card style="background-color: #e3e1c9">
-      <q-bar class="text-black row items-center justify-center text-center content-center`">
-        <div class="text-h6">
+      <q-bar class="text-black row items-center justify-center text-center content-center`" style="height: auto">
+        <div class="text-h5">
           {{ t(`${T_PREFIX}.title`) }}
         </div>
       </q-bar>
@@ -235,12 +235,11 @@ function selectTreesClick() {
             </q-table>
           </div>
         </div>
-
-
       </q-card-section>
       <q-card-actions align="right">
         <q-btn flat icon="close" color="negative" @click="closeDialog"/>
         <q-btn
+            class="q-mb-xs"
             :disable="!selected.length"
             v-show="currentState !== STATE_BY_YEAR_SEASON"
             flat icon="done"

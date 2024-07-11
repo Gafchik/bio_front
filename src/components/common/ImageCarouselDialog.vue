@@ -13,7 +13,7 @@ const {slide,dialog,images,isFullscreen} = storeToRefs(imageCarouselDialogStore)
         maximized
     >
       <q-card style="background-color: rgba(0, 0, 0, 0.5)">
-        <q-bar style="background-color: rgba(0, 0, 0, 0.0)">
+        <q-bar style="background-color: rgba(0, 0, 0, 0.0); height: auto">
           <q-space/>
           <q-btn dense flat color="red" icon="close" @click="closeImageCarouselDialog"/>
         </q-bar>
