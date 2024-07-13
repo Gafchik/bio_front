@@ -11,6 +11,7 @@
  "rules": {
   "numericMore" : "{field_name} must be greater than {more}",
   "numericMoreOrEqual" : "{field_name} must be greater than or equal to {more}",
+  "numericLessOrEqual" : "{field_name} must be less than or equal to {more}",
   "numericLess" : "{field_name} must be less than {less}",
   "email_exist": "This Email is already in use",
   "email_exemple": "Enter Email, example: example{dog}example.com",

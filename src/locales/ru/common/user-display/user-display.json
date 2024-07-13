@@ -17,6 +17,7 @@
     "withdrawal": "Вывод денег",
     "transactions_history": "История транзакций",
     "tree_store_sell": "Продать дерево в TreeStore",
-    "tree_store_remove_sell": "Снять с продажи"
+    "tree_store_remove_sell": "Снять с продажи",
+    "buy_yong_tree": "Купить молодое дерево"
   }
 }

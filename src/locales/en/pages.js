@@ -13,6 +13,7 @@ import withdrawal from "@/locales/en/pages/withdrawal/withdrawal.json"
 import transactions_history from "@/locales/en/pages/transactions-history/transactions-history.json"
 import tree_store_sell from "@/locales/en/pages/tree-store-sell/tree-store-sell.json"
 import tree_store_remove_sell from "@/locales/en/pages/tree-store-remove-sell/tree-store-remove-sell.json"
+import buy_yong_tree from "@/locales/en/pages/buy-yong-tree/buy-yong-tree.json"
 export default {
     faq: faq,
     contacts: contacts,
@@ -29,4 +30,5 @@ export default {
     transactions_history: transactions_history,
     tree_store_sell: tree_store_sell,
     tree_store_remove_sell: tree_store_remove_sell,
+    buy_yong_tree: buy_yong_tree,
 }

@@ -11,6 +11,7 @@
  "rules": {
   "numericMore" : "{field_name} должно быть больше {more}",
   "numericMoreOrEqual" : "{field_name} должно быть больше или равно {more}",
+  "numericLessOrEqual" : "{field_name} должно быть меньше или равно {more}",
   "numericLess" : "{field_name} должно быть меньше {less}",
   "email_exist": "Такой Email уже используется",
   "email_exemple": "Введите Email, пример: example{dog}example.com",

@@ -17,6 +17,7 @@
     "withdrawal": "გაყვანა",
     "transactions_history": "ტრანზაქციის ისტორია",
     "tree_store_sell": "ხის გაყიდვა TreeStore-ში",
-    "tree_store_remove_sell": "გაყიდვიდან ამოღება"
+    "tree_store_remove_sell": "გაყიდვიდან ამოღება",
+    "buy_yong_tree": "იყიდე ახალგაზრდა ხე"
   }
 }

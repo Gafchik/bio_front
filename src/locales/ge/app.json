@@ -11,6 +11,7 @@
   "rules": {
     "numericMore" : "{field_name} უნდა იყოს {more}-ზე მეტი",
     "numericMoreOrEqual" : "{field_name} უნდა იყოს მეტი ან ტოლი {more}",
+    "numericLessOrEqual" : "{field_name} უნდა იყოს ნაკლები ან ტოლი {more}",
     "numericLess" : "{field_name} უნდა იყოს {less}-ზე ნაკლები",
     "email_exist": "ეს ელფოსტა უკვე გამოიყენება",
    "email_exemple": "შეიყვანეთ ელფოსტა, მაგალითად: example{dog}example.com",

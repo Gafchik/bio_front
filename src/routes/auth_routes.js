@@ -9,6 +9,7 @@ import Withdrawal from "@/components/pages/Withdrawal/Withdrawal.vue";
 import TransactionsHistory from "@/components/pages/TransactionsHistory/TransactionsHistory.vue";
 import TreeStoreSell from "@/components/pages/TreeStoreSell/TreeStoreSell.vue";
 import TreeStoreRemoveSell from "@/components/pages/TreeStoreRemoveSell/TreeStoreRemoveSell.vue";
+import BuyYongTree from "@/components/pages/BuyYongTree/BuyYongTree.vue";
 
 export default [
     {
@@ -65,5 +66,10 @@ export default [
         path: '/tree-store-remove-sell',
         component: TreeStoreRemoveSell,
         name: 'tree_store_remove_sell',
+    },
+    {
+        path: '/buy-yong-tree',
+        component: BuyYongTree,
+        name: 'buy_yong_tree',
     },
 ]
