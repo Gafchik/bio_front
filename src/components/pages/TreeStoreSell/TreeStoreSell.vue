@@ -207,10 +207,10 @@ function input2fa(){
   sellTreesAsync().then((res) =>{
     if(res){
       treeToSell.value = []
-      showInfoMassage(t(`${TRANC_PREFIX}.confirm.success`))
-      getTreesAsync()
+      showInfoMassage(t(`${T_PREFIX}.confirm.success`))
     }
     twoFaCod.value = null
+    getTreesAsync()
   })
 
 }

@@ -1,0 +1,21 @@
+{
+  "title": "Withdraw from sale",
+  "empty_page": "In this section you will have the opportunity to remove trees for sale",
+  "submit": "Remove exposed trees",
+  "table_headers": {
+    "uuid": "Tree ID",
+    "year": "Year",
+    "season": "Season",
+    "amount": "Minimum price $",
+    "sell_amount": "Sell price $",
+    "commission": "Commission %",
+    "commission_amount": "Commission amount $",
+    "position": "Position",
+    "profit_with_commission": "Profit with commission $"
+  },
+  "confirm": {
+    "title": "Withdraw from sale",
+    "text":"Are you sure you want to remove trees from sale?",
+    "success": "Trees successfully removed from sale!"
+  }
+}

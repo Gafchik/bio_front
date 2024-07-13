@@ -12,6 +12,7 @@ import withdrawal_history from "@/locales/ru/pages/withdrawal-history/withdrawal
 import withdrawal from "@/locales/ru/pages/withdrawal/withdrawal.json"
 import transactions_history from "@/locales/ru/pages/transactions-history/transactions-history.json"
 import tree_store_sell from "@/locales/ru/pages/tree-store-sell/tree-store-sell.json"
+import tree_store_remove_sell from "@/locales/ru/pages/tree-store-remove-sell/tree-store-remove-sell.json"
 export default {
     faq: faq,
     contacts: contacts,
@@ -27,4 +28,5 @@ export default {
     withdrawal: withdrawal,
     transactions_history: transactions_history,
     tree_store_sell: tree_store_sell,
+    tree_store_remove_sell: tree_store_remove_sell,
 }

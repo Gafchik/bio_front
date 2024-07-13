@@ -215,6 +215,12 @@ const walletRoutes = [
                 :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.wallet.tree_store_sell`) : ''"
                 @click="redirectByName('tree_store_sell')"
         />
+        <q-tab  :class="currentRouteName === 'tree_store_remove_sell' ? 'text-white' : ''"
+                :style="currentRouteName === 'tree_store_remove_sell' ? 'background-color: #a89c4c' : ''"
+                icon="remove_shopping_cart"
+                :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.wallet.tree_store_remove_sell`) : ''"
+                @click="redirectByName('tree_store_remove_sell')"
+        />
       </q-expansion-item>
       <q-tab
               :class="walletRoutes.includes(currentRouteName) ? 'text-white' : ''"
@@ -257,6 +263,12 @@ const walletRoutes = [
               icon="storefront"
               :label="t(`${TRANC_PREFIX}.wallet.tree_store_sell`)"
               @click="redirectByName('tree_store_sell')"
+      />
+      <q-tab  :class="currentRouteName === 'tree_store_remove_sell' ? 'text-white' : ''"
+              :style="currentRouteName === 'tree_store_remove_sell' ? 'background-color: #a89c4c' : ''"
+              icon="remove_shopping_cart"
+              :label="t(`${TRANC_PREFIX}.wallet.tree_store_remove_sell`)"
+              @click="redirectByName('tree_store_remove_sell')"
       />
     </q-tabs>
   </div>

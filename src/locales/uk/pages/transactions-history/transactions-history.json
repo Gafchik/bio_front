@@ -1,13 +1,13 @@
 {
- "title": "Transaction History",
- "empty_page": "This section will display your transaction history",
+ "title": "Історія транзакцій",
+ "empty_page": "У цьому розділі буде відображено історію Ваших транзакцій",
  "table_headers": {
-  "date": "Date",
-  "time": "Time",
-  "type": "Transaction type",
-  "count_trees": "Count of trees",
-  "amount": "Amount $",
-  "status": "Status",
-  "comment": "Comment"
+  "date": "Дата",
+  "time": "Час",
+  "type": "Тип транзакції",
+  "count_trees": "К-сть дерев",
+  "amount": "Сума $",
+  "status": "Статус",
+  "comment": "Коментар"
  }
 }

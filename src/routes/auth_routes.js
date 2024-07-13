@@ -8,6 +8,7 @@ import WithdrawalHistory from "@/components/pages/WithdrawalHistory/WithdrawalHi
 import Withdrawal from "@/components/pages/Withdrawal/Withdrawal.vue";
 import TransactionsHistory from "@/components/pages/TransactionsHistory/TransactionsHistory.vue";
 import TreeStoreSell from "@/components/pages/TreeStoreSell/TreeStoreSell.vue";
+import TreeStoreRemoveSell from "@/components/pages/TreeStoreRemoveSell/TreeStoreRemoveSell.vue";
 
 export default [
     {
@@ -59,5 +60,10 @@ export default [
         path: '/tree-store-sell',
         component: TreeStoreSell,
         name: 'tree_store_sell',
+    },
+    {
+        path: '/tree-store-remove-sell',
+        component: TreeStoreRemoveSell,
+        name: 'tree_store_remove_sell',
     },
 ]

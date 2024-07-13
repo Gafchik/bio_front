@@ -8,6 +8,7 @@ export const useTreeStoreSellStore = defineStore('useTreeStoreSellStore' ,()=> {
     const treeToSell = ref([])
     const position = ref([])
     const twoFaCod = ref(null)
+    const treeInSell = ref([])
     async function getPosition(){
         return await axios.value.post('/api/tree-store-sell/get-position',{trees:treeToSell.value})
             .then(response => {
@@ -27,7 +28,26 @@ export const useTreeStoreSellStore = defineStore('useTreeStoreSellStore' ,()=> {
                 return false
             });
     }
+    async function removeSellTreesAsync(payload){
+        return await axios.value.post('/api/tree-store-sell/remove-sell',payload)
+            .then(response => {
+                return true
+            })
+            .catch(error => {
+                return false
+            });
+    }
+    async function getTreeInSellAsync(){
+        return await axios.value.post('/api/tree-store-sell/get-tree-in-sell')
+            .then(response => {
+                treeInSell.value = response.data.data
+            })
+            .catch(error => {
+
+            });
+    }
     return {
-        treeToSell,getPosition,position,sellTreesAsync,twoFaCod
+        treeToSell,getPosition,position,sellTreesAsync,twoFaCod,getTreeInSellAsync,treeInSell,
+        removeSellTreesAsync,
     }
 })
