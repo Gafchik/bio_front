@@ -1,6 +1,7 @@
 import {defineStore, storeToRefs} from 'pinia'
 import {ref,computed,watch} from "vue";
 import {useAppStore} from "@/store/app-store.js";
+import {BALANCE ,SWIFT,STRIPE} from "@/constants/buy-young-payment-type.js"
 
 export const useBuyYongTreeStore = defineStore('useBuyYongTreeStore' ,()=> {
     const appStore = useAppStore()
@@ -20,7 +21,30 @@ export const useBuyYongTreeStore = defineStore('useBuyYongTreeStore' ,()=> {
 
             });
     }
+    async function buyAsync(payload){
+        if(payload.payment === BALANCE){
+            return await axios.value.post('/api/buy-yong-tree/buy-balance',payload)
+                .then(response => {
+
+                })
+                .catch(error => {
+
+                });
+        }
+        if(payload.payment === SWIFT){
+
+        }
+        if(payload.payment === STRIPE){
+            return await axios.value.post('/api/buy-yong-tree/buy-stripe',payload)
+                .then(response => {
+
+                })
+                .catch(error => {
+
+                });
+        }
+    }
     return {
-        startInfo,getGetStartInfoAsync,
+        startInfo,getGetStartInfoAsync,buyAsync
     }
 })
