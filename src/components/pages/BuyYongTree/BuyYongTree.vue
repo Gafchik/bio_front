@@ -8,7 +8,10 @@ import {storeToRefs} from "pinia";
 import {BALANCE ,SWIFT,STRIPE} from "@/constants/buy-young-payment-type.js"
 import rules from "@/rules/rules.js";
 import {useDialogConfirmStore} from "@/store/common/dialog-confirm.js";
+import {useAppStore} from "@/store/app-store.js";
 const T_PREFIX = 'pages.buy_yong_tree'
+const appStore = useAppStore()
+const {showInfoMassage} = appStore
 const buyYongTreeStore = useBuyYongTreeStore()
 const {startInfo} = storeToRefs(buyYongTreeStore)
 const {getGetStartInfoAsync, buyAsync} = buyYongTreeStore
@@ -35,10 +38,9 @@ function onSubmit(){
         func: buyAsync,
         funcParams: payload,
         callbackFunc: (res) => {
-          if(res){
-            console.log('++++')
-          }
-
+            payload.value.countTree = 0
+            payload.value.payment = BALANCE
+            payload.value.promo = ''
         }
       })
     }
