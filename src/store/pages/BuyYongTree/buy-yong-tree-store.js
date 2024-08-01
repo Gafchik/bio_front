@@ -35,7 +35,12 @@ export const useBuyYongTreeStore = defineStore('useBuyYongTreeStore' ,()=> {
                 .catch(error => {});
         }
         if(payload.payment === SWIFT){
-
+            return await axios.value.post('/api/buy-yong-tree/buy-swift',payload)
+                .then(response => {
+                    showInfoMassage(t(`pages.buy_yong_tree.confirm.success`))
+                    getUserInfo()
+                })
+                .catch(error => {});
         }
         if(payload.payment === STRIPE){
             payload.success_url = window.location.origin + router.resolve({ name: 'personal' }).href

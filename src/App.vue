@@ -8,6 +8,7 @@ import ActivationCodeDialog from "@/components/core/Auth/Dialogs/ActivationCodeD
 import LoadingDialog from "@/components/common/LoadingDialog.vue";
 import DialogConfirm from "@/components/common/DialogConfirm.vue";
 import ForgotPasswordDialog from "@/components/core/Auth/Dialogs/ForgotPasswordDialog.vue";
+import SwiftDialog from "@/components/common/SwiftDialog.vue";
 </script>
 
 <template>
@@ -25,6 +26,7 @@ import ForgotPasswordDialog from "@/components/core/Auth/Dialogs/ForgotPasswordD
     <ActivationCodeDialog/>
     <ForgotPasswordDialog/>
     <DialogConfirm/>
+    <SwiftDialog/>
   </q-layout>
 </template>
 

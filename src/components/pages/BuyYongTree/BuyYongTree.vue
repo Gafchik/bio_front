@@ -9,11 +9,14 @@ import {BALANCE ,SWIFT,STRIPE} from "@/constants/buy-young-payment-type.js"
 import rules from "@/rules/rules.js";
 import {useDialogConfirmStore} from "@/store/common/dialog-confirm.js";
 import {useAppStore} from "@/store/app-store.js";
+import {useSwiftDialogStore} from "@/store/common/swift-dialog-store.js";
 const T_PREFIX = 'pages.buy_yong_tree'
 const appStore = useAppStore()
 const {showInfoMassage} = appStore
 const buyYongTreeStore = useBuyYongTreeStore()
 const {startInfo} = storeToRefs(buyYongTreeStore)
+const swiftDialogStore = useSwiftDialogStore()
+const {openDialogSwift} = swiftDialogStore
 const {getGetStartInfoAsync, buyAsync} = buyYongTreeStore
 getGetStartInfoAsync()
 const {openDialogConfirm} = useDialogConfirmStore()
@@ -29,20 +32,37 @@ const buyYoungForm = ref(null)
 const price = computed(() => {
   return payload.value.countTree * startInfo.value.price
 })
+function resetForm(){
+  payload.value.countTree = 0
+  payload.value.payment = BALANCE
+  payload.value.promo = ''
+}
 function onSubmit(){
   buyYoungForm.value.validate().then(res => {
     if(!!res){
-      openDialogConfirm({
-        title: t(`${T_PREFIX}.confirm.title`),
-        text: t(`${T_PREFIX}.confirm.text`,{count: payload.value.countTree}),
-        func: buyAsync,
-        funcParams: payload,
-        callbackFunc: (res) => {
-            payload.value.countTree = 0
-            payload.value.payment = BALANCE
-            payload.value.promo = ''
-        }
-      })
+      if(payload.value.payment !== SWIFT){
+        openDialogConfirm({
+          title: t(`${T_PREFIX}.confirm.title`),
+          text: t(`${T_PREFIX}.confirm.text`,{count: payload.value.countTree}),
+          func: buyAsync,
+          funcParams: payload,
+          callbackFunc: (res) => {
+            resetForm()
+          },
+        })
+      }else{
+        openDialogSwift({
+          func: buyAsync,
+          funcParams: payload,
+          callbackFunc: (res) => {
+            resetForm()
+          },
+          closeFunc: (res) => {
+            resetForm()
+          },
+        })
+      }
+
     }
   })
 }
