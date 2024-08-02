@@ -1,3 +1,21 @@
 {
-
+  "title": "Buy a young tree",
+  "empty_page": "In this section you will have the opportunity to purchase young trees.",
+  "countTree": "Trees in stock",
+  "submit": "Buy trees",
+  "buyCountTree": "Enter the number of trees",
+  "allPrice": "You must pay",
+  "promo": "Promo code",
+  "payment": {
+    "title": "Select a payment method",
+    "1" : "Payment from balance/bonus",
+    "5" : "SWIFT payment",
+    "15" : "Visa/MasterCard"
+  },
+  "confirm": {
+    "title": "Buying young trees",
+    "text": "Are you sure you want to buy {count} trees",
+    "success": "Purchase completed successfully!",
+    "success_swift": "Request successfully sent!"
+  }
 }

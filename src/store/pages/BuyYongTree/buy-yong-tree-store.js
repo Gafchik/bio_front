@@ -37,7 +37,7 @@ export const useBuyYongTreeStore = defineStore('useBuyYongTreeStore' ,()=> {
         if(payload.payment === SWIFT){
             return await axios.value.post('/api/buy-yong-tree/buy-swift',payload)
                 .then(response => {
-                    showInfoMassage(t(`pages.buy_yong_tree.confirm.success`))
+                    showInfoMassage(t(`pages.buy_yong_tree.confirm.success_swift`))
                     getUserInfo()
                 })
                 .catch(error => {});
