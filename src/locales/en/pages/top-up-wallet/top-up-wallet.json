@@ -1,0 +1,18 @@
+{
+  "title": "Balance replenishment",
+  "submit": "Replenish",
+  "amount": "Replenishment amount",
+  "amount_title": "Enter the replenishment amount",
+  "payment": {
+    "title": "Select payment method",
+    "title_mini": "Payment method",
+    "1" : "Payment from balance/bonus",
+    "5" : "SWIFT payment",
+    "15" : "Visa/MasterCard"
+  },
+  "confirm": {
+    "title": "Balance replenishment",
+    "text": "Are you sure you want to replenish your balance by {amount}$ ?",
+    "success_swift": "Request successfully sent!"
+  }
+}

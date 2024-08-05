@@ -14,6 +14,7 @@ import transactions_history from "@/locales/ge/pages/transactions-history/transa
 import tree_store_sell from "@/locales/ge/pages/tree-store-sell/tree-store-sell.json"
 import tree_store_remove_sell from "@/locales/ge/pages/tree-store-remove-sell/tree-store-remove-sell.json"
 import buy_yong_tree from "@/locales/ge/pages/buy-yong-tree/buy-yong-tree.json"
+import top_up_wallet from "@/locales/ge/pages/top-up-wallet/top-up-wallet.json"
 export default {
     faq: faq,
     contacts: contacts,
@@ -31,4 +32,5 @@ export default {
     tree_store_sell: tree_store_sell,
     tree_store_remove_sell: tree_store_remove_sell,
     buy_yong_tree: buy_yong_tree,
+    top_up_wallet: top_up_wallet,
 }

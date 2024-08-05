@@ -62,7 +62,6 @@ function onSubmit(){
           },
         })
       }
-
     }
   })
 }
@@ -122,28 +121,25 @@ function onSubmit(){
                   </template>
                 </q-input>
               </div>
-              <div :class="$q.platform.is.desktop ? 'column col-3 justify-start items-start content-center' : 'row justify-start items-start content-center'">
-                <div>
-                  <span class="text-bold">{{t(`${T_PREFIX}.payment.title`)}}</span>
-                </div>
-                <q-radio
-                    v-model="payload.payment"
-                    :val="BALANCE"
-                    size="50px"
-                    :label="t(`${T_PREFIX}.payment.${BALANCE}`)"
-                    color="light-green-8" />
-                <q-radio
-                    v-model="payload.payment"
-                    :val="SWIFT"
-                    size="50px"
-                    :label="t(`${T_PREFIX}.payment.${SWIFT}`)"
-                    color="light-green-8" />
-                <q-radio
-                    v-model="payload.payment"
-                    :val="STRIPE"
-                    size="50px"
-                    :label="t(`${T_PREFIX}.payment.${STRIPE}`)"
-                    color="light-green-8" />
+              <div :class="$q.platform.is.desktop ? 'column col-3 justify-start items-start content-center' : 'row justify-start items-start content-center text-center'">
+                  <q-radio
+                      v-model="payload.payment"
+                      :val="BALANCE"
+                      size="50px"
+                      :label="t(`${T_PREFIX}.payment.${BALANCE}`)"
+                      color="light-green-8" />
+                  <q-radio
+                      v-model="payload.payment"
+                      :val="SWIFT"
+                      size="50px"
+                      :label="t(`${T_PREFIX}.payment.${SWIFT}`)"
+                      color="light-green-8" />
+                  <q-radio
+                      v-model="payload.payment"
+                      :val="STRIPE"
+                      size="50px"
+                      :label="t(`${T_PREFIX}.payment.${STRIPE}`)"
+                      color="light-green-8" />
               </div>
               <div :class="$q.platform.is.desktop ? 'column col-3 justify-center items-center content-center' : 'justify-center items-center content-center'">
                 <q-input

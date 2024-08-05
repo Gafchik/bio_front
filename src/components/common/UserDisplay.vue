@@ -197,6 +197,12 @@ const walletRoutes = [
                 :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.wallet.buy_yong_tree`) : ''"
                 @click="redirectByName('buy_yong_tree')"
         />
+        <q-tab  :class="currentRouteName === 'top_up_wallet' ? 'text-white' : ''"
+                :style="currentRouteName === 'top_up_wallet' ? 'background-color: #a89c4c' : ''"
+                icon="add_card"
+                :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.wallet.top_up_wallet`) : ''"
+                @click="redirectByName('top_up_wallet')"
+        />
         <q-tab  :class="currentRouteName === 'withdrawal_history' ? 'text-white' : ''"
                 :style="currentRouteName === 'withdrawal_history' ? 'background-color: #a89c4c' : ''"
                 icon="shopping_cart_checkout"
@@ -251,6 +257,12 @@ const walletRoutes = [
               icon="shopping_cart"
               :label="t(`${TRANC_PREFIX}.wallet.buy_yong_tree`)"
               @click="redirectByName('buy_yong_tree')"
+      />
+      <q-tab  :class="currentRouteName === 'top_up_wallet' ? 'text-white' : ''"
+              :style="currentRouteName === 'top_up_wallet' ? 'background-color: #a89c4c' : ''"
+              icon="add_card"
+              :label="t(`${TRANC_PREFIX}.wallet.top_up_wallet`)"
+              @click="redirectByName('top_up_wallet')"
       />
       <q-tab  :class="currentRouteName === 'withdrawal_history' ? 'text-white' : ''"
               :style="currentRouteName === 'withdrawal_history' ? 'background-color: #a89c4c' : ''"
