@@ -100,5 +100,6 @@
   "13": "Insurance"
  },
  "input_2_fa_code": "Enter the two-factor authentication code",
- "need2fa": "You need to enable two-factor authentication"
+ "need2fa": "You need to enable two-factor authentication",
+ "olive": "Olive"
 }

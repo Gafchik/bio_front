@@ -1,5 +1,10 @@
 {
   "count": "{count} дерева",
   "count_2": "{count} деревьев",
-  "year": "{year} год"
+  "year": "{year} год",
+  "season": "{season} сезон",
+  "back": "назад",
+  "age_1": "{age} год",
+  "age_2": "{age} года",
+  "age_3": "{age} лет"
 }
