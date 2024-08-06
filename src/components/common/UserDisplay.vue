@@ -53,7 +53,7 @@ const walletRoutes = [
 
 <template>
   <div class="q-pa-lg">
-    <q-bar style="background-color: #e3e1c9; height: auto">
+    <q-bar style="background-color: #f5f3e4; height: auto">
       <q-icon name="location_on" class="q-mr-xs"/>
       <span class="text-subtitle2">{{ timeZone }}</span>
       <q-space/>

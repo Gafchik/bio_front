@@ -148,13 +148,13 @@ const displayHeight = computed(() => {
           :to="{ name: 'news_detail', params: { id: homeInfo.first_news.id_card }}"
           class="link-no-underline">
         <q-card class="border-shadow">
-          <q-card-section style="background-color: #f0edce">
+          <q-card-section style="background-color: #f5f3e4">
             <div class="text-h6 text-light-green-8 inner-image" v-html="homeInfo.first_news['name_'+currentLocale]"/>
             <div class="text-subtitle2 text-grey-10 inner-image" v-html="homeInfo.first_news['short_content_'+currentLocale]"/>
           </q-card-section>
           <q-separator />
 
-          <q-card-actions align="center" style="background-color: #f0edce">
+          <q-card-actions align="center" style="background-color: #f5f3e4">
             <q-icon size="xs" name="visibility" class="text-light-green-8"/>
             <span class="text-light-green-8 q-mx-lg">{{homeInfo.first_news.view_count}}</span>
             <q-space/>

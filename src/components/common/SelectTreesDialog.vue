@@ -108,7 +108,7 @@ function selectTreesClick() {
 
 <template>
   <q-dialog v-model="dialog" persistent >
-    <q-card style="background-color: #e3e1c9">
+    <q-card style="background-color: #f5f3e4">
       <q-bar class="text-black row items-center justify-center text-center content-center`" style="height: auto">
         <div class="text-h5">
           {{ t(`${T_PREFIX}.title`) }}

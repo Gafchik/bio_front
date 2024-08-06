@@ -56,10 +56,10 @@ getFaq().then((res) => {
                           icon="question_mark"
                           :label="value.question"
                           header-class="text-light-green-8 text-start text-bold"
-                          style="background-color: #dbd8b2"
+                          style="background-color: #f5f3e4"
         >
           <q-card>
-            <q-card-section style="background: #f0edce">
+            <q-card-section style="background: #f5f3e4">
               <span class="inner-image" v-html="value.answer"/>
             </q-card-section>
           </q-card>

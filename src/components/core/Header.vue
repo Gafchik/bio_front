@@ -22,7 +22,8 @@ function redirectTo(routeName){
 </script>
 
 <template>
-  <q-header reveal elevated offset="[1,1]" style="background: #ccc9a5">
+<!--  <q-header reveal elevated offset="[1,1]" style="background: #ccc9a5">-->
+  <q-header reveal elevated offset="[1,1]" style="background: #f5f3e4">
     <q-toolbar>
       <q-btn @click="drawer = !drawer" flat round dense icon="menu" class="q-mr-sm mobile-only text-black" />
       <q-avatar @click="redirectTo('home')">

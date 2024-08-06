@@ -9,7 +9,8 @@ getContactsAsync()
 </script>
 
 <template>
-  <q-footer reveal elevated style="background: #ccc9a5">
+<!--  <q-footer reveal elevated style="background: #ccc9a5">-->
+  <q-footer reveal elevated style="background: #f5f3e4">
     <q-toolbar v-if="$q.platform.is.desktop" class="text-black row justify-between">
       <div></div>
       <div>

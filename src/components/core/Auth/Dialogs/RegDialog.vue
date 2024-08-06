@@ -78,7 +78,7 @@ const emailExistRule = () => v => errorEmailExist.value || t('app.rules.email_ex
 <template>
   <q-dialog v-model="regDialog" persistent>
     <q-card :style="$q.platform.is.desktop ? 'width: 30%;' : 'width: 90%;'">
-      <q-bar class="row items-center q-pb-none" style="background-color: #b8b398; height: auto">
+      <q-bar class="row items-center q-pb-none" style="background-color: #f5f3e4; height: auto">
         <span class="text-h5 text-light-green-8">{{ t(`${TRANC_PREFIX}.reg`) }}</span>
         <q-space/>
         <q-btn
@@ -87,7 +87,7 @@ const emailExistRule = () => v => errorEmailExist.value || t('app.rules.email_ex
             flat
             color="light-green-8"/>
       </q-bar>
-      <q-form style="background-color: #e3e1c9"
+      <q-form style="background-color: #f5f3e4"
           @submit="onSubmit"
           @reset="onReset"
           class="q-gutter-md"
@@ -171,7 +171,7 @@ const emailExistRule = () => v => errorEmailExist.value || t('app.rules.email_ex
               ]"
           />
       </q-card-section>
-      <q-card-actions class="row justify-end q-pa-none q-ma-none" style="background-color: #e3e1c9">
+      <q-card-actions class="row justify-end q-pa-none q-ma-none" style="background-color: #f5f3e4">
         <q-btn type="reset"  flat class="q-mr-sm" icon="refresh"/>
         <q-btn type="submit" color="light-green-8" flat icon="done"/>
       </q-card-actions>

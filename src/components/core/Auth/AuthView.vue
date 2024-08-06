@@ -23,7 +23,7 @@ const dropdownLabel = computed(() => {
         flat
         icon="account_circle"
         color="black"
-        content-style="background-color: #e3e1c9"
+        content-style="background-color: #f5f3e4"
         :label="dropdownLabel"
     >
       <q-list v-if="!isLogin">

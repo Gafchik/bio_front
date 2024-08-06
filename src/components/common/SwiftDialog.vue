@@ -17,11 +17,11 @@ function onSubmit(){
 
 <template>
   <q-dialog v-model="isShowDialog" persistent>
-    <q-card style="background-color: #e3e1c9; min-width: 60%" >
+    <q-card style="background-color: #f5f3e4; min-width: 60%" >
         <div class="text-center">
           <h5 class="text-light-green-8">SWIFT</h5>
         </div>
-      <q-form style="background-color: #e3e1c9"
+      <q-form style="background-color: #f5f3e4"
               @submit="onSubmit"
               class="q-gutter-md"
               ref="swiftForm"
