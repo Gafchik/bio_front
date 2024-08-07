@@ -8,8 +8,10 @@ import { storeToRefs } from 'pinia'
 import AuthView from "@/components/core/Auth/AuthView.vue";
 const appStore = useAppStore()
 const {} = appStore
-const {drawer} = storeToRefs(appStore)
-
+const {drawer,isLogin} = storeToRefs(appStore)
+import {useBasketStore} from "@/store/common/basket-store.js";
+const basketStore = useBasketStore()
+const {openBasketDialog} = basketStore
 function redirectTo(routeName){
   router.push({
     name: routeName,
@@ -42,6 +44,17 @@ function redirectTo(routeName){
             </q-item-section>
           </q-item>
         </template>
+      </q-list>
+      <q-separator />
+      <q-list v-show="isLogin && $q.platform.is.mobile">
+        <q-item clickable v-close-popup @click="openBasketDialog">
+          <q-item-section avatar>
+            <q-icon name="shopping_cart" />
+          </q-item-section>
+          <q-item-section>
+            {{ t(`app.basket`) }}
+          </q-item-section>
+        </q-item>
       </q-list>
     </q-scroll-area>
   </q-drawer>

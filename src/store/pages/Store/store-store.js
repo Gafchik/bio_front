@@ -25,7 +25,16 @@ export const useStoreStore = defineStore('useStoreStore' ,()=> {
             })
             .catch(error => {});
     }
+    async function buyFromBasketAsync(payload){
+        console.log(payload)
+        //TODO create get
+        // return await axios.value.post('/api/tree-store/buy-from-basket',payload)
+        //     .then(response => {
+        //         treeByYear.value = response.data.data
+        //     })
+        //     .catch(error => {});
+    }
     return {
-        treeStore,getTreeInStoreAsync,getTreeInStoreByYearAsync,treeByYear
+        treeStore,getTreeInStoreAsync,getTreeInStoreByYearAsync,treeByYear,buyFromBasketAsync
     }
 })

@@ -1,3 +1,17 @@
 {
-
+  "count": "{count} trees",
+  "count_2": "{count} trees",
+  "year": "{year} year",
+  "season": "{season} season",
+  "back": "back",
+  "age_1": "{age} year",
+  "age_2": "{age} years",
+  "age_3": "{age} years",
+  "basket": {
+    "confirm": {
+      "title": "Add to cart",
+      "text": "Are you sure you want to add the tree to the cart?",
+      "success": "The tree has been successfully added to the cart"
+    }
+  }
 }

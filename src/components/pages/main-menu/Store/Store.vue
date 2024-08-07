@@ -2,16 +2,21 @@
 import {useI18n} from "vue-i18n";
 import {useStoreStore} from "@/store/pages/Store/store-store.js";
 import {storeToRefs} from "pinia";
-import {ref} from "vue";
+import {ref, watch} from "vue";
 import {useAppStore} from "@/store/app-store.js";
 const {t} = useI18n()
 const T_PREFIX = 'pages.store'
 const storeStore = useStoreStore()
 const appStore = useAppStore()
 const {isLogin} = storeToRefs(appStore)
-const {openLoginDialog} = appStore
+const {openReginDialog,showInfoMassage} = appStore
 const {getTreeInStoreAsync,getTreeInStoreByYearAsync} = storeStore
 const {treeByYear,treeStore} = storeToRefs(storeStore)
+import {useDialogConfirmStore} from "@/store/common/dialog-confirm.js";
+import {useBasketStore} from "@/store/common/basket-store.js";
+const {openDialogConfirm} = useDialogConfirmStore()
+const basketSore = useBasketStore()
+const {addToBasket} = basketSore
 getTreeInStoreAsync()
 const level_1 = 1
 const level_2 = 2
@@ -24,11 +29,27 @@ function to2level(item){
 }
 function buy(item){
   if(!!isLogin.value){
-    //TODO add buy
+    openDialogConfirm({
+      title: t(`${T_PREFIX}.basket.confirm.title`),
+      text: t(`${T_PREFIX}.basket.confirm.text`),
+      func: toBasket,
+      funcParams: item,
+    })
   }else{
-    openLoginDialog()
+    openReginDialog(t(`${T_PREFIX}.basket.confirm.success`))
   }
 }
+async function toBasket(item){
+  addToBasket(item).then(() => {
+    showInfoMassage(t(`${T_PREFIX}.basket.confirm.success`))
+  })
+
+}
+watch(isLogin, async (newValue, oldValue) => {
+  if (newValue) {
+    getTreeInStoreAsync().then(() => level.value = level_1)
+  }
+})
 </script>
 
 <template>

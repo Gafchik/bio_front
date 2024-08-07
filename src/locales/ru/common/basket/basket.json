@@ -1,0 +1,13 @@
+{
+  "title": "Корзина",
+  "emptyBasket": "Корзина пуста!",
+  "info_1": "{year} год, {season} сезон, цена {price}$",
+  "info_2": "{year} года {season} сезон, цена {price}$",
+  "info_3": "{year} лет {season} сезон, цена {price}$",
+  "submit": "Оплатить",
+  "allPrice": "Сумма к оплате {price}$",
+  "confirm": {
+    "title": "Оплата товаров с корзины",
+    "text": "Вы уверены что хотите оплатить {price}$ с баланса?"
+  }
+}

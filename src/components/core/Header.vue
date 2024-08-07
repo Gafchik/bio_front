@@ -9,10 +9,12 @@ import locales from "@/constants/locales.js"
 import ukr from "@assets/image/header/locales/ukr.png"
 import {ref} from "vue";
 import AuthView from "@/components/core/Auth/AuthView.vue";
-
+import {useBasketStore} from "@/store/common/basket-store.js";
+const basketStore = useBasketStore()
+const {openBasketDialog} = basketStore
 const appStore = useAppStore()
 const {changeLocale} = appStore
-const {drawer,localesModel} = storeToRefs(appStore)
+const {drawer,localesModel,isLogin} = storeToRefs(appStore)
 
 function redirectTo(routeName){
   router.push({
@@ -33,6 +35,15 @@ function redirectTo(routeName){
       <q-toolbar-title class="q-mt-sm" @click="redirectTo('home')">
         <img src="@assets/image/header/logo_text.svg" alt="logo_text">
       </q-toolbar-title>
+      <div class="q-pb-sm" v-show="isLogin && $q.platform.is.desktop">
+        <q-btn
+            flat icon="shopping_cart"
+            color="black"
+            size="md"
+            rounded
+            @click="openBasketDialog"/>
+      </div>
+
       <AuthView class="q-mr-xl q-pb-sm" v-if="$q.platform.is.desktop"/>
       <q-select
           class="q-pt-sm"
