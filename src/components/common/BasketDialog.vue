@@ -108,6 +108,9 @@ function onSubmit(){
                 <q-btn @click="deleteFromBasket(item)" round dense color="red" flat icon="delete" />
               </template>
             </q-input>
+            <div class="text-center text-light-green-8">
+              <span> {{t(`${T_PREFIX}.info_text`)}}</span>
+            </div>
           </div>
         </q-card-section>
         <q-card-actions align="center">
