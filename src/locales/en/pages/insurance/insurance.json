@@ -1,3 +1,30 @@
 {
-  "empty_page": ""
+  "empty_page": "",
+  "insurance_types": "Selected tariff {type}",
+  "addTree": "Select tree",
+  "set_insurance": "Get insurance",
+  "insurance_types_text": {
+    "1": "The cost of the package is 1% of the cost of the tree indicated at the time of insurance.\nIf your tree is damaged, we offer a replacement for a young tree of the same variety, which will be planted in the coming season. We will provide you with a new individual number for your new tree and the cadastral code of the land plot on which it will grow.",
+    "2": "The cost of the package is 3% of the cost of the tree indicated at the time of insurance.\nWe are pleased to present our Premium Package, which will provide you with complete peace of mind and protection of your harvest. For a cost of only 3% of the price of your tree on the biodeposit.ge platform, you get a replacement for a tree of the same age and variety in case your tree is damaged.\nBy choosing the Premium Package, you guarantee yourself reliable protection of your harvest. May your trees always bring a rich harvest!",
+    "3": "We present our exclusive PLATINUM Package, which provides maximum protection and additional benefits for your trees. For the cost of only 6% of the price of your tree, you get:\n\n1. A complete replacement of the tree with one of the same age and variety in case of damage or loss.\n\n2. Cashback: the amount paid is automatically credited to your bonus account on the biodeposit.ge platform and can be used to purchase products on our platform.\n\nWith the PLATINUM Package, you not only ensure reliable protection of your harvest, but also receive additional bonuses for further purchases. This is the perfect combination of safety and benefits, making your experience with BioDeposit even more valuable and enjoyable." },
+  "table_headers": {
+    "uuid": "Tree number",
+    "email": "Who insured",
+    "name": "Rate",
+    "percent": "Price from the current value of the tree"
+  },
+  "select_table_headers": {
+    "planting_date": "Year of planting",
+    "season": "Season",
+    "green_pack": "Cost according to the Green Pack rate $",
+    "premium": "Cost according to the Premium rate $",
+    "platinum": "Cost according to the PLATINUM rate $"
+  },
+  "avg": "Total cost of insurance according to the Green Pack rate {green}$ according to the Premium rate {premium}$ according to the PLATINUM rate {platinum}$",
+  "avg_mobile": "Total cost of insurance<br> according to Green Pack tariff {green}$<br> Premium tariff {premium}$<br> PLATINUM tariff {platinum}$",
+  "confirm": {
+    "title": "Tree insurance",
+    "text": "<a target=\"_blank\" href=\"{link}\">1. Insurance contract</a><br><span>2. This Agreement is valid from the moment of acceptance.</span>",
+    "success": "Insurance successfully issued!"
+  }
 }
