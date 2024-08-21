@@ -55,7 +55,8 @@
   "purchase_price": "Purchase price",
   "current_price": "Current price",
   "singleDocument": "Finish design!",
-  "certificate": "Certificate"
+  "certificate": "Certificate",
+  "insurance": "Insurance"
  },
  "order_status": {
   "0":"In progress",

@@ -4,6 +4,7 @@ import {useI18n} from "vue-i18n";
 import {computed} from "vue";
 import {storeToRefs} from "pinia";
 import {downloadPdfHelper} from "@/helpers/comon-helpers.js";
+import {SALE_STATUS_ON_BALANCE} from "@/constants/tree-sale-status.js";
 const {t} = useI18n()
 const appStore = useAppStore()
 const {copyToClipboardNotify} = appStore
@@ -35,11 +36,30 @@ async function downloadCertificate(treeId){
       .then((response) => {downloadPdfHelper(response,'certificate')})
       .catch(e => {console.log('e', e);});
 }
+function isInsurance(tree){
+  if(!!tree.insurance_id){
+    return true
+  }else{
+    const currentDate = new Date();
+    const june30ThisYear = new Date(currentDate.getFullYear(), 5, 30);
+    const plantingYear = new Date(tree.planting_date).getFullYear();
+    const age = currentDate.getFullYear() - plantingYear
+    let res = false
+    if (age < 4) {
+      res = true;
+    }
+    if(age === 4){
+      res = currentDate > june30ThisYear
+    }
+    return res
+  }
+
+}
 </script>
 
 <template>
   <div v-if="$q.platform.is.desktop"
-       class="row justify-center items-center content-center q-my-md"
+       class="row justify-center w-100 items-center content-center q-my-md"
        style="position: relative;"
   >
     <q-btn
@@ -93,30 +113,37 @@ async function downloadCertificate(treeId){
         </div>
       </div>
       <div class="separator"></div>
-      <div class="row text-center q-mt-sm">
-        <div class="col-2">
+      <div class="row text-center q-mt-sm" style="flex-wrap: nowrap !important;">
+        <div class="q-mx-sm">
           <div class="text-light-green-9 text-bold">{{$filters.dateToFormat(tree.planting_date,"YYYY")}}</div>
           <div class="text-subtitle2 text-bold">{{t(`app.tree_info.planting_date`)}}</div>
         </div>
-        <div class="col-2">
+        <div class="q-mx-sm">
           <div class="text-light-green-9 text-bold">{{t(`app.season.${tree.season}`)}}</div>
           <div class="text-subtitle2 text-bold">{{t(`app.tree_info.season`)}}</div>
         </div>
-        <div class="col-2">
+        <div class="q-mx-sm">
           <div class="text-light-green-9 text-bold">{{$filters.dateToFormat(tree.purchase_date,"DD.MM.YYYY")}}</div>
           <div class="text-subtitle2 text-bold">{{t(`app.tree_info.purchase_date`)}}</div>
         </div>
-        <div class="col-2">
+        <div class="q-mx-sm">
           <div class="text-light-green-9 text-bold">{{t(`app.tree_sale_status.${tree.tree_sale_status_id}`)}}</div>
           <div class="text-subtitle2 text-bold">{{t(`app.tree_info.tree_sale_status_id`)}}</div>
         </div>
-        <div class="col-2">
+        <div class="q-mx-sm">
           <div class="text-light-green-9 text-bold">{{$filters.centToDollar(tree.purchase_price)+'$'}}</div>
           <div class="text-subtitle2 text-bold">{{t(`app.tree_info.purchase_price`)}}</div>
         </div>
-        <div class="col-2">
+        <div class="q-mx-sm">
           <div class="text-light-green-9 text-bold">{{$filters.centToDollar(tree.current_price)+'$'}}</div>
           <div class="text-subtitle2 text-bold">{{t(`app.tree_info.current_price`)}}</div>
+        </div>
+        <div class="q-mx-sm">
+          <div>
+            <q-icon v-if="isInsurance(tree)" color="light-green-8" name="done" size="sm" />
+            <q-icon v-else color="red" name="close" size="sm" />
+          </div>
+          <div class="text-subtitle2 text-bold">{{t(`app.tree_info.insurance`)}}</div>
         </div>
       </div>
     </div>
@@ -276,6 +303,22 @@ async function downloadCertificate(treeId){
              : 'text-subtitle2 text-light-green-9 text-bold noSignedDocuments'"
           >
             {{$filters.centToDollar(tree.current_price)+'$'}}
+          </q-item-label>
+        </q-item-section>
+      </q-item>
+      <q-item>
+        <q-item-section>
+          <q-item-label class="text-subtitle2 text-bold">
+            {{t(`app.tree_info.insurance`)}}
+          </q-item-label>
+        </q-item-section>
+        <q-item-section side>
+          <q-item-label :class="isSignedDocuments
+             ? 'text-subtitle2 text-light-green-9 text-bold'
+             : 'text-subtitle2 text-light-green-9 text-bold noSignedDocuments'"
+          >
+            <q-icon v-if="isInsurance(tree)" color="light-green-8" name="done" size="sm" />
+            <q-icon v-else color="red" name="close" size="sm" />
           </q-item-label>
         </q-item-section>
       </q-item>

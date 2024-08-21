@@ -55,7 +55,8 @@
   "purchase_price": "Цена покупки",
   "current_price": "Текущая цена",
   "singleDocument": "Завершить оформление!",
-  "certificate": "Сертификат"
+  "certificate": "Сертификат",
+  "insurance": "Страховка"
  },
  "oreder_status": {
   "0":"На выполнении",

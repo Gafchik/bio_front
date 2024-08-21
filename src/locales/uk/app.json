@@ -55,7 +55,8 @@
   "purchase_price": "Ціна покупки",
   "current_price": "Поточна ціна",
   "singleDocument": "Завершити оформлення!",
-  "certificate": "Сертифікат"
+  "certificate": "Сертифікат",
+  "insurance": "Страхування"
  },
  "oreder_status": {
   "0":"На виконанні",

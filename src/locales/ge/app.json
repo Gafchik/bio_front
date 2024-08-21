@@ -55,7 +55,8 @@
     "purchase_price": "შესყიდვის ფასი",
     "current_price": "მიმდინარე ფასი",
     "singleDocument": "დაასრულეთ დიზაინი!",
-    "certificate": "სერთიფიკატი"
+    "certificate": "სერთიფიკატი",
+    "insurance": "დაზღვევა"
   },
   "order_status": {
     "0":"მიმდინარეობს",
