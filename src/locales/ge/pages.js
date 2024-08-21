@@ -16,6 +16,7 @@ import tree_store_remove_sell from "@/locales/ge/pages/tree-store-remove-sell/tr
 import buy_yong_tree from "@/locales/ge/pages/buy-yong-tree/buy-yong-tree.json"
 import top_up_wallet from "@/locales/ge/pages/top-up-wallet/top-up-wallet.json"
 import store from "@/locales/ge/pages/store/store.json"
+import insurance from "@/locales/ge/pages/insurance/insurance.json"
 export default {
     faq: faq,
     contacts: contacts,
@@ -35,4 +36,5 @@ export default {
     buy_yong_tree: buy_yong_tree,
     top_up_wallet: top_up_wallet,
     store: store,
+    insurance: insurance,
 }

@@ -9,6 +9,7 @@
     "ge": "ქართული"
   },
   "rules": {
+    "basket_Rule": "ვერ ვყიდულობ, უკვე გაყიდულია!",
     "numericMore" : "{field_name} უნდა იყოს {more}-ზე მეტი",
     "numericMoreOrEqual" : "{field_name} უნდა იყოს მეტი ან ტოლი {more}",
     "numericLessOrEqual" : "{field_name} უნდა იყოს ნაკლები ან ტოლი {more}",

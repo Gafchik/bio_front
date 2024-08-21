@@ -9,6 +9,7 @@
   "ge":"Грузинский"
  },
  "rules": {
+  "basket_Rule": "Нельзя купить, уже продано!",
   "numericMore" : "{field_name} должно быть больше {more}",
   "numericMoreOrEqual" : "{field_name} должно быть больше или равно {more}",
   "numericLessOrEqual" : "{field_name} должно быть меньше или равно {more}",

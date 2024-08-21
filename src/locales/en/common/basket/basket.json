@@ -1,3 +1,14 @@
 {
-
+  "title": "Basket",
+  "emptyBasket": "Basket is empty!",
+  "info_1": "{year} year, {season} season, price {price}$",
+  "info_2": "{year} year {season} season, price {price}$",
+  "info_3": "{year} years {season} season, price {price}$",
+  "submit": "Pay",
+  "allPrice": "Amount to pay {price}$",
+  "info_text": "*The cost price of the tree may differ from the purchase price",
+  "confirm": {
+    "title": "Payment for goods from the basket",
+    "text": "Are you sure you want to pay {price}$ from the balance?"
+  }
 }

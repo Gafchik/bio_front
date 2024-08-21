@@ -9,6 +9,7 @@
   "ge":"Грузинська"
  },
  "rules": {
+  "basket_Rule": "Не можна купити, вже продано!",
   "numericMore" : "{field_name} має бути більше {more}",
   "numericMoreOrEqual" : "{field_name} має бути більше або одно {more}",
   "numericLessOrEqual" : "{field_name} має бути менше або дорівнює {more}",

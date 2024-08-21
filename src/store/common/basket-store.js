@@ -5,6 +5,8 @@ import {useAppStore} from "@/store/app-store.js";
 
 export const useBasketStore = defineStore('useBasketStore' ,()=> {
     const BASKET = 'BASKET'
+    const appStore = useAppStore()
+    const {axios, currentLocale} = storeToRefs(appStore);
     const dialog = ref(false)
     const basket = ref(null)
     async function getBasket(){
@@ -55,10 +57,35 @@ export const useBasketStore = defineStore('useBasketStore' ,()=> {
     }
     function closeBasketDialog(){
         dialog.value = false
+    }
+    async function buyFromBasketAsync(payload){
+        return await axios.value.post('/api/tree-store/buy-from-basket', {basket:payload})
+            .then(response => {
+                return response.data.data
+            })
+            .catch(error => {});
+    }
+    async function changeRule(id,value){
+        if(!!basket){
+            let newBasket = basket.value.map(i => {
+                if(i.tree_id === id){
+                    i.rules = value
+                }
+                return i
+
+            })
+            return getBasket()
+                .then((loadBasket) => {
+                    localStorage.setItem(BASKET, JSON.stringify(newBasket))
+                    basket.value = newBasket
+                    return 0
+                })
+        }
 
     }
     return {
         addToBasket,deleteFromBasket,getBasket,dialog,
-        basket,openBasketDialog,closeBasketDialog,clearBasket
+        basket,openBasketDialog,closeBasketDialog,clearBasket,buyFromBasketAsync,
+        changeRule
     }
 })

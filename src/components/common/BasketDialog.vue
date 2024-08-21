@@ -9,11 +9,11 @@ import {useStoreStore} from "@/store/pages/Store/store-store.js";
 import {useDialogConfirmStore} from "@/store/common/dialog-confirm.js";
 const {t} = useI18n()
 const basketStore = useBasketStore()
-const {closeBasketDialog,deleteFromBasket} = basketStore
+const {closeBasketDialog,deleteFromBasket,buyFromBasketAsync,changeRule,clearBasket} = basketStore
 const {dialog,basket} = storeToRefs(basketStore)
 const T_PREFIX = 'common.basket'
 const storeStore = useStoreStore()
-const {buyFromBasketAsync} = storeStore
+const {} = storeStore
 const {openDialogConfirm} = useDialogConfirmStore()
 const emptyBasket = computed(() => {
   return !basket.value
@@ -47,7 +47,7 @@ const prepareBasked = computed(() => {
   }
   else{
     return basket.value.map(i => {
-      return { ...i, model: getName(i),rules: true };
+      return { ...i, model: getName(i) };
     })
   }
 })
@@ -67,10 +67,19 @@ function onSubmit(){
         text: t(`${T_PREFIX}.confirm.text`,{price: fillters.centToDollar(allPrice.value)}),
         func: buyFromBasketAsync,
         funcParams: basket.value,
-        callbackFunc: () => {}
+        callbackFunc: callbackBuyStore
       })
     }
   })
+}
+function callbackBuyStore(result){
+  if(!!result.errors){
+    result.trees.forEach(t => {
+      changeRule(t,false).then(() => basketForm.value.validate())
+    })
+  }else {
+    clearBasket()
+  }
 }
 </script>
 
@@ -102,6 +111,7 @@ function onSubmit(){
               class="q-my-xs input-field text-bold text-light-green-8"
               color="light-green-8"
               type="text"
+             :rules="[rules.basketRule(item.rules)]"
               readonly
             >
               <template v-slot:after>
@@ -109,7 +119,7 @@ function onSubmit(){
               </template>
             </q-input>
             <div class="text-center text-light-green-8">
-              <span> {{t(`${T_PREFIX}.info_text`)}}</span>
+              <span> {{t(`${T_PREFIX}.info_text`)}} </span>
             </div>
           </div>
         </q-card-section>

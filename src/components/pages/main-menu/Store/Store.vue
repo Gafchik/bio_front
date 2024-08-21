@@ -40,7 +40,7 @@ function buy(item){
   }
 }
 async function toBasket(item){
-  addToBasket(item).then(() => {
+  addToBasket({...item,rules: true}).then(() => {
     showInfoMassage(t(`${T_PREFIX}.basket.confirm.success`))
   })
 

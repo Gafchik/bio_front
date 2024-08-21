@@ -16,5 +16,6 @@ const rules = {
     numericLessOrEqual: (field_name,more) => v => v <= more || i18n.global.t(`${trans_prefix}.numericLessOrEqual`,{more:more,field_name:field_name}),
     confirmField: (confirm, field_name) => v => v === confirm || i18n.global.t(`${trans_prefix}.confirm_field`, {field_name: field_name}),
     email: () => v => /.+@.+\..+/.test(v) || i18n.global.t(`${trans_prefix}.email_exemple`,{dog: '@'}),
+    basketRule: (rule_value) => v => !!rule_value || i18n.global.t(`${trans_prefix}.basket_Rule`,{dog: '@'}),
 }
 export default rules

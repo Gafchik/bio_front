@@ -169,6 +169,13 @@ const walletRoutes = [
               :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.personal`) : ''"
               @click="redirectByName('personal')"
       />
+      <q-tab  :class="currentRouteName === 'insurance' ? 'text-white' : ''"
+              :style="currentRouteName === 'insurance' ? 'background-color: #a89c4c' : ''"
+              icon="verified_user"
+              :dense="$q.platform.is.mobile"
+              :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.wallet.insurance`) : ''"
+              @click="redirectByName('insurance')"
+      />
       <q-tab  :class="currentRouteName === 'purchases' ? 'text-white' : ''"
               :style="currentRouteName === 'purchases' ? 'background-color: #a89c4c' : ''"
               icon="shopping_basket"
@@ -257,6 +264,12 @@ const walletRoutes = [
               icon="shopping_cart"
               :label="t(`${TRANC_PREFIX}.wallet.buy_yong_tree`)"
               @click="redirectByName('buy_yong_tree')"
+      />
+      <q-tab  :class="currentRouteName === 'insurance' ? 'text-white' : ''"
+              :style="currentRouteName === 'insurance' ? 'background-color: #a89c4c' : ''"
+              icon="verified_user"
+              :label="t(`${TRANC_PREFIX}.wallet.insurance`)"
+              @click="redirectByName('insurance')"
       />
       <q-tab  :class="currentRouteName === 'top_up_wallet' ? 'text-white' : ''"
               :style="currentRouteName === 'top_up_wallet' ? 'background-color: #a89c4c' : ''"
