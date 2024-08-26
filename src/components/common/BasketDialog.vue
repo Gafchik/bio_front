@@ -7,10 +7,13 @@ import fillters from "@/fillters/comon-fillters.js"
 import rules from "@/rules/rules.js";
 import {useStoreStore} from "@/store/pages/Store/store-store.js";
 import {useDialogConfirmStore} from "@/store/common/dialog-confirm.js";
+import {usePersonalStore} from "@/store/pages/Personal/personal-store.js";
 const {t} = useI18n()
+const personalStore = usePersonalStore()
+const {getTreesAsync} = personalStore
 const basketStore = useBasketStore()
 const {closeBasketDialog,deleteFromBasket,buyFromBasketAsync,changeRule,clearBasket} = basketStore
-const {dialog,basket} = storeToRefs(basketStore)
+const {dialog,basket,twoFaCod} = storeToRefs(basketStore)
 const T_PREFIX = 'common.basket'
 const storeStore = useStoreStore()
 const {} = storeStore
@@ -59,27 +62,44 @@ const allPrice = computed(() => {
   })
   return res
 })
+const twoFaDialog = ref(false)
+function close2FaDialog(){
+  twoFaDialog.value = false
+  twoFaCod.value = null
+}
+function input2fa(){
+  twoFaDialog.value = false
+  buyFromBasketAsync(basket.value).then((result) =>{
+    if(!!result.errors){
+      result.trees.forEach(t => {
+        close2FaDialog()
+        changeRule(t,false).then(() => basketForm.value.validate())
+      })
+    }else {
+      close2FaDialog()
+      clearBasket()
+    }
+    twoFaCod.value = null
+    getTreesAsync()
+  })
+
+}
+async function open2FaDialog(){
+  twoFaDialog.value = true
+}
 function onSubmit(){
   basketForm.value.validate().then(res => {
     if(!!res){
       openDialogConfirm({
         title: t(`${T_PREFIX}.confirm.title`),
         text: t(`${T_PREFIX}.confirm.text`,{price: fillters.centToDollar(allPrice.value)}),
-        func: buyFromBasketAsync,
-        funcParams: basket.value,
-        callbackFunc: callbackBuyStore
+        func: open2FaDialog,
       })
     }
   })
 }
 function callbackBuyStore(result){
-  if(!!result.errors){
-    result.trees.forEach(t => {
-      changeRule(t,false).then(() => basketForm.value.validate())
-    })
-  }else {
-    clearBasket()
-  }
+
 }
 </script>
 
@@ -136,6 +156,22 @@ function callbackBuyStore(result){
         </q-card-actions>
       </q-form>
     </q-card>
+    <q-dialog v-model="twoFaDialog" persistent>
+      <q-card :style="$q.platform.is.desktop ? 'background-color: #e3e1c9; width: 30%' : 'background-color: #e3e1c9; width: 90%'">
+        <q-card-section>
+          <q-input
+              :label="t(`app.input_2_fa_code`)"
+              label-color="light-green-9"
+              color="light-green-9"
+              v-model="twoFaCod"
+          />
+        </q-card-section>
+        <q-card-actions align="right">
+          <q-btn flat icon="close" color="negative" @click="close2FaDialog"/>
+          <q-btn flat icon="done" color="positive" @click="input2fa"/>
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </q-dialog>
 </template>
 
