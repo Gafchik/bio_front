@@ -17,6 +17,7 @@ import buy_yong_tree from "@/locales/ge/pages/buy-yong-tree/buy-yong-tree.json"
 import top_up_wallet from "@/locales/ge/pages/top-up-wallet/top-up-wallet.json"
 import store from "@/locales/ge/pages/store/store.json"
 import insurance from "@/locales/ge/pages/insurance/insurance.json"
+import gift from "@/locales/ge/pages/gift/gift.json"
 export default {
     faq: faq,
     contacts: contacts,
@@ -37,4 +38,5 @@ export default {
     top_up_wallet: top_up_wallet,
     store: store,
     insurance: insurance,
+    gift: gift,
 }

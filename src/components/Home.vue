@@ -6,7 +6,7 @@ import {storeToRefs} from "pinia";
 import {useAppStore} from "@/store/app-store.js";
 const {t} = useI18n()
 const appStore = useAppStore()
-const {currentLocale} = storeToRefs(appStore)
+const {currentLocale,isLogin} = storeToRefs(appStore)
 const TRANC_PREFIX = 'pages.home'
 const homeStore = useHomeStore()
 const {getHomePageInfo} = homeStore
@@ -19,6 +19,21 @@ const display = ref(null)
 const displayHeight = computed(() => {
   return display.value ? display.value.offsetHeight : 0;
 })
+const {redirectByName,openLoginDialog} = appStore
+function toByYongTree(){
+  if(isLogin.value){
+    redirectByName('buy_yong_tree')
+  }else{
+    openLoginDialog()
+  }
+}
+function toGiftTree(){
+  if(isLogin.value){
+    redirectByName('gift')
+  }else{
+    openLoginDialog()
+  }
+}
 </script>
 
 <template>
@@ -123,6 +138,7 @@ const displayHeight = computed(() => {
           icon="mdi-basket-outline"
           color="green-8"
           rounded
+          @click="toByYongTree()"
           :label="t(`${TRANC_PREFIX}.buy_tree_btn`)" />
       <q-btn
           class=" pulse-animation q-mx-xl q-my-lg"
@@ -130,6 +146,7 @@ const displayHeight = computed(() => {
           icon="mdi-gift-outline"
           color="green-8"
           rounded
+          @click="toGiftTree()"
           :label="t(`${TRANC_PREFIX}.gift_tree_btn`)" />
       <q-btn
           class="pulse-animation q-my-lg"

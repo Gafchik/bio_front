@@ -9,7 +9,6 @@ export const useSelectTreesDialogStore = defineStore('useSelectTreesDialogStore'
     const selectedByYearSeason = ref(null)
     const selected = ref([])
     function openDialog(){
-
         dialog.value = true
     }
     function closeDialog(){

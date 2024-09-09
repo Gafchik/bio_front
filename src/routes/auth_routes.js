@@ -12,6 +12,7 @@ import TreeStoreRemoveSell from "@/components/pages/TreeStoreRemoveSell/TreeStor
 import BuyYongTree from "@/components/pages/BuyYongTree/BuyYongTree.vue";
 import TopUpWallet from "@/components/pages/TopUpWallet/TopUpWallet.vue";
 import Insurance from "@/components/pages/Insurance/Insurance.vue";
+import Gift from "@/components/pages/Gift/Gift.vue";
 
 export default [
     {
@@ -83,5 +84,10 @@ export default [
         path: '/insurance',
         component: Insurance,
         name: 'insurance',
+    },
+    {
+        path: '/gift',
+        component: Gift,
+        name: 'gift',
     },
 ]

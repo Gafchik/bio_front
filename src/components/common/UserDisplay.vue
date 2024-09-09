@@ -204,6 +204,12 @@ const walletRoutes = [
                 :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.wallet.buy_yong_tree`) : ''"
                 @click="redirectByName('buy_yong_tree')"
         />
+        <q-tab  :class="currentRouteName === 'gift' ? 'text-white' : ''"
+                :style="currentRouteName === 'gift' ? 'background-color: #a89c4c' : ''"
+                icon="redeem"
+                :label="$q.platform.is.desktop ? t(`${TRANC_PREFIX}.wallet.gift`) : ''"
+                @click="redirectByName('gift')"
+        />
         <q-tab  :class="currentRouteName === 'top_up_wallet' ? 'text-white' : ''"
                 :style="currentRouteName === 'top_up_wallet' ? 'background-color: #a89c4c' : ''"
                 icon="add_card"
@@ -264,6 +270,12 @@ const walletRoutes = [
               icon="shopping_cart"
               :label="t(`${TRANC_PREFIX}.wallet.buy_yong_tree`)"
               @click="redirectByName('buy_yong_tree')"
+      />
+      <q-tab  :class="currentRouteName === 'gift' ? 'text-white' : ''"
+              :style="currentRouteName === 'gift' ? 'background-color: #a89c4c' : ''"
+              icon="redeem"
+              :label="t(`${TRANC_PREFIX}.wallet.gift`)"
+              @click="redirectByName('gift')"
       />
       <q-tab  :class="currentRouteName === 'insurance' ? 'text-white' : ''"
               :style="currentRouteName === 'insurance' ? 'background-color: #a89c4c' : ''"

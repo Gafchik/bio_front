@@ -9,12 +9,8 @@ import {useAppStore} from "@/store/app-store.js";
 import {useDialogConfirmStore} from "@/store/common/dialog-confirm.js";
 const {openDialogConfirm} = useDialogConfirmStore()
 import SignedDocumentsDialog from "@/components/common/SignedDocumentsDialog.vue";
-
-
 const appStore = useAppStore()
 const {currentLocale} = storeToRefs(appStore)
-
-
 const TRANC_PREFIX = 'pages.personal'
 const {t} = useI18n()
 const personalStore = usePersonalStore()

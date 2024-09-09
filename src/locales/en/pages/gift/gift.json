@@ -1,0 +1,37 @@
+{
+  "empty_page": "You don't have any trees to donate yet. To do this, please make a purchase.",
+  "title": "Donate a tree",
+  "donate": {
+    "label": "A gift is a gratuitous (for the recipient) transfer of property, a communication of a benefit.",
+    "1": "Limitations of the Donate function:",
+    "2": " - a ban on selling and donating for 3 years;",
+    "3": " - payment of a commission, the minimum amount of which is set on the BioDeposit platform at 3% of the cost of the tree, in the case of a donation made after 7 days from the date of purchase;",
+    "4": " - the period for freezing payments from the harvest is set by the Donor."
+  },
+  "charity": {
+    "label": "A gift is a gratuitous (for the recipient) transfer of property, communication of a benefit.",
+    "1": "Limitations of the Charity function:",
+    "2": " - a ban on sale and donation during the entire life of the tree;",
+    "3": " - the period for freezing payments from the harvest is set by the Donor;"
+  },
+  "addTree": "Select tree",
+  "table_headers": {
+    "year": "Planting year",
+    "season": "Season",
+    "uuid": "Tree ID",
+    "coord": "Location"
+  },
+  "freezeMoneyYear": "Harvesting payment freeze period, years",
+  "freezeSellYear": "Sale ban period, years",
+  "notifyDate": "Send notification",
+  "isKnowUser": "User details known?",
+  "email": "Recipient's email",
+  "generate_code": "A gift code will be generated!",
+  "submit": "Gift tree",
+  "empty_email": "Enter recipient's email!",
+  "confirm": {
+    "title": "Gift tree",
+    "text": "Are you sure you want to make a gift?",
+    "success": "Gift successfully sent"
+  }
+}
