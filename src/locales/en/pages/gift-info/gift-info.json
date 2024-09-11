@@ -1,3 +1,13 @@
 {
-  "empty_page": "У вас нет подарков и вы еще никому ничего не дарили"
+  "empty_page": "You have no gifts and you have not given anything to anyone yet",
+  "set_code": "Enter gift code",
+  "dialog_title": "Enter the code to receive the gift",
+  "gift_get_success": "Gift successfully received",
+  "table_headers": {
+    "user_from": "Giver",
+    "user_to": "Recipient",
+    "code": "Promo code",
+    "status": "Status",
+    "tree_count": "Quantity"
+  }
 }
