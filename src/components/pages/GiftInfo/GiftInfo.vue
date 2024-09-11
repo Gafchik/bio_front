@@ -186,6 +186,12 @@ function getCurrentGiftBuyCode(gift_code){
               <q-item v-for="col in props.cols" :key="col.name">
                 <template v-if="col.name === 'action'">
                   <q-item-section>
+                    <q-btn
+                        v-if="(props.row.status === ACTIVE && !props.row.i_gave)"
+                        flat icon="done"
+                        color="light-green-9"
+                        @click="getCurrentGiftBuyCode(props.row.code)"
+                    />
                     <q-item-label class="text-bold">
                       <q-btn
                           v-if="(props.row.status === RECEIVED && !props.row.i_gave) || !!props.row.i_gave"
