@@ -13,6 +13,7 @@ import BuyYongTree from "@/components/pages/BuyYongTree/BuyYongTree.vue";
 import TopUpWallet from "@/components/pages/TopUpWallet/TopUpWallet.vue";
 import Insurance from "@/components/pages/Insurance/Insurance.vue";
 import Gift from "@/components/pages/Gift/Gift.vue";
+import GiftInfo from "@/components/pages/GiftInfo/GiftInfo.vue";
 
 export default [
     {
@@ -89,5 +90,10 @@ export default [
         path: '/gift',
         component: Gift,
         name: 'gift',
+    },
+    {
+        path: '/gift-info',
+        component: GiftInfo,
+        name: 'gift_info',
     },
 ]

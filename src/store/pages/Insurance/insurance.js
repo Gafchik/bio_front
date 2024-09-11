@@ -29,7 +29,6 @@ export const useInsuranceStore = defineStore('useInsuranceStore', () => {
     }
 
     async function downloadDocAsync(payload) {
-        console.log(payload)
         return await axios.value({
             method: 'post',
             url: '/api/insurance/download',

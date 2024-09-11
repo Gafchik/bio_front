@@ -18,6 +18,7 @@ import top_up_wallet from "@/locales/en/pages/top-up-wallet/top-up-wallet.json"
 import store from "@/locales/en/pages/store/store.json"
 import insurance from "@/locales/en/pages/insurance/insurance.json"
 import gift from "@/locales/en/pages/gift/gift.json"
+import gift_info from "@/locales/en/pages/gift-info/gift-info.json"
 export default {
     faq: faq,
     contacts: contacts,
@@ -39,4 +40,5 @@ export default {
     store: store,
     insurance: insurance,
     gift: gift,
+    gift_info: gift_info,
 }

@@ -104,5 +104,9 @@
  "input_2_fa_code": "Enter the two-factor authentication code",
  "need2fa": "You need to enable two-factor authentication",
  "olive": "Olive",
- "basket": "Basket"
+ "basket": "Basket",
+ "gift_status": {
+  "0": "Active",
+  "1": "Received"
+ }
 }
