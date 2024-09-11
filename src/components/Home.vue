@@ -148,13 +148,13 @@ function toGiftTree(){
           rounded
           @click="toGiftTree()"
           :label="t(`${TRANC_PREFIX}.gift_tree_btn`)" />
-      <q-btn
-          class="pulse-animation q-my-lg"
-          :size="$q.platform.is.desktop ? 'lg' : 'md'"
-          rounded
-          icon="question_mark"
-          color="green-8"
-          :label="t(`${TRANC_PREFIX}.help_btn`)" />
+<!--      <q-btn-->
+<!--          class="pulse-animation q-my-lg"-->
+<!--          :size="$q.platform.is.desktop ? 'lg' : 'md'"-->
+<!--          rounded-->
+<!--          icon="question_mark"-->
+<!--          color="green-8"-->
+<!--          :label="t(`${TRANC_PREFIX}.help_btn`)" />-->
     </div>
     <div :style="$q.platform.is.desktop ? 'margin-inline: 10%' : 'margin-inline: 5%'"
          class="items-center q-my-lg">
