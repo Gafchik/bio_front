@@ -10,11 +10,14 @@ import ukr from "@assets/image/header/locales/ukr.png"
 import {ref} from "vue";
 import AuthView from "@/components/core/Auth/AuthView.vue";
 import {useBasketStore} from "@/store/common/basket-store.js";
+import {useQuestionStore} from "@/store/common/question-store.js";
 const basketStore = useBasketStore()
 const {openBasketDialog} = basketStore
 const appStore = useAppStore()
 const {changeLocale} = appStore
 const {drawer,localesModel,isLogin} = storeToRefs(appStore)
+const questionStore = useQuestionStore()
+const {openQuestionDialog} = questionStore
 
 function redirectTo(routeName){
   router.push({
@@ -35,6 +38,14 @@ function redirectTo(routeName){
       <q-toolbar-title class="q-mt-sm" @click="redirectTo('home')">
         <img src="@assets/image/header/logo_text.svg" alt="logo_text">
       </q-toolbar-title>
+      <div class="q-pb-sm">
+        <q-btn
+            flat icon="contact_support"
+            color="black"
+            size="md"
+            rounded
+            @click="openQuestionDialog"/>
+      </div>
       <div class="q-pb-sm" v-show="isLogin && $q.platform.is.desktop">
         <q-btn
             flat icon="shopping_cart"

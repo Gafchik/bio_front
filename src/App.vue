@@ -10,6 +10,7 @@ import DialogConfirm from "@/components/common/DialogConfirm.vue";
 import ForgotPasswordDialog from "@/components/core/Auth/Dialogs/ForgotPasswordDialog.vue";
 import SwiftDialog from "@/components/common/SwiftDialog.vue";
 import BasketDialog from "@/components/common/BasketDialog.vue";
+import QuestionDialog from "@/components/common/QuestionDialog.vue";
 </script>
 
 <template>
@@ -29,6 +30,7 @@ import BasketDialog from "@/components/common/BasketDialog.vue";
     <DialogConfirm/>
     <SwiftDialog/>
     <BasketDialog/>
+    <QuestionDialog/>
   </q-layout>
 </template>
 
