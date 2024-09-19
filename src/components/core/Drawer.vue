@@ -10,8 +10,11 @@ const appStore = useAppStore()
 const {} = appStore
 const {drawer,isLogin} = storeToRefs(appStore)
 import {useBasketStore} from "@/store/common/basket-store.js";
+import {useQuestionStore} from "@/store/common/question-store.js";
 const basketStore = useBasketStore()
 const {openBasketDialog} = basketStore
+const questionStore = useQuestionStore()
+const {openQuestionDialog} = questionStore
 function redirectTo(routeName){
   router.push({
     name: routeName,
@@ -53,6 +56,16 @@ function redirectTo(routeName){
           </q-item-section>
           <q-item-section>
             {{ t(`app.basket`) }}
+          </q-item-section>
+        </q-item>
+      </q-list>
+      <q-list v-show="$q.platform.is.mobile">
+        <q-item clickable v-close-popup @click="openQuestionDialog">
+          <q-item-section avatar>
+            <q-icon name="contact_support" />
+          </q-item-section>
+          <q-item-section>
+            {{ t(`app.question_dialog`) }}
           </q-item-section>
         </q-item>
       </q-list>

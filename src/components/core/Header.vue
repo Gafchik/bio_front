@@ -38,7 +38,7 @@ function redirectTo(routeName){
       <q-toolbar-title class="q-mt-sm" @click="redirectTo('home')">
         <img src="@assets/image/header/logo_text.svg" alt="logo_text">
       </q-toolbar-title>
-      <div class="q-pb-sm">
+      <div class="q-pb-sm" v-if="$q.platform.is.desktop">
         <q-btn
             flat icon="contact_support"
             color="black"

@@ -108,5 +108,6 @@
  "gift_status": {
   "0": "Active",
   "1": "Received"
- }
+ },
+ "question_dialog": "Ask a question"
 }
