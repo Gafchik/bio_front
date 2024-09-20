@@ -15,12 +15,7 @@ const {closeQuestionDialog,sendQuestionAsync} = questionStore
 const {questionDialog} = storeToRefs(questionStore)
 const appStore = useAppStore()
 const {getUserInfo,showInfoMassage} = appStore
-getUserInfo().then(() => {
-  if(isLogin.value){
-    payload.value.name = userInfo.value.first_name + ' ' + userInfo.value.last_name
-    payload.value.email = userInfo.value.email
-  }
-})
+
 const {isLogin,userInfo} = storeToRefs(appStore)
 const questionForm = ref(null)
 const payload = ref({
@@ -30,18 +25,24 @@ const payload = ref({
 })
 
 function onSubmit(){
-  sendQuestionAsync(payload.value)
-      .then((res) => {
-        if(res){
-          payload.value = {
-            email: '',
-            name: '',
-            question: '',
+  getUserInfo().then(() => {
+    if(isLogin.value){
+      payload.value.name = userInfo.value.first_name + ' ' + userInfo.value.last_name
+      payload.value.email = userInfo.value.email
+    }
+    sendQuestionAsync(payload.value)
+        .then((res) => {
+          if(res){
+            payload.value = {
+              email: '',
+              name: '',
+              question: '',
+            }
+            closeQuestionDialog()
+            showInfoMassage(t(`${T_PREFIX}.success`))
           }
-          closeQuestionDialog()
-          showInfoMassage(t(`${T_PREFIX}.success`))
-        }
-      })
+        })
+  })
 }
 const socialBtn = {
   messenger: messenger,
