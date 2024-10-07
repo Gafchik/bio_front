@@ -270,7 +270,7 @@ const walletRoutes = [
               @click="redirectByName('user_map')"
       />
     </q-tabs>
-    <q-tabs :vertical="true" inline-label class="q-mt-sm"  v-if="$q.platform.is.mobile && !!walletToggle">
+    <q-tabs :vertical="true" inline-label class="q-mt-sm" outside-arrows v-if="$q.platform.is.mobile && !!walletToggle">
       <q-tab  :class="currentRouteName === 'buy_yong_tree' ? 'text-white' : ''"
               :style="currentRouteName === 'buy_yong_tree' ? 'background-color: #a89c4c' : ''"
               icon="shopping_cart"
